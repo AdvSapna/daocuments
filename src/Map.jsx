@@ -321,7 +321,8 @@ export default function Map({ selectedCountry, onCountrySelect }) {
               const code = getCode(geo.properties);
               const info = data[code];
               const isSelected = selectedCountry && selectedCountry.code === code;
-              const fill = isSelected ? '#7cafc4' : getColor(info && info.status);
+              const statusColor = getColor(info && info.status);
+              const fill = isSelected ? statusColor : statusColor;
 
               return (
                 <Geography
@@ -346,9 +347,9 @@ export default function Map({ selectedCountry, onCountrySelect }) {
                   onMouseMove={(evt) => setTooltip(t => ({ ...t, x: evt.clientX + 12, y: evt.clientY - 36 }))}
                   onMouseLeave={() => setTooltip(t => ({ ...t, visible: false }))}
                   style={{
-                    default: { fill, stroke:'#e5ddd3', strokeWidth:0.4, outline:'none' },
-                    hover:   { fill: isSelected ? '#7cafc4' : '#e8e2da', stroke:'#7cafc466', strokeWidth:0.8, outline:'none', cursor:'pointer' },
-                    pressed: { fill:'#7cafc4', outline:'none' },
+                    default: { fill, stroke: isSelected ? '#3a3530' : '#e5ddd3', strokeWidth: isSelected ? 1.2 : 0.4, outline:'none' },
+                    hover:   { fill: statusColor, stroke:'#3a353066', strokeWidth:0.8, outline:'none', cursor:'pointer', filter:'brightness(1.08)' },
+                    pressed: { fill: statusColor, outline:'none' },
                   }}
                 />
               );

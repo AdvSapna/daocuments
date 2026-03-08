@@ -144,12 +144,12 @@ export default function CountryPanel({ country, onClose }) {
   return (
     <div style={panelStyle(true)}>
       {/* Header */}
-      <div style={{ padding: '18px 24px 14px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexShrink: 0 }}>
+      <div style={{ padding: '18px 24px 14px', borderBottom: '1px solid ' + meta.color + '44', background: meta.bg, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexShrink: 0 }}>
         <div>
-          <div style={{ fontSize: 11, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace', letterSpacing: '0.12em', marginBottom: 4 }}>{country.code}</div>
-          <div style={{ fontSize: 22, fontWeight: 800 }}>{country.name}</div>
+          <div style={{ fontSize: 11, color: meta.color, fontFamily: 'Space Mono, monospace', letterSpacing: '0.12em', marginBottom: 4, opacity: 0.8 }}>{country.code}</div>
+          <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text-primary)' }}>{country.name}</div>
         </div>
-        <button onClick={onClose} style={{ background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', borderRadius: 4, width: 28, height: 28, cursor: 'pointer', fontSize: 16, lineHeight: 1 }}>×</button>
+        <button onClick={onClose} style={{ background: 'none', border: '1px solid ' + meta.color + '44', color: meta.color, borderRadius: 4, width: 28, height: 28, cursor: 'pointer', fontSize: 16, lineHeight: 1 }}>×</button>
       </div>
 
       {/* Scrollable content */}
