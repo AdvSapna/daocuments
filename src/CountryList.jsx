@@ -59,7 +59,7 @@ export default function CountryList({ data, onCountrySelect }) {
             width: '100%', padding: '10px 14px', fontSize: 13,
             border: '1px solid var(--border)', borderRadius: 8,
             background: 'var(--bg-secondary)', color: 'var(--text-primary)',
-            fontFamily: ''Times New Roman', Times, serif', outline: 'none',
+            fontFamily: "'Times New Roman', Times, serif", outline: 'none',
           }}
         />
       </div>
@@ -102,7 +102,7 @@ export default function CountryList({ data, onCountrySelect }) {
                       padding: '12px 14px', borderRadius: 8,
                       background: 'var(--bg-secondary)', border: '1px solid var(--border)',
                       cursor: 'pointer', textAlign: 'left', width: '100%',
-                      fontFamily: ''Times New Roman', Times, serif',
+                      fontFamily: "'Times New Roman', Times, serif",
                       transition: 'border-color 0.2s',
                     }}
                     onMouseEnter={e => e.currentTarget.style.borderColor = meta.color}
