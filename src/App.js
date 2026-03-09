@@ -96,7 +96,7 @@ export default function App() {
           </div>
 
           <div style={{
-            fontSize: 10, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace',
+            fontSize: 10, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif',
             letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 12,
           }}>
             ABOUT THE PROJECT
@@ -116,7 +116,7 @@ export default function App() {
           <p style={{
             fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.8,
             maxWidth: 480, margin: '0 auto 40px',
-            fontFamily: 'Space Mono, monospace',
+            fontFamily: 'EB Garamond, serif',
           }}>
             Built by Sapna Singh — lawyer, researcher, builder, and crypto policy nerd.
           </p>
@@ -144,7 +144,7 @@ export default function App() {
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
           }}
         >
-          <span style={{ fontSize: 10, fontFamily: 'Space Mono, monospace', color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
+          <span style={{ fontSize: 10, fontFamily: 'EB Garamond, serif', color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
             EXPLORE THE MAP
           </span>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ animation: 'fadeInUp 1.5s ease infinite' }}>
@@ -164,12 +164,12 @@ export default function App() {
             <div style={{ width: 28, height: 28, borderRadius: 6, background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 800, color: '#fff' }}>D</div>
             <div>
               <div style={{ fontSize: 16, fontWeight: 800, letterSpacing: '0.08em' }}>DAOCUMENTS</div>
-              <div className="header-logo-subtitle" style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.08em', fontFamily: 'Space Mono, monospace' }}>Crypto Regulatory Tracker</div>
+              <div className="header-logo-subtitle" style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.08em', fontFamily: 'EB Garamond, serif' }}>Crypto Regulatory Tracker</div>
             </div>
           </div>
           <div className="header-legend" style={{ display: 'flex', gap: 16 }}>
             {[['Legal', '#8bc9a4'], ['Partial', '#edc978'], ['Restricted', '#e8948e']].map(([label, color]) => (
-              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: 'var(--text-secondary)', fontFamily: 'Space Mono, monospace' }}>
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: 'var(--text-secondary)', fontFamily: 'EB Garamond, serif' }}>
                 <div style={{ width: 8, height: 8, borderRadius: '50%', background: color }} />
                 {label}
               </div>
@@ -224,7 +224,7 @@ export default function App() {
         </div>
 
         <div style={{
-          fontSize: 11, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace',
+          fontSize: 11, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif',
           letterSpacing: '0.06em', textAlign: 'center', lineHeight: 1.8,
         }}>
           Tracking crypto regulation worldwide.

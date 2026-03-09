@@ -346,7 +346,7 @@ export default function Map({ selectedCountry, onCountrySelect, data }) {
           position:'absolute', left:tooltip.x, top:tooltip.y,
           pointerEvents:'none', background:'#fff',
           border:'1px solid #e5ddd3', borderRadius:6, padding:'8px 12px',
-          fontSize:12, fontFamily:'Space Mono, monospace', color:'#3a3530',
+          fontSize:12, fontFamily:'EB Garamond, serif', color:'#3a3530',
           boxShadow:'0 2px 8px rgba(0,0,0,0.08)',
           whiteSpace:'nowrap', zIndex:100,
         }}>
@@ -359,7 +359,7 @@ export default function Map({ selectedCountry, onCountrySelect, data }) {
 
       <div style={{
         position:'absolute', bottom:16, left:16,
-        fontSize:10, fontFamily:'Space Mono, monospace',
+        fontSize:10, fontFamily:'EB Garamond, serif',
         color:'#b0a89e', letterSpacing:'0.08em',
       }}>
         SCROLL TO ZOOM · DRAG TO PAN · CLICK COUNTRY

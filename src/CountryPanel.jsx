@@ -36,7 +36,7 @@ function SectionHeader({ children, style }) {
     <div style={{
       fontSize: 10,
       color: 'var(--text-muted)',
-      fontFamily: 'Space Mono, monospace',
+      fontFamily: 'EB Garamond, serif',
       letterSpacing: '0.12em',
       textTransform: 'uppercase',
       marginBottom: 10,
@@ -74,7 +74,7 @@ function Card({ children, style, href }) {
         onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.boxShadow = 'none'; }}
       >
         {children}
-        <div style={{ fontSize: 9, color: 'var(--accent)', fontFamily: 'Space Mono, monospace', marginTop: 6, letterSpacing: '0.06em' }}>↗ VIEW SOURCE</div>
+        <div style={{ fontSize: 9, color: 'var(--accent)', fontFamily: 'EB Garamond, serif', marginTop: 6, letterSpacing: '0.06em' }}>↗ VIEW SOURCE</div>
       </a>
     );
   }
@@ -95,7 +95,7 @@ function GhostCard({ label, icon }) {
       opacity: 0.5,
     }}>
       <div style={{ fontSize: 20 }}>{icon}</div>
-      <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace', letterSpacing: '0.08em' }}>
+      <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif', letterSpacing: '0.08em' }}>
         {label}
       </div>
     </div>
@@ -130,7 +130,7 @@ export default function CountryPanel({ country, onClose }) {
         <div>
           <div style={{ textAlign: 'center', marginBottom: 28 }}>
             <div style={{ fontSize: 32, opacity: 0.15, marginBottom: 8 }}>🌐</div>
-            <div style={{ fontSize: 12, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace', letterSpacing: '0.08em', lineHeight: 1.8 }}>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif', letterSpacing: '0.08em', lineHeight: 1.8 }}>
               SELECT A COUNTRY<br />ON THE MAP
             </div>
           </div>
@@ -151,19 +151,19 @@ export default function CountryPanel({ country, onClose }) {
           borderTop: '1px solid var(--border)',
         }}>
           <div style={{
-            fontSize: 10, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace',
+            fontSize: 10, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif',
             letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8,
           }}>
             VISITORS
           </div>
           <div style={{
             fontSize: 28, fontWeight: 800, color: 'var(--accent)',
-            fontFamily: 'Space Mono, monospace', letterSpacing: '0.04em',
+            fontFamily: 'EB Garamond, serif', letterSpacing: '0.04em',
           }}>
             {visitorCount != null ? visitorCount.toLocaleString() : '—'}
           </div>
           <div style={{
-            fontSize: 10, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace',
+            fontSize: 10, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif',
             marginTop: 4, letterSpacing: '0.06em',
           }}>
             since launch
@@ -183,7 +183,7 @@ export default function CountryPanel({ country, onClose }) {
       {/* Header */}
       <div style={{ padding: '18px 24px 14px', borderBottom: '1px solid ' + meta.color + '44', background: meta.bg, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexShrink: 0 }}>
         <div>
-          <div style={{ fontSize: 11, color: meta.color, fontFamily: 'Space Mono, monospace', letterSpacing: '0.12em', marginBottom: 4, opacity: 0.8 }}>{country.code}</div>
+          <div style={{ fontSize: 11, color: meta.color, fontFamily: 'EB Garamond, serif', letterSpacing: '0.12em', marginBottom: 4, opacity: 0.8 }}>{country.code}</div>
           <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text-primary)' }}>{country.name}</div>
         </div>
         <button onClick={onClose} style={{ background: 'none', border: '1px solid ' + meta.color + '44', color: meta.color, borderRadius: 4, width: 28, height: 28, cursor: 'pointer', fontSize: 16, lineHeight: 1 }}>×</button>
@@ -199,7 +199,7 @@ export default function CountryPanel({ country, onClose }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '5px 12px', borderRadius: 20, background: meta.bg, border: '1px solid ' + meta.color + '44' }}>
                 <div style={{ width: 7, height: 7, borderRadius: '50%', background: meta.color, boxShadow: '0 0 8px ' + meta.color }} />
-                <span style={{ fontSize: 11, fontWeight: 700, color: meta.color, fontFamily: 'Space Mono, monospace', letterSpacing: '0.08em' }}>{meta.label.toUpperCase()}</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: meta.color, fontFamily: 'EB Garamond, serif', letterSpacing: '0.08em' }}>{meta.label.toUpperCase()}</span>
               </div>
             </div>
             {country.summary && (
@@ -219,12 +219,12 @@ export default function CountryPanel({ country, onClose }) {
                     <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 3 }}>{item.title}</div>
                     {item.note && <div style={{ fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{item.note}</div>}
                   </div>
-                  <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace', whiteSpace: 'nowrap', marginTop: 2 }}>{item.year}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif', whiteSpace: 'nowrap', marginTop: 2 }}>{item.year}</div>
                 </Card>
               ))}
             </div>
           ) : (
-            <Card style={{ color: 'var(--text-muted)', fontSize: 12, fontFamily: 'Space Mono, monospace' }}>No legislation data yet</Card>
+            <Card style={{ color: 'var(--text-muted)', fontSize: 12, fontFamily: 'EB Garamond, serif' }}>No legislation data yet</Card>
           )}
         </AnimatedSection>
 
@@ -239,12 +239,12 @@ export default function CountryPanel({ country, onClose }) {
                   {news.map((item, i) => (
                     <Card key={i} href={item.url}>
                       <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 4 }}>{item.title}</div>
-                      <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace' }}>{item.date}</div>
+                      <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif' }}>{item.date}</div>
                     </Card>
                   ))}
                 </div>
               ) : (
-                <Card style={{ color: 'var(--text-muted)', fontSize: 12, fontFamily: 'Space Mono, monospace' }}>No news yet</Card>
+                <Card style={{ color: 'var(--text-muted)', fontSize: 12, fontFamily: 'EB Garamond, serif' }}>No news yet</Card>
               )}
             </div>
 
@@ -257,14 +257,14 @@ export default function CountryPanel({ country, onClose }) {
                     <Card key={i} href={item.url}>
                       <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 4 }}>{item.title}</div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ fontSize: 10, color: 'var(--text-secondary)', fontFamily: 'Space Mono, monospace' }}>{item.status}</div>
-                        <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace' }}>{item.year}</div>
+                        <div style={{ fontSize: 10, color: 'var(--text-secondary)', fontFamily: 'EB Garamond, serif' }}>{item.status}</div>
+                        <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif' }}>{item.year}</div>
                       </div>
                     </Card>
                   ))}
                 </div>
               ) : (
-                <Card style={{ color: 'var(--text-muted)', fontSize: 12, fontFamily: 'Space Mono, monospace' }}>No cases yet</Card>
+                <Card style={{ color: 'var(--text-muted)', fontSize: 12, fontFamily: 'EB Garamond, serif' }}>No cases yet</Card>
               )}
             </div>
           </div>
