@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import supabase from './supabase';
 
 const META = {
   legal:      { label:'Legal',      color:'#6ab587', bg:'rgba(139,201,164,0.15)' },
@@ -113,23 +114,59 @@ function AnimatedSection({ children, delay, style }) {
 }
 
 export default function CountryPanel({ country, onClose }) {
+  const [visitorCount, setVisitorCount] = useState(null);
 
-  // Empty state — ghost preview cards
+  useEffect(() => {
+    if (!supabase) return;
+    supabase.rpc('increment_visitor_count').then(({ data, error }) => {
+      if (!error && data != null) setVisitorCount(data);
+    });
+  }, []);
+
+  // Empty state — ghost preview cards + visitor counter
   if (!country) {
     return (
-      <div style={{ ...panelStyle(false), padding: '32px 24px' }}>
-        <div style={{ textAlign: 'center', marginBottom: 28 }}>
-          <div style={{ fontSize: 32, opacity: 0.15, marginBottom: 8 }}>🌐</div>
-          <div style={{ fontSize: 12, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace', letterSpacing: '0.08em', lineHeight: 1.8 }}>
-            SELECT A COUNTRY<br />ON THE MAP
+      <div className="panel-empty" style={{ ...panelStyle(false), padding: '32px 24px', justifyContent: 'space-between' }}>
+        <div>
+          <div style={{ textAlign: 'center', marginBottom: 28 }}>
+            <div style={{ fontSize: 32, opacity: 0.15, marginBottom: 8 }}>🌐</div>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace', letterSpacing: '0.08em', lineHeight: 1.8 }}>
+              SELECT A COUNTRY<br />ON THE MAP
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <GhostCard icon="◉" label="STATUS" />
+            <GhostCard icon="§" label="LEGISLATION" />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+              <GhostCard icon="▤" label="NEWS" />
+              <GhostCard icon="⚖" label="CASES" />
+            </div>
           </div>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <GhostCard icon="◉" label="STATUS" />
-          <GhostCard icon="§" label="LEGISLATION" />
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-            <GhostCard icon="▤" label="NEWS" />
-            <GhostCard icon="⚖" label="CASES" />
+
+        {/* Visitor counter */}
+        <div style={{
+          textAlign: 'center',
+          paddingTop: 20,
+          borderTop: '1px solid var(--border)',
+        }}>
+          <div style={{
+            fontSize: 10, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace',
+            letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8,
+          }}>
+            VISITORS
+          </div>
+          <div style={{
+            fontSize: 28, fontWeight: 800, color: 'var(--accent)',
+            fontFamily: 'Space Mono, monospace', letterSpacing: '0.04em',
+          }}>
+            {visitorCount != null ? visitorCount.toLocaleString() : '—'}
+          </div>
+          <div style={{
+            fontSize: 10, color: 'var(--text-muted)', fontFamily: 'Space Mono, monospace',
+            marginTop: 4, letterSpacing: '0.06em',
+          }}>
+            since launch
           </div>
         </div>
       </div>
@@ -142,7 +179,7 @@ export default function CountryPanel({ country, onClose }) {
   const cases = country.cases || [];
 
   return (
-    <div style={panelStyle(true)}>
+    <div className="panel-expanded" style={panelStyle(true)}>
       {/* Header */}
       <div style={{ padding: '18px 24px 14px', borderBottom: '1px solid ' + meta.color + '44', background: meta.bg, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexShrink: 0 }}>
         <div>
@@ -193,7 +230,7 @@ export default function CountryPanel({ country, onClose }) {
 
         {/* Row 2: News + Cases */}
         <AnimatedSection delay={0.2}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="detail-grid-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             {/* News */}
             <div>
               <SectionHeader>News</SectionHeader>
