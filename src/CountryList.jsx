@@ -59,7 +59,7 @@ export default function CountryList({ data, onCountrySelect }) {
             width: '100%', padding: '10px 14px', fontSize: 13,
             border: '1px solid var(--border)', borderRadius: 8,
             background: 'var(--bg-secondary)', color: 'var(--text-primary)',
-            fontFamily: 'Advent Pro, sans-serif', outline: 'none',
+            fontFamily: ''Times New Roman', Times, serif', outline: 'none',
           }}
         />
       </div>
@@ -74,7 +74,7 @@ export default function CountryList({ data, onCountrySelect }) {
           return (
             <div key={statusKey || 'nodata'} style={{ marginBottom: 20 }}>
               <div style={{
-                fontSize: 10, fontFamily: 'EB Garamond, serif',
+                fontSize: 10, fontFamily: "'Times New Roman', Times, serif",
                 letterSpacing: '0.12em', textTransform: 'uppercase',
                 color: meta.color, marginBottom: 8, paddingLeft: 4,
                 display: 'flex', alignItems: 'center', gap: 6,
@@ -102,7 +102,7 @@ export default function CountryList({ data, onCountrySelect }) {
                       padding: '12px 14px', borderRadius: 8,
                       background: 'var(--bg-secondary)', border: '1px solid var(--border)',
                       cursor: 'pointer', textAlign: 'left', width: '100%',
-                      fontFamily: 'Advent Pro, sans-serif',
+                      fontFamily: ''Times New Roman', Times, serif',
                       transition: 'border-color 0.2s',
                     }}
                     onMouseEnter={e => e.currentTarget.style.borderColor = meta.color}
@@ -110,10 +110,10 @@ export default function CountryList({ data, onCountrySelect }) {
                   >
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-primary)' }}>{item.name}</div>
-                      <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif', marginTop: 2 }}>{item.code}</div>
+                      <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif", marginTop: 2 }}>{item.code}</div>
                     </div>
                     <div style={{
-                      fontSize: 10, fontFamily: 'EB Garamond, serif',
+                      fontSize: 10, fontFamily: "'Times New Roman', Times, serif",
                       color: meta.color, letterSpacing: '0.06em',
                     }}>
                       {meta.label.toUpperCase()} →
@@ -128,7 +128,7 @@ export default function CountryList({ data, onCountrySelect }) {
         {filtered.length === 0 && (
           <div style={{
             textAlign: 'center', padding: '40px 0',
-            fontSize: 12, color: 'var(--text-muted)', fontFamily: 'EB Garamond, serif',
+            fontSize: 12, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif",
           }}>
             No countries found
           </div>
