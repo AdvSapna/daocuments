@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
-import { createClient } from '@supabase/supabase-js';
 
 const GEO_URL = 'https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson';
 
-const supabase = process.env.REACT_APP_SUPABASE_URL
-  ? createClient(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_ANON_KEY)
-  : null;
-
-const SAMPLE = {
+export const SAMPLE = {
   US:{name:'United States',status:'partial',summary:'Dramatic policy shift 2024-2025. GENIUS Act (stablecoins) signed into law. SEC dismissed major crypto cases under new leadership. Strategic Bitcoin Reserve established by executive order. CLARITY Act (market structure) passed House, awaiting Senate.',
     legislation:[
       {title:'GENIUS Act — Federal Stablecoin Framework',year:2025,note:'First comprehensive federal crypto law; requires 1:1 reserves for payment stablecoins',url:'https://www.lw.com/en/insights/the-genius-act-of-2025-stablecoin-legislation-adopted-in-the-us'},
@@ -286,21 +281,9 @@ function getName(props) {
   return props.name || props.ADMIN || props.NAME || '';
 }
 
-export default function Map({ selectedCountry, onCountrySelect }) {
-  const [data, setData] = useState(SAMPLE);
+export default function Map({ selectedCountry, onCountrySelect, data }) {
   const [tooltip, setTooltip] = useState({ visible:false, x:0, y:0, name:'', status:'' });
   const [position, setPosition] = useState({ coordinates:[0, 20], zoom:1.2 });
-
-  useEffect(() => {
-    if (!supabase) return;
-    supabase.from('countries').select('*').then(({ data: rows }) => {
-      if (rows && rows.length) {
-        const map = {};
-        rows.forEach(r => { map[r.iso2 || r.code] = r; });
-        setData(map);
-      }
-    });
-  }, []);
 
   return (
     <div style={{ width:'100%', height:'100%', background:'var(--bg-primary)', position:'relative' }}>

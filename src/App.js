@@ -1,6 +1,33 @@
-import React, { useState, useRef } from 'react';
-import Map from './Map';
+import React, { useState, useEffect, useRef } from 'react';
+import Map, { SAMPLE } from './Map';
 import CountryPanel from './CountryPanel';
+import CountryList from './CountryList';
+import supabase from './supabase';
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoint);
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth <= breakpoint);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, [breakpoint]);
+  return isMobile;
+}
+
+function useCountryData() {
+  const [data, setData] = useState(SAMPLE);
+  useEffect(() => {
+    if (!supabase) return;
+    supabase.from('countries').select('*').then(({ data: rows }) => {
+      if (rows && rows.length) {
+        const map = {};
+        rows.forEach(r => { map[r.iso2 || r.code] = r; });
+        setData(map);
+      }
+    });
+  }, []);
+  return data;
+}
 
 function SocialIcon({ href, label, children }) {
   return (
@@ -37,6 +64,8 @@ function SubstackIcon() {
 export default function App() {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const mapRef = useRef(null);
+  const isMobile = useIsMobile();
+  const data = useCountryData();
 
   const scrollToMap = () => {
     mapRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -148,10 +177,22 @@ export default function App() {
           </div>
         </header>
         <div className="map-layout" style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-          <div className="map-container" style={{ flex: 1, overflow: 'hidden', transition: 'flex 0.4s ease' }}>
-            <Map selectedCountry={selectedCountry} onCountrySelect={setSelectedCountry} />
-          </div>
-          <CountryPanel country={selectedCountry} onClose={() => setSelectedCountry(null)} />
+          {isMobile ? (
+            <>
+              {selectedCountry ? (
+                <CountryPanel country={selectedCountry} onClose={() => setSelectedCountry(null)} />
+              ) : (
+                <CountryList data={data} onCountrySelect={setSelectedCountry} />
+              )}
+            </>
+          ) : (
+            <>
+              <div className="map-container" style={{ flex: 1, overflow: 'hidden', transition: 'flex 0.4s ease' }}>
+                <Map selectedCountry={selectedCountry} onCountrySelect={setSelectedCountry} data={data} />
+              </div>
+              <CountryPanel country={selectedCountry} onClose={() => setSelectedCountry(null)} />
+            </>
+          )}
         </div>
       </section>
 
