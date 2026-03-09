@@ -94,6 +94,27 @@ a { color: inherit; text-decoration: none; }
   .about-heading {
     font-size: 26px !important;
   }
+
+  .scroll-cta {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin-top: 32px;
+  }
+  .scroll-cta-text {
+    font-size: 13px !important;
+    font-weight: 600;
+    color: var(--accent) !important;
+  }
+  .scroll-cta-arrow {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .scroll-cta-arrow path {
+    stroke: var(--accent) !important;
+    stroke-width: 2 !important;
+  }
   .about-heading br {
     display: none;
   }

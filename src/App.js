@@ -137,6 +137,7 @@ export default function App() {
 
         {/* Scroll indicator */}
         <button
+          className="scroll-cta"
           onClick={scrollToMap}
           style={{
             position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
@@ -144,10 +145,10 @@ export default function App() {
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
           }}
         >
-          <span style={{ fontSize: 10, fontFamily: "'Times New Roman', Times, serif", color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
+          <span className="scroll-cta-text" style={{ fontSize: 10, fontFamily: "'Times New Roman', Times, serif", color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
             EXPLORE THE MAP
           </span>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ animation: 'fadeInUp 1.5s ease infinite' }}>
+          <svg className="scroll-cta-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ animation: 'fadeInUp 1.5s ease infinite' }}>
             <path d="M10 4v12M5 11l5 5 5-5" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
