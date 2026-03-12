@@ -174,9 +174,9 @@ export default function CountryPanel({ country, onClose }) {
   }
 
   const meta = getMeta(country.status);
-  const legislation = country.legislation || [];
-  const news = country.news || [];
-  const cases = country.cases || [];
+  const legislation = [...(country.legislation || [])].sort((a, b) => (b.year || 0) - (a.year || 0));
+  const news = [...(country.news || [])].sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  const cases = [...(country.cases || [])].sort((a, b) => (b.year || 0) - (a.year || 0));
 
   return (
     <div className="panel-expanded" style={panelStyle(true)}>
@@ -214,12 +214,20 @@ export default function CountryPanel({ country, onClose }) {
           {legislation.length > 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {legislation.map((item, i) => (
-                <Card key={i} href={item.url} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 3 }}>{item.title}</div>
-                    {item.note && <div style={{ fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{item.note}</div>}
+                <Card key={i}>
+                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 3 }}>{item.title}</div>
+                  {item.note && <div style={{ fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: 4 }}>{item.note}</div>}
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+                    <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif" }}>{item.year}</div>
                   </div>
-                  <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif", whiteSpace: 'nowrap', marginTop: 2 }}>{item.year}</div>
+                  <div style={{ display: 'flex', gap: 16, marginTop: 8, borderTop: '1px solid var(--border)', paddingTop: 8 }}>
+                    {item.officialUrl && (
+                      <a href={item.officialUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: 9, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.06em', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color='var(--accent)'} onMouseLeave={e => e.currentTarget.style.color='var(--text-muted)'}>↗ OFFICIAL DOCUMENT</a>
+                    )}
+                    {item.url && (
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 9, color: 'var(--accent)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.06em', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color='#5a9ab5'} onMouseLeave={e => e.currentTarget.style.color='var(--accent)'}>↗ LEARN MORE</a>
+                    )}
+                  </div>
                 </Card>
               ))}
             </div>
@@ -239,7 +247,9 @@ export default function CountryPanel({ country, onClose }) {
                   {news.map((item, i) => (
                     <Card key={i} href={item.url}>
                       <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 4 }}>{item.title}</div>
-                      <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif" }}>{item.date}</div>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+                        <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif" }}>{item.date}</div>
+                      </div>
                     </Card>
                   ))}
                 </div>
