@@ -117,9 +117,16 @@ export default function CountryPanel({ country, onClose }) {
   const [visitorCount, setVisitorCount] = useState(null);
 
   useEffect(() => {
-    if (!supabase) return;
+    if (!supabase) {
+      console.warn('Visitor count: supabase client is null (env vars missing?)');
+      return;
+    }
     supabase.rpc('increment_visitor_count').then(({ data, error }) => {
-      if (!error && data != null) setVisitorCount(data);
+      if (error) {
+        console.error('Visitor count RPC error:', error);
+        return;
+      }
+      if (data != null) setVisitorCount(data);
     });
   }, []);
 

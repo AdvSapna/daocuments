@@ -20,9 +20,12 @@ function useCountryData() {
     if (!supabase) return;
     supabase.from('countries').select('*').then(({ data: rows }) => {
       if (rows && rows.length) {
-        const map = {};
-        rows.forEach(r => { map[r.iso2 || r.code] = r; });
-        setData(map);
+        const published = rows.filter(r => r.is_published);
+        if (published.length) {
+          const map = { ...SAMPLE };
+          published.forEach(r => { map[r.iso2 || r.code] = r; });
+          setData(map);
+        }
       }
     });
   }, []);
