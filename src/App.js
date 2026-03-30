@@ -140,7 +140,7 @@ function SupportModal({ onClose }) {
     <div className="auth-overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="auth-modal" style={{ maxWidth: 440, textAlign: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-          <div style={{ fontSize: 10, color: 'var(--accent)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.12em' }}>SUPPORT MY WORK</div>
+          <div style={{ fontSize: 10, color: 'var(--accent)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.12em' }}>SUPPORT MY RESEARCH</div>
           <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 18 }}>x</button>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 24 }}>
@@ -474,7 +474,7 @@ export default function App() {
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#fff'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--accent)'; }}
           >
-            SUPPORT MY WORK
+            SUPPORT MY RESEARCH
           </button>
         </div>
       </footer>
