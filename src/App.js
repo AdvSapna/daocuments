@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Map, { SAMPLE } from './Map';
 import CountryPanel from './CountryPanel';
 import CountryList from './CountryList';
+import AuthModal from './AuthModal';
 import supabase from './supabase';
 
 function useIsMobile(breakpoint = 768) {
@@ -64,18 +65,46 @@ function SubstackIcon() {
   );
 }
 
+function useAuth() {
+  const [user, setUser] = useState(undefined); // undefined = loading, null = not logged in
+  useEffect(() => {
+    if (!supabase) { setUser(null); return; }
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+  return user;
+}
+
 export default function App() {
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [showAuth, setShowAuth] = useState(false);
   const mapRef = useRef(null);
   const isMobile = useIsMobile();
   const data = useCountryData();
+  const user = useAuth();
 
   const scrollToMap = () => {
+    if (!user) {
+      setShowAuth(true);
+      return;
+    }
     mapRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div style={{ width: '100vw', overflowX: 'hidden' }}>
+
+      {showAuth && (
+        <AuthModal onSuccess={() => {
+          setShowAuth(false);
+          setTimeout(() => mapRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
+        }} />
+      )}
 
       {/* ── Section 1: About ── */}
       <section style={{
