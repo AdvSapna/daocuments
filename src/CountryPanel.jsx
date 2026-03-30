@@ -113,6 +113,120 @@ function AnimatedSection({ children, delay, style }) {
   );
 }
 
+function ReportInaccuracy({ countryName, countryCode }) {
+  const [open, setOpen] = useState(false);
+  const [field, setField] = useState('');
+  const [detail, setDetail] = useState('');
+  const [link, setLink] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!field.trim() || !detail.trim()) return;
+    setLoading(true);
+    if (supabase) {
+      await supabase.from('inaccuracy_reports').insert({
+        country_code: countryCode,
+        country_name: countryName,
+        field_reported: field.trim(),
+        detail: detail.trim(),
+        source_link: link.trim() || null,
+      });
+    }
+    setLoading(false);
+    setSubmitted(true);
+  };
+
+  if (!open) {
+    return (
+      <button
+        onClick={() => setOpen(true)}
+        style={{
+          background: 'none', border: '1px solid var(--border)', borderRadius: 6,
+          padding: '8px 14px', fontSize: 11, color: 'var(--text-muted)',
+          fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.06em',
+          cursor: 'pointer', transition: 'border-color 0.2s, color 0.2s',
+          width: '100%',
+        }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)'; }}
+      >
+        REPORT INACCURACY
+      </button>
+    );
+  }
+
+  if (submitted) {
+    return (
+      <div style={{ background: 'rgba(139,201,164,0.1)', border: '1px solid rgba(139,201,164,0.3)', borderRadius: 8, padding: '14px 16px', textAlign: 'center' }}>
+        <div style={{ fontSize: 12, color: '#6ab587', fontWeight: 600, marginBottom: 4 }}>Thank you!</div>
+        <div style={{ fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.5 }}>Your report has been submitted. We'll review it shortly.</div>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} style={{
+      background: 'var(--bg-primary)', border: '1px solid var(--border)', borderRadius: 8,
+      padding: 16, display: 'flex', flexDirection: 'column', gap: 10,
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.1em' }}>REPORT INACCURACY</div>
+        <button type="button" onClick={() => setOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 14 }}>x</button>
+      </div>
+      <select
+        value={field}
+        onChange={e => setField(e.target.value)}
+        required
+        style={{
+          padding: '8px 10px', fontSize: 12, border: '1px solid var(--border)', borderRadius: 6,
+          background: 'var(--bg-secondary)', color: 'var(--text-primary)',
+          fontFamily: "'Times New Roman', Times, serif",
+        }}
+      >
+        <option value="">What is inaccurate?</option>
+        <option value="status">Status (Legal/Partial/Restricted)</option>
+        <option value="summary">Summary</option>
+        <option value="legislation">Legislation</option>
+        <option value="news">News</option>
+        <option value="cases">Cases</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea
+        value={detail}
+        onChange={e => setDetail(e.target.value)}
+        placeholder="What is incorrect and what should it be?"
+        required
+        rows={3}
+        style={{
+          padding: '8px 10px', fontSize: 12, border: '1px solid var(--border)', borderRadius: 6,
+          background: 'var(--bg-secondary)', color: 'var(--text-primary)', resize: 'vertical',
+          fontFamily: "'Times New Roman', Times, serif",
+        }}
+      />
+      <input
+        type="url"
+        value={link}
+        onChange={e => setLink(e.target.value)}
+        placeholder="Source link (official URL preferred)"
+        style={{
+          padding: '8px 10px', fontSize: 12, border: '1px solid var(--border)', borderRadius: 6,
+          background: 'var(--bg-secondary)', color: 'var(--text-primary)',
+          fontFamily: "'Times New Roman', Times, serif",
+        }}
+      />
+      <button type="submit" disabled={loading} style={{
+        padding: '8px 14px', background: 'var(--accent)', color: '#fff', border: 'none',
+        borderRadius: 6, fontSize: 12, fontWeight: 600, fontFamily: "'Times New Roman', Times, serif",
+        cursor: 'pointer', letterSpacing: '0.04em',
+      }}>
+        {loading ? 'Submitting...' : 'Submit Report'}
+      </button>
+    </form>
+  );
+}
+
 export default function CountryPanel({ country, onClose }) {
   const [visitorCount, setVisitorCount] = useState(null);
 
@@ -285,6 +399,11 @@ export default function CountryPanel({ country, onClose }) {
               )}
             </div>
           </div>
+        </AnimatedSection>
+
+        {/* Report Inaccuracy */}
+        <AnimatedSection delay={0.3} style={{ marginTop: 24 }}>
+          <ReportInaccuracy countryName={country.name} countryCode={country.code} />
         </AnimatedSection>
 
       </div>

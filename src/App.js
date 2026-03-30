@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Map, { SAMPLE } from './Map';
 import CountryPanel from './CountryPanel';
 import CountryList from './CountryList';
@@ -62,6 +62,62 @@ function SubstackIcon() {
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
     </svg>
+  );
+}
+
+const STATUS_COLOR = { legal: '#8bc9a4', partial: '#edc978', restricted: '#e8948e' };
+
+function CountrySearch({ data, onSelect }) {
+  const [query, setQuery] = useState('');
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  const results = useMemo(() => {
+    if (!query.trim()) return [];
+    const q = query.toLowerCase();
+    return Object.entries(data)
+      .filter(([code, info]) => info.name?.toLowerCase().includes(q) || code.toLowerCase().includes(q))
+      .slice(0, 8)
+      .map(([code, info]) => ({ code, ...info }));
+  }, [query, data]);
+
+  useEffect(() => {
+    const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  return (
+    <div ref={ref} className="country-search">
+      <input
+        type="text"
+        placeholder="Search countries..."
+        value={query}
+        onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
+        onFocus={() => setOpen(true)}
+        className="country-search-input"
+      />
+      {open && results.length > 0 && (
+        <div className="country-search-dropdown">
+          {results.map((r) => (
+            <button
+              key={r.code}
+              className="country-search-item"
+              onClick={() => {
+                onSelect({ code: r.code, name: r.name, status: r.status, summary: r.summary, legislation: r.legislation || [], news: r.news || [], cases: r.cases || [] });
+                setQuery('');
+                setOpen(false);
+              }}
+            >
+              <span>{r.name}</span>
+              <span style={{ fontSize: 10, color: STATUS_COLOR[r.status] || 'var(--text-muted)', letterSpacing: '0.06em' }}>
+                {(r.status || 'no data').toUpperCase()}
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -197,13 +253,16 @@ export default function App() {
               <div className="header-logo-subtitle" style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.08em', fontFamily: "'Times New Roman', Times, serif" }}>Crypto Regulatory Tracker</div>
             </div>
           </div>
-          <div className="header-legend" style={{ display: 'flex', gap: 16 }}>
-            {[['Legal', '#8bc9a4'], ['Partial', '#edc978'], ['Restricted', '#e8948e']].map(([label, color]) => (
-              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: 'var(--text-secondary)', fontFamily: "'Times New Roman', Times, serif" }}>
-                <div style={{ width: 8, height: 8, borderRadius: '50%', background: color }} />
-                {label}
-              </div>
-            ))}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            <CountrySearch data={data} onSelect={setSelectedCountry} />
+            <div className="header-legend" style={{ display: 'flex', gap: 16 }}>
+              {[['Legal', '#8bc9a4'], ['Partial', '#edc978'], ['Restricted', '#e8948e']].map(([label, color]) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: 'var(--text-secondary)', fontFamily: "'Times New Roman', Times, serif" }}>
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: color }} />
+                  {label}
+                </div>
+              ))}
+            </div>
           </div>
         </header>
         <div className="map-layout" style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
