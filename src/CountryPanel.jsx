@@ -19,12 +19,12 @@ function getMeta(status) {
   return META.unknown;
 }
 
-function panelStyle(expanded) {
+function panelStyle(expanded, fullWidth) {
   return {
-    width: expanded ? 'var(--panel-width-expanded)' : 'var(--panel-width)',
-    minWidth: expanded ? 'var(--panel-width-expanded)' : 'var(--panel-width)',
+    width: fullWidth ? '100%' : expanded ? 'var(--panel-width-expanded)' : 'var(--panel-width)',
+    minWidth: fullWidth ? '100%' : expanded ? 'var(--panel-width-expanded)' : 'var(--panel-width)',
     height: '100%',
-    borderLeft: '1px solid var(--border)',
+    borderLeft: fullWidth ? 'none' : '1px solid var(--border)',
     background: 'var(--bg-secondary)',
     display: 'flex',
     flexDirection: 'column',
@@ -229,7 +229,7 @@ function ReportInaccuracy({ countryName, countryCode }) {
   );
 }
 
-export default function CountryPanel({ country, onClose }) {
+export default function CountryPanel({ country, onClose, fullWidth, onToggleFullWidth }) {
   const [visitorCount, setVisitorCount] = useState(null);
 
   useEffect(() => {
@@ -249,7 +249,7 @@ export default function CountryPanel({ country, onClose }) {
   // Empty state — ghost preview cards + visitor counter
   if (!country) {
     return (
-      <div className="panel-empty" style={{ ...panelStyle(false), padding: '32px 24px', justifyContent: 'space-between' }}>
+      <div className="panel-empty" style={{ ...panelStyle(false, false), padding: '32px 24px', justifyContent: 'space-between' }}>
         <div>
           <div style={{ textAlign: 'center', marginBottom: 28 }}>
             <div style={{ fontSize: 32, opacity: 0.15, marginBottom: 8 }}>🌐</div>
@@ -302,14 +302,25 @@ export default function CountryPanel({ country, onClose }) {
   const cases = [...(country.cases || [])].sort((a, b) => (b.year || 0) - (a.year || 0));
 
   return (
-    <div className="panel-expanded" style={panelStyle(true)}>
+    <div className="panel-expanded" style={panelStyle(true, fullWidth)}>
       {/* Header */}
       <div style={{ padding: '18px 24px 14px', borderBottom: '1px solid ' + meta.color + '44', background: meta.bg, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexShrink: 0 }}>
         <div>
           <div style={{ fontSize: 11, color: meta.color, fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.12em', marginBottom: 4, opacity: 0.8 }}>{country.code}</div>
           <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text-primary)' }}>{country.name}</div>
         </div>
-        <button onClick={onClose} style={{ background: 'none', border: '1px solid ' + meta.color + '44', color: meta.color, borderRadius: 4, width: 28, height: 28, cursor: 'pointer', fontSize: 16, lineHeight: 1 }}>×</button>
+        <div style={{ display: 'flex', gap: 6 }}>
+          {onToggleFullWidth && (
+            <button
+              onClick={onToggleFullWidth}
+              title={fullWidth ? 'Show map' : 'Expand panel'}
+              style={{ background: 'none', border: '1px solid ' + meta.color + '44', color: meta.color, borderRadius: 4, width: 28, height: 28, cursor: 'pointer', fontSize: 12, lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              {fullWidth ? '⇥' : '⇤'}
+            </button>
+          )}
+          <button onClick={onClose} style={{ background: 'none', border: '1px solid ' + meta.color + '44', color: meta.color, borderRadius: 4, width: 28, height: 28, cursor: 'pointer', fontSize: 16, lineHeight: 1 }}>×</button>
+        </div>
       </div>
 
       {/* Scrollable content */}

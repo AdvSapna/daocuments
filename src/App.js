@@ -3,6 +3,7 @@ import Map, { SAMPLE } from './Map';
 import CountryPanel from './CountryPanel';
 import CountryList from './CountryList';
 import AuthModal from './AuthModal';
+import { QRCodeSVG } from 'qrcode.react';
 import supabase from './supabase';
 
 function useIsMobile(breakpoint = 768) {
@@ -121,6 +122,69 @@ function CountrySearch({ data, onSelect }) {
   );
 }
 
+const WALLETS = [
+  { chain: 'Ethereum / Base / EVM', address: '0xE017003eFC0dffD03ee6a4fb617d397B5F547c5B', color: '#627EEA' },
+  { chain: 'Solana', address: '2tb2mbyCjmDeUVaJXTrkHiLPVZjD7VsYhM5QeXQnvBAq', color: '#9945FF' },
+];
+
+function SupportModal({ onClose }) {
+  const [copied, setCopied] = useState(null);
+
+  const handleCopy = (address, idx) => {
+    navigator.clipboard.writeText(address);
+    setCopied(idx);
+    setTimeout(() => setCopied(null), 2000);
+  };
+
+  return (
+    <div className="auth-overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="auth-modal" style={{ maxWidth: 440, textAlign: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+          <div style={{ fontSize: 10, color: 'var(--accent)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.12em' }}>SUPPORT MY WORK</div>
+          <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 18 }}>x</button>
+        </div>
+        <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 24 }}>
+          DAOcuments is free and independent. If you find it useful, consider supporting the project onchain.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {WALLETS.map((w, i) => (
+            <div key={i} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border)', borderRadius: 10, padding: 20 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: w.color, fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.08em', marginBottom: 12 }}>
+                {w.chain.toUpperCase()}
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 14 }}>
+                <div style={{ background: '#fff', padding: 10, borderRadius: 8, display: 'inline-block' }}>
+                  <QRCodeSVG value={w.address} size={120} fgColor={w.color} />
+                </div>
+              </div>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 6,
+                padding: '8px 12px',
+              }}>
+                <span style={{ flex: 1, fontSize: 10, fontFamily: 'monospace', color: 'var(--text-primary)', wordBreak: 'break-all', textAlign: 'left' }}>
+                  {w.address}
+                </span>
+                <button
+                  onClick={() => handleCopy(w.address, i)}
+                  style={{
+                    background: 'none', border: '1px solid var(--border)', borderRadius: 4,
+                    padding: '4px 10px', fontSize: 9, color: copied === i ? '#6ab587' : 'var(--accent)',
+                    fontFamily: "'Times New Roman', Times, serif", cursor: 'pointer',
+                    letterSpacing: '0.06em', flexShrink: 0, transition: 'color 0.2s',
+                  }}
+                >
+                  {copied === i ? 'COPIED' : 'COPY'}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function useAuth() {
   const [user, setUser] = useState(undefined); // undefined = loading, null = not logged in
   useEffect(() => {
@@ -139,6 +203,8 @@ function useAuth() {
 export default function App() {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [showAuth, setShowAuth] = useState(false);
+  const [panelFullWidth, setPanelFullWidth] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
   const mapRef = useRef(null);
   const isMobile = useIsMobile();
   const data = useCountryData();
@@ -159,6 +225,10 @@ export default function App() {
         <AuthModal onSuccess={() => setShowAuth(false)} />
       )}
 
+      {showSupport && (
+        <SupportModal onClose={() => setShowSupport(false)} />
+      )}
+
       {/* ── Section 1: About ── */}
       <section style={{
         minHeight: '100vh',
@@ -170,7 +240,7 @@ export default function App() {
         padding: '80px 24px',
         position: 'relative',
       }}>
-        <div style={{ maxWidth: 640, textAlign: 'center' }}>
+        <div style={{ maxWidth: 900, textAlign: 'center', width: '100%' }}>
           {/* Avatar placeholder */}
           <div style={{
             width: 80, height: 80, borderRadius: '50%', background: 'var(--accent)',
@@ -192,22 +262,59 @@ export default function App() {
           </h1>
 
           <p style={{
-            fontSize: 15, color: 'var(--text-secondary)', lineHeight: 1.8,
-            maxWidth: 520, margin: '0 auto 16px',
+            fontSize: 18, color: 'var(--text-secondary)', lineHeight: 1.8,
+            maxWidth: 680, margin: '0 auto 28px',
           }}>
-            DAOcuments is a free, independent project mapping the global landscape of cryptocurrency regulation. We track legislation, enforcement actions, and policy shifts across jurisdictions, giving you the full picture of where crypto stands, country by country.
+            DAOcuments is a free, independent project mapping the global landscape of cryptocurrency regulation. We track legislation, enforcement actions, and policy shifts across 47 jurisdictions, giving you the full picture of where crypto stands, country by country.
           </p>
 
+          {/* Who it's for */}
+          <div className="about-features" style={{
+            display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16,
+            maxWidth: 760, margin: '0 auto 28px', textAlign: 'center',
+          }}>
+            {[
+              ['Lawyers & Compliance', 'Navigate cross-border regulatory requirements with sourced legislation and case law.'],
+              ['Founders & Investors', 'Evaluate jurisdictions for launching or investing in Web3 projects.'],
+              ['Researchers & Policy', 'Track how crypto regulation is evolving globally with verified data.'],
+            ].map(([title, desc]) => (
+              <div key={title} style={{ padding: '16px 12px' }}>
+                <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8 }}>{title}</div>
+                <div style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.7, fontFamily: "'Times New Roman', Times, serif" }}>{desc}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Why trust us */}
+          <div style={{
+            background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10,
+            padding: '18px 24px', maxWidth: 760, margin: '0 auto 28px', textAlign: 'left',
+          }}>
+            <div style={{ fontSize: 13, color: 'var(--accent)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.12em', marginBottom: 12 }}>WHY TRUST DAOCUMENTS</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {[
+                'Built by a practicing lawyer with expertise in crypto policy and regulatory research.',
+                'Every legislation entry links to official government sources — gazettes, regulatory body publications, and court records.',
+                'Community-verified: users can report inaccuracies with source links, and every correction is reviewed.',
+              ].map((text, i) => (
+                <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)', marginTop: 6, flexShrink: 0 }} />
+                  <span style={{ fontSize: 15, color: 'var(--text-secondary)', lineHeight: 1.7 }}>{text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <p style={{
-            fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.8,
-            maxWidth: 480, margin: '0 auto 40px',
+            fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.8,
+            maxWidth: 580, margin: '0 auto 24px',
             fontFamily: "'Times New Roman', Times, serif",
           }}>
             Built by Sapna Singh — lawyer, researcher, builder, and crypto policy nerd.
           </p>
 
           {/* Social links */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 48 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 20 }}>
             <SocialIcon href="https://x.com/AdvSapna_" label="Twitter / X">
               <TwitterIcon />
             </SocialIcon>
@@ -218,6 +325,7 @@ export default function App() {
               <SubstackIcon />
             </SocialIcon>
           </div>
+
         </div>
 
         {/* Scroll indicator */}
@@ -276,10 +384,17 @@ export default function App() {
             </>
           ) : (
             <>
-              <div className="map-container" style={{ flex: 1, overflow: 'hidden', transition: 'flex 0.4s ease' }}>
-                <Map selectedCountry={selectedCountry} onCountrySelect={setSelectedCountry} data={data} />
-              </div>
-              <CountryPanel country={selectedCountry} onClose={() => setSelectedCountry(null)} />
+              {!panelFullWidth && (
+                <div className="map-container" style={{ flex: 1, overflow: 'hidden', transition: 'flex 0.4s ease' }}>
+                  <Map selectedCountry={selectedCountry} onCountrySelect={setSelectedCountry} data={data} />
+                </div>
+              )}
+              <CountryPanel
+                country={selectedCountry}
+                onClose={() => { setSelectedCountry(null); setPanelFullWidth(false); }}
+                fullWidth={panelFullWidth}
+                onToggleFullWidth={() => setPanelFullWidth(f => !f)}
+              />
             </>
           )}
         </div>
@@ -317,38 +432,50 @@ export default function App() {
         )}
       </section>
 
-      {/* ── Section 3: Footer ── */}
+      {/* ── Fixed Footer Bar ── */}
       <footer style={{
+        position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50,
         background: 'var(--bg-secondary)',
         borderTop: '1px solid var(--border)',
-        padding: '48px 24px',
+        padding: '8px 24px',
         display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
-        gap: 24,
+        justifyContent: 'space-between',
+        height: 40,
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 24, height: 24, borderRadius: 5, background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#fff' }}>D</div>
-          <span style={{ fontSize: 14, fontWeight: 800, letterSpacing: '0.08em' }}>DAOCUMENTS</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ width: 18, height: 18, borderRadius: 4, background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontWeight: 800, color: '#fff' }}>D</div>
+          <span className="footer-brand" style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.06em', color: 'var(--text-primary)' }}>DAOCUMENTS</span>
         </div>
 
-        <div style={{ display: 'flex', gap: 16 }}>
-          <SocialIcon href="https://x.com/AdvSapna_" label="Twitter / X">
-            <TwitterIcon />
-          </SocialIcon>
-          <SocialIcon href="https://www.linkedin.com/in/sapna-singh-a8388a157/" label="LinkedIn">
-            <LinkedInIcon />
-          </SocialIcon>
-          <SocialIcon href="https://daocuments.substack.com/" label="Substack">
-            <SubstackIcon />
-          </SocialIcon>
-        </div>
-
-        <div style={{
-          fontSize: 11, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif",
-          letterSpacing: '0.06em', textAlign: 'center', lineHeight: 1.8,
-        }}>
-          Tracking crypto regulation worldwide.
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <div className="footer-socials" style={{ display: 'flex', gap: 10 }}>
+            {[
+              ['https://x.com/AdvSapna_', 'X', <TwitterIcon key="tw" />],
+              ['https://www.linkedin.com/in/sapna-singh-a8388a157/', 'LinkedIn', <LinkedInIcon key="li" />],
+              ['https://daocuments.substack.com/', 'Substack', <SubstackIcon key="ss" />],
+            ].map(([href, label, icon]) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                style={{ width: 24, height: 24, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                <span style={{ width: 14, height: 14, display: 'flex' }}>{icon}</span>
+              </a>
+            ))}
+          </div>
+          <button
+            onClick={() => setShowSupport(true)}
+            className="footer-support-btn"
+            style={{
+              background: 'none', border: '1px solid var(--accent)', borderRadius: 5,
+              padding: '4px 14px', fontSize: 10, fontWeight: 600,
+              color: 'var(--accent)', fontFamily: "'Times New Roman', Times, serif",
+              letterSpacing: '0.06em', cursor: 'pointer', transition: 'background 0.2s, color 0.2s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#fff'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--accent)'; }}
+          >
+            SUPPORT MY WORK
+          </button>
         </div>
       </footer>
     </div>

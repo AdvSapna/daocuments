@@ -781,6 +781,85 @@ export const SAMPLE = {
       {title:'OSC v. Bybit — unregistered crypto trading platform',status:'Fined $2.4M; Bybit exited Canada',year:2022,url:'https://www.mccarthy.ca/en/insights/blogs/techlex/osc-issues-orders-against-foreign-crypto-trading-platforms-kucoin-and-bybit'},
       {title:'FINTRAC v. Binance — MSB compliance failures',status:'Penalty of $6M+; Binance withdrew from Canada',year:2024,url:'https://www.bitget.com/amp/academy/are-platforms-like-kucoin-binance-or-okx-legal-to-use-in-canada-2026-complete-regulatory-guide'},
     ]},
+  TW:{name:'Taiwan',status:'partial',summary:'FSC regulates VASPs under AML registration regime since Nov 2024. Draft Virtual Asset Service Act submitted to Executive Yuan in Jun 2025, targeting full licensing framework. First regulated stablecoin expected H2 2026, restricted to financial institution issuers.',
+    legislation:[
+      {title:'Virtual Asset Service Act (Draft)',year:2025,note:'First dedicated crypto law; shifts from AML registration to full VASP licensing regime. Cleared cabinet review, pending Legislative Yuan passage',officialUrl:'https://topics.amcham.com.tw/2025/09/virtual-asset-services-act-shaping-taiwans-digital-assets-future/'},
+      {title:'Money Laundering Control Act — Article 6 Amendment (VASP Registration)',year:2024,note:'Requires all VASPs to complete AML registration with FSC; penalties up to 2 years imprisonment or NT$5M fine for non-compliance',officialUrl:'https://www.loc.gov/item/global-legal-monitor/2024-11-17/taiwan-money-laundering-control-act-revised/'},
+      {title:'FSC AML Registration Regulations for VASPs',year:2024,note:'Implements Article 6 amendment; internal controls, information security, KYC, and transaction monitoring requirements',officialUrl:'https://www.sfb.gov.tw/en/home.jsp?id=286&parentpath=0,117'},
+      {title:'FSC Stablecoin Regulatory Framework (Forthcoming)',year:2026,note:'Only licensed financial institutions permitted to issue stablecoins in initial phase; currency peg undecided',officialUrl:'https://focustaiwan.tw/business/202512030008'},
+    ],
+    news:[
+      {title:'FSC Chair says first Taiwan stablecoin to launch H2 2026 at earliest',date:'Dec 2025',url:'https://focustaiwan.tw/business/202512030008'},
+      {title:'Draft Virtual Asset Service Act submitted to Executive Yuan for review',date:'Sep 2025',url:'https://topics.amcham.com.tw/2025/09/virtual-asset-services-act-shaping-taiwans-digital-assets-future/'},
+      {title:'Crypto firms must complete AML registration by Sep 2025 or face jail time',date:'2025',url:'https://decrypt.co/284501/taiwan-crypto-firms-must-register-by-september-2025-or-face-two-years-jail-time'},
+      {title:'Money Laundering Control Act amended — VASPs brought under formal AML regime',date:'Jul 2024',url:'https://www.loc.gov/item/global-legal-monitor/2024-11-17/taiwan-money-laundering-control-act-revised/'},
+    ],
+    cases:[
+      {title:'ACE Exchange fraud — founder David Pan and 32 indicted ($24.5M losses, 1,200+ victims)',status:'Indicted Apr 2024; prosecutors seeking 20-year sentences; trial ongoing',year:2024,url:'https://www.theblock.co/post/287501/taiwans-ace-exchange-founder-among-seven-indicted-in-10-7-million-fraud-case'},
+      {title:'$72M crypto money laundering ring — 14 charged including ringleader',status:'Indicted Apr 2025; fraud, money laundering, organized crime charges',year:2025,url:'https://www.ainvest.com/news/taiwan-72m-crypto-laundering-case-catalyst-global-aml-enforcement-investment-strategy-shifts-2508/'},
+    ]},
+  PH:{name:'Philippines',status:'partial',summary:'Dual-regulator model: BSP licenses VASPs (9 active, moratorium on new licences extended indefinitely) while SEC regulates crypto-asset service providers under 2025 CASP framework. High remittance-driven adoption (10.5% penetration). Peso stablecoin PHPC exited sandbox Jul 2025.',
+    legislation:[
+      {title:'BSP Circular No. 1108 — VASP Guidelines',year:2021,note:'Foundational crypto regulation; requires Certificate of Authority for VASPs; AML/CFT, KYC, and cybersecurity obligations',officialUrl:'https://www.bsp.gov.ph/Regulations/Issuances/2021/1108.pdf'},
+      {title:'SEC Memorandum Circular No. 04 — CASP Rules',year:2025,note:'Crypto-Asset Service Provider registration framework; PHP 100M minimum paid-up capital; effective Jul 5, 2025',officialUrl:'https://insightplus.bakermckenzie.com/bm/technology-media-telecommunications_1/philippines-sec-issues-rules-and-guidelines-on-crypto-asset-service-providers-casp'},
+      {title:'Crypto Capital Gains Tax & VAT Regime',year:2025,note:'Up to 15% CGT on crypto-to-fiat; 12% VAT on crypto-paid goods; mining and staking income taxed as regular income',officialUrl:'https://www.ainvest.com/news/philippines-implements-15-capital-gains-tax-crypto-sales-2506/'},
+    ],
+    news:[
+      {title:'NTC orders ISPs to block 50 unlicensed crypto platforms including Coinbase and Gemini',date:'Dec 2025',url:'https://finance.yahoo.com/news/philippines-blocks-coinbase-gemini-50-162806278.html'},
+      {title:'Coins.ph peso stablecoin PHPC exits BSP sandbox; available on Polygon and Ronin',date:'Jul 2025',url:'https://www.elliptic.co/blog/philippines-opens-up-potential-new-frontier-for-stablecoin-innovation'},
+      {title:'SEC CASP Rules take effect — PHP 100M capital requirement for crypto service providers',date:'Jul 2025',url:'https://bitpinas.com/regulation/sec-crypto-rules-date'},
+      {title:'SEC blocks Binance — app removed from Philippine app stores after 90-day ultimatum',date:'Mar 2024',url:'https://www.coindesk.com/policy/2024/03/25/binance-blocked-by-philippines-securities-watchdog'},
+    ],
+    cases:[
+      {title:'SEC v. Binance — blocked for operating without licence',status:'Access blocked Mar 2024; app removed from stores',year:2024,url:'https://www.coindesk.com/policy/2024/03/25/binance-blocked-by-philippines-securities-watchdog'},
+      {title:'NTC blocking of 50 unauthorized crypto platforms (Coinbase, Gemini, OKX, Bybit, Kraken et al.)',status:'ISP-level blocks enforced Dec 2025; platforms must obtain BSP licence to resume',year:2025,url:'https://finance.yahoo.com/news/philippines-blocks-coinbase-gemini-50-162806278.html'},
+    ]},
+  ID:{name:'Indonesia',status:'partial',summary:'High-adoption market with 20M+ crypto users. OJK took over regulation from Bappebti in Jan 2025 under the P2SK Law. Crypto is legal to trade as a digital financial asset but banned as a means of payment. OJK whitelisted 29 licensed exchanges.',
+    legislation:[
+      {title:'P2SK Law — Development and Strengthening of the Financial Sector (Law No. 4/2023)',year:2023,note:'Omnibus act transferring crypto oversight from Bappebti (commodity futures) to OJK; reclassified crypto as digital financial assets',officialUrl:'https://adcolaw.com/blog/the-direction-of-crypto-asset-regulation-in-indonesia-following-the-transfer-of-supervisory-authority-from-bappebti-to-the-ojk/'},
+      {title:'OJK Regulation No. 27/2024 — Digital Financial Asset Trading',year:2024,note:'Transitional framework for crypto trading under OJK; effective Jan 10, 2025; licensing, consumer protection, AML requirements',officialUrl:'https://dentons.hprplawyers.com/en/insights/articles/2025/april/25/pojk-27-of-2024-a-deep-dive-into-indonesias-new-crypto-regulatory-framework'},
+      {title:'POJK No. 23/2025 — Amendment to POJK 27/2024',year:2025,note:'Strengthened OJK\'s supervisory role; added crypto derivatives framework; stricter sanctions for unlicensed operators',officialUrl:'https://ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/POJK-23-Tahun-2025-Perubahan-POJK-27-Tahun-2024-Penyelenggaraan-Perdagangan-Aset-Keuangan-Digital-Termasuk-Aset-Kripto.aspx'},
+      {title:'Crypto Offering Regime — OJK Threshold Rules',year:2025,note:'Offerings >= IDR 1B require OJK business licence and approval; below IDR 1B require notification only',officialUrl:'https://www.abnrlaw.com/news/at-long-last-indonesia-is-set-to-issue-a-landmark-crypto-offering-regime'},
+    ],
+    news:[
+      {title:'OJK publishes whitelist of 29 licensed crypto platforms to combat fraud',date:'Dec 2025',url:'https://www.ainvest.com/news/indonesia-ojk-unveils-29-licensed-crypto-platforms-curb-fraud-2512/'},
+      {title:'Indonesia ranks #3 in Chainalysis Global Crypto Adoption Index',date:'2024',url:'https://cryptoforinnovation.org/diverse-use-cases-push-indonesia-to-top-of-global-crypto-adoption-rankings/'},
+      {title:'OJK takes over crypto oversight from Bappebti under P2SK Law',date:'Jan 2025',url:'https://fintechnews.id/105975/crypto/ojk-crypto/'},
+      {title:'OJK rejects PT Bursa Kripto Indonesia business licence application',date:'Sep 2025',url:'https://ojk.go.id/en/berita-dan-kegiatan/pengumuman/Pages/Rejection-of-Business-License-Application-of-PT-Bursa-Kripto-Indonesia-as-A-Digital-Financial-Asset-Trader.aspx'},
+    ],
+    cases:[
+      {title:'PT Bursa Kripto Indonesia — licence rejection',status:'Business licence application rejected by OJK; Bappebti registration revoked',year:2025,url:'https://ojk.go.id/en/berita-dan-kegiatan/pengumuman/Pages/Rejection-of-Business-License-Application-of-PT-Bursa-Kripto-Indonesia-as-A-Digital-Financial-Asset-Trader.aspx'},
+    ]},
+  BW:{name:'Botswana',status:'partial',summary:'Early-stage but proactive regulatory environment. Virtual Assets Act (Act 4, 2025) mandates NBFIRA licensing for all VASPs. Only one licensed operator (Yellow Card) as of 2025. Bank of Botswana flags minimal domestic crypto risk but urges pre-emptive regulation.',
+    legislation:[
+      {title:'Virtual Assets Act (Act 4 of 2025)',year:2025,note:'Regulates sale and trade of virtual assets, licensing of VASPs, and initial token offerings; NBFIRA as supervisor',officialUrl:'https://botswanalaws.com/consolidated-statutes/principle-legislation/virtual-assets-act'},
+      {title:'NBFIRA Virtual Asset Service Provider Licensing Requirements',year:2022,note:'Detailed licensing criteria: AML/CFT policies, beneficial ownership disclosure, ongoing compliance obligations',officialUrl:'https://www.nbfira.org.bw/licensing-virtual-assets-service-providers'},
+      {title:'Financial Intelligence Act (Amended) — AML/CFT Compliance',year:2022,note:'Re-enacted to align with FATF standards; extended to cover virtual asset businesses and travel rule obligations',officialUrl:'https://blog.voveid.com/aml-compliance-in-botswana-a-2025-guide-for-regulated-businesses/'},
+    ],
+    news:[
+      {title:'Bank of Botswana flags minimal crypto risks but urges proactive regulation',date:'Dec 2024',url:'https://cointelegraph.com/news/botswana-central-bank-crypto-risks-regulations-2024'},
+      {title:'NBFIRA clamps down on unregistered crypto dealers under Virtual Assets Act',date:'2025',url:'https://itweb.africa/content/WnxpE74YOQpMV8XL'},
+      {title:'Yellow Card remains sole licensed crypto operator in Botswana',date:'Aug 2025',url:'https://techcabal.com/2025/08/06/crypto-licensing-in-africa/'},
+      {title:'Virtual Assets Act 2025 enacted — replaces 2022 framework with stronger VASP requirements',date:'2025',url:'https://businessweekly.co.bw/news/new-nbfira-virtual-assets-act-tackles-financial-crime'},
+    ],
+    cases:[
+      {title:'NBFIRA enforcement — unlicensed crypto dealers',status:'Ongoing — cease-and-desist actions against unregistered operators',year:2025,url:'https://itweb.africa/content/WnxpE74YOQpMV8XL'},
+    ]},
+  GH:{name:'Ghana',status:'partial',summary:'Landmark Virtual Asset Service Providers Act (Act 1154) signed Dec 2025, legalizing crypto trading. SEC Ghana and Bank of Ghana share oversight. SEC launched regulatory sandbox with 11 firms in Mar 2026. e-Cedi CBDC in pilot phase; estimated $3B annual informal crypto market.',
+    legislation:[
+      {title:'Virtual Asset Service Providers Act, 2025 (Act 1154)',year:2025,note:'Legalizes crypto trading; dual oversight by Bank of Ghana (monetary stability) and SEC (licensing/supervision); mandatory VASP licensing',officialUrl:'https://www.ecofinagency.com/news-finances/2712-51668-ghana-enacts-legislation-to-formalize-and-regulate-virtual-asset-markets'},
+      {title:'Bank of Ghana Draft Guidelines on Digital Assets',year:2024,note:'Proposed regulatory approach citing surge in Bitcoin and USDT usage; solicited industry feedback',officialUrl:'https://www.afriwise.com/blog/bank-of-ghana-to-commence-regulation-of-cryptocurrency-in-september-2025'},
+      {title:'e-Cedi CBDC Design Paper — Bank of Ghana',year:2022,note:'Retail CBDC design with offline payment capability; piloted in Accra, Tarkwa, and Sefwi Asafo with 2,750 users',officialUrl:'https://www.bog.gov.gh/news/design-paper-of-the-digital-cedi-ecedi/'},
+    ],
+    news:[
+      {title:'SEC Ghana admits 11 firms into virtual asset regulatory sandbox under VASP Act',date:'Mar 2026',url:'https://www.coindesk.com/policy/2026/03/11/ghana-opens-crypto-trading-sandbox-with-11-firms-under-new-vasp-law'},
+      {title:'SEC warns influencers against promoting crypto without authorisation',date:'Feb 2026',url:'https://www.graphic.com.gh/business/business-news/sec-warns-influencers-as-ghana-tightens-rules-on-crypto-promotion-under-new-vasp-law.html'},
+      {title:'President Mahama signs Virtual Asset Service Providers Bill into law',date:'Dec 2025',url:'https://www.gbcghanaonline.com/news/business/president-mahama-signs-virtual-asset-service-providers-bill-into-law-legalises-crypto-trading-in-ghana/2025/'},
+      {title:'Bank of Ghana announces crypto regulation to commence Sep 2025',date:'Jun 2025',url:'https://lexafrica.com/2025/06/ghana-cryptocurrency-regulation-vasp-law-september-2025/'},
+    ],
+    cases:[
+      {title:'SEC enforcement — unauthorized crypto promotion by influencers',status:'Active — warnings issued; sanctions threatened under Act 1154',year:2026,url:'https://www.graphic.com.gh/business/business-news/sec-warns-influencers-as-ghana-tightens-rules-on-crypto-promotion-under-new-vasp-law.html'},
+    ]},
 };
 
 const COLOR = { legal:'#8bc9a4', partial:'#edc978', restricted:'#e0a66b', banned:'#d45d56', default:'#d4cdc4' };
