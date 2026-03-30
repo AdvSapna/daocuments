@@ -80,7 +80,7 @@ export const SAMPLE = {
       {title:'Terraform Labs / Do Kwon (Singapore angle)',status:'Do Kwon extradited to U.S.; $1.3B settlement approved',year:2022,url:'https://www.thestreet.com/crypto/bankruptcy/terraform-luna-1-3b-settlement'},
       {title:'MAS enforcement — 9 financial institutions for AML breaches',status:'Concluded — regulatory actions and penalties imposed',year:2025,url:'https://www.mas.gov.sg/regulation/enforcement/enforcement-actions/2025/mas-takes-regulatory-actions-against-9-financial-institutions-for-aml-related-breaches'},
     ]},
-  CN:{name:'China',status:'restricted',summary:'All crypto transactions declared illegal since 2021. Mining prohibited. Digital yuan (e-CNY) reached 16.7 trillion yuan in cumulative transactions. Hong Kong operates contrasting VASP licensing regime with 7 licensed exchanges.',
+  CN:{name:'China',status:'banned',summary:'All crypto transactions declared illegal since 2021. Mining prohibited. Digital yuan (e-CNY) reached 16.7 trillion yuan in cumulative transactions. Hong Kong operates contrasting VASP licensing regime with 7 licensed exchanges.',
     legislation:[
       {title:'PBOC Notice on Preventing Bitcoin Risks',year:2013,note:'Classified Bitcoin as "virtual commodity"; barred financial institutions from crypto services',officialUrl:'https://maint.loc.gov/law/help/cryptocurrency/china.php'},
       {title:'ICO Ban — 7-Agency Announcement',year:2017,note:'Declared all ICOs unauthorized illegal public financing; forced domestic exchanges to shut down',officialUrl:'https://freemanlaw.com/cryptocurrency/china/'},
@@ -686,7 +686,7 @@ export const SAMPLE = {
       {title:'Nobitex exchange exploit — $90M stolen/destroyed by Predatory Sparrow',status:'Exchange operational but volumes dropped 70%; overnight trading ban imposed',year:2025,url:'https://www.chainalysis.com/blog/nobitex-iranian-exchange-exploit-june-2025/'},
       {title:'Illegal crypto mining operations — 427,000 devices, 95% unlicensed',status:'Ongoing enforcement; 2,000 MW consumed illegally; judicial action demanded',year:2024,url:'https://bitcoinethereumnews.com/bitcoin/irans-bitcoin-mining-industry-inside-the-worlds-fifth-largest-operation-amid-sanctions-and-energy-crisis/'},
     ]},
-  IQ:{name:'Iraq',status:'restricted',summary:'Central Bank of Iraq banned cryptocurrency dealings in 2017, reinforced by Circular No. 125/5/9 (2021). Banks, payment providers, and money exchangers are prohibited from handling digital assets. Kurdistan Region launched separate crackdowns in 2025. CBI pursuing its own CBDC while maintaining the crypto ban.',
+  IQ:{name:'Iraq',status:'banned',summary:'Central Bank of Iraq banned cryptocurrency dealings in 2017, reinforced by Circular No. 125/5/9 (2021). Banks, payment providers, and money exchangers are prohibited from handling digital assets. Kurdistan Region launched separate crackdowns in 2025. CBI pursuing its own CBDC while maintaining the crypto ban.',
     legislation:[
       {title:'CBI Cryptocurrency Prohibition Statement',year:2017,note:'Central Bank of Iraq declared crypto banned for all banks and licensed money exchangers, citing AML and volatility risks',officialUrl:'https://freemanlaw.com/cryptocurrency/iraq-and-cryptocurrency/'},
       {title:'CBI Circular No. 125/5/9 — Formal Virtual-Asset Ban',year:2021,note:'Codified the 2017 ban; forbids banks, e-payment providers, and financial intermediaries from any virtual-asset transactions',officialUrl:'https://www.lightspark.com/knowledge/is-crypto-legal-in-iraq'},
@@ -783,14 +783,15 @@ export const SAMPLE = {
     ]},
 };
 
-const COLOR = { legal:'#8bc9a4', partial:'#edc978', restricted:'#e8948e', default:'#d4cdc4' };
+const COLOR = { legal:'#8bc9a4', partial:'#edc978', restricted:'#e0a66b', banned:'#d45d56', default:'#d4cdc4' };
 
 function getColor(status) {
   if (!status) return COLOR.default;
   const s = status.toLowerCase();
   if (s === 'legal' || s.includes('friend')) return COLOR.legal;
   if (s === 'partial' || s.includes('moderate') || s.includes('neutral')) return COLOR.partial;
-  if (s === 'restricted' || s.includes('restrict') || s.includes('ban')) return COLOR.restricted;
+  if (s === 'restricted') return COLOR.restricted;
+  if (s === 'banned' || s.includes('ban') || s.includes('illegal')) return COLOR.banned;
   return COLOR.default;
 }
 

@@ -65,7 +65,7 @@ function SubstackIcon() {
   );
 }
 
-const STATUS_COLOR = { legal: '#8bc9a4', partial: '#edc978', restricted: '#e8948e' };
+const STATUS_COLOR = { legal: '#8bc9a4', partial: '#edc978', restricted: '#e0a66b', banned: '#d45d56' };
 
 function CountrySearch({ data, onSelect }) {
   const [query, setQuery] = useState('');
@@ -256,7 +256,7 @@ export default function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
             <CountrySearch data={data} onSelect={setSelectedCountry} />
             <div className="header-legend" style={{ display: 'flex', gap: 16 }}>
-              {[['Legal', '#8bc9a4'], ['Partial', '#edc978'], ['Restricted', '#e8948e']].map(([label, color]) => (
+              {[['Legal', '#8bc9a4'], ['Partial', '#edc978'], ['Restricted', '#e0a66b'], ['Banned', '#d45d56']].map(([label, color]) => (
                 <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: 'var(--text-secondary)', fontFamily: "'Times New Roman', Times, serif" }}>
                   <div style={{ width: 8, height: 8, borderRadius: '50%', background: color }} />
                   {label}

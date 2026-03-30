@@ -4,7 +4,8 @@ import supabase from './supabase';
 const META = {
   legal:      { label:'Legal',      color:'#6ab587', bg:'rgba(139,201,164,0.15)' },
   partial:    { label:'Partial',    color:'#c9a84e', bg:'rgba(237,201,120,0.15)' },
-  restricted: { label:'Restricted', color:'#d07570', bg:'rgba(232,148,142,0.15)' },
+  restricted: { label:'Restricted', color:'#c48540', bg:'rgba(224,166,107,0.15)' },
+  banned:     { label:'Banned',     color:'#d45d56', bg:'rgba(212,93,86,0.15)' },
   unknown:    { label:'No Data',    color:'#9e9790', bg:'rgba(176,168,158,0.12)' },
 };
 
@@ -13,7 +14,8 @@ function getMeta(status) {
   const s = status.toLowerCase();
   if (s === 'legal' || s.includes('friend')) return META.legal;
   if (s === 'partial' || s.includes('moderate') || s.includes('neutral')) return META.partial;
-  if (s === 'restricted' || s.includes('restrict') || s.includes('ban')) return META.restricted;
+  if (s === 'restricted') return META.restricted;
+  if (s === 'banned' || s.includes('ban') || s.includes('illegal')) return META.banned;
   return META.unknown;
 }
 
