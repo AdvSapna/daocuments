@@ -100,10 +100,7 @@ export default function App() {
     <div style={{ width: '100vw', overflowX: 'hidden' }}>
 
       {showAuth && (
-        <AuthModal onSuccess={() => {
-          setShowAuth(false);
-          setTimeout(() => mapRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
-        }} />
+        <AuthModal onSuccess={() => setShowAuth(false)} />
       )}
 
       {/* ── Section 1: About ── */}
@@ -227,6 +224,38 @@ export default function App() {
             </>
           )}
         </div>
+
+        {/* Auth gate overlay — map visible behind at ~35% opacity */}
+        {!user && user !== undefined && (
+          <div style={{
+            position: 'absolute', inset: 0, zIndex: 10,
+            background: 'rgba(247, 243, 238, 0.65)',
+            backdropFilter: 'blur(2px)',
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center',
+            gap: 16, padding: 24,
+          }}>
+            <div style={{
+              width: 56, height: 56, borderRadius: '50%', background: 'var(--accent)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 24, fontWeight: 800, color: '#fff',
+            }}>D</div>
+            <p style={{ fontSize: 15, color: 'var(--text-primary)', textAlign: 'center', maxWidth: 320, lineHeight: 1.6, fontWeight: 600 }}>
+              Enter your email to access the crypto regulatory tracker.
+            </p>
+            <button
+              onClick={() => setShowAuth(true)}
+              style={{
+                padding: '12px 32px', background: 'var(--accent)', color: '#fff',
+                border: 'none', borderRadius: 8, fontSize: 15, fontWeight: 700,
+                fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.04em',
+                cursor: 'pointer',
+              }}
+            >
+              Sign in with Email
+            </button>
+          </div>
+        )}
       </section>
 
       {/* ── Section 3: Footer ── */}
