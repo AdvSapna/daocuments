@@ -229,7 +229,7 @@ function ReportInaccuracy({ countryName, countryCode }) {
   );
 }
 
-export default function CountryPanel({ country, onClose, fullWidth, onToggleFullWidth }) {
+export default function CountryPanel({ country, onClose, fullWidth, onToggleFullWidth, onSelectCountry }) {
   const [visitorCount, setVisitorCount] = useState(null);
 
   useEffect(() => {
@@ -325,6 +325,37 @@ export default function CountryPanel({ country, onClose, fullWidth, onToggleFull
 
       {/* Scrollable content */}
       <div style={{ flex: 1, overflowY: 'auto', padding: '20px 24px 28px' }}>
+
+        {/* EU MiCA Banner */}
+        {country.euMember && (
+          <div
+            style={{
+              background: 'rgba(0, 51, 153, 0.06)', border: '1px solid rgba(0, 51, 153, 0.2)',
+              borderRadius: 8, padding: '12px 14px', marginBottom: 16,
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <span style={{ fontSize: 18 }}>🇪🇺</span>
+              <span style={{ fontSize: 12, color: '#003399', fontWeight: 600 }}>This country operates under EU MiCA</span>
+            </div>
+            {onSelectCountry && (
+              <button
+                onClick={() => {
+                  const eu = require('./Map').SAMPLE.EU;
+                  if (eu) onSelectCountry({ code: 'EU', name: eu.name, status: eu.status, summary: eu.summary, legislation: eu.legislation || [], news: eu.news || [], cases: eu.cases || [], euMember: false });
+                }}
+                style={{
+                  background: 'none', border: '1px solid rgba(0, 51, 153, 0.3)', borderRadius: 5,
+                  padding: '4px 10px', fontSize: 10, color: '#003399', cursor: 'pointer',
+                  fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.06em', flexShrink: 0,
+                }}
+              >
+                VIEW MiCA FRAMEWORK
+              </button>
+            )}
+          </div>
+        )}
 
         {/* Status */}
         <AnimatedSection delay={0} style={{ marginBottom: 24 }}>

@@ -4,6 +4,20 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simp
 const GEO_URL = 'https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson';
 
 export const SAMPLE = {
+  EU:{name:'European Union (MiCA)',status:'legal',summary:'The Markets in Crypto-Assets Regulation (MiCA) entered into full application on December 30, 2024, establishing a harmonised EU-wide framework for crypto-asset issuance, trading, and service provision. ESMA and EBA share supranational oversight. Each EU member state designates a national competent authority (NCA) for day-to-day supervision. MiCA introduces licensing categories for CASPs, rules for asset-referenced tokens (ARTs) and e-money tokens (EMTs), market abuse provisions, and consumer protection requirements.',
+    legislation:[
+      {title:'Regulation (EU) 2023/1114 — Markets in Crypto-Assets (MiCA)',year:2024,note:'Comprehensive EU regulation for crypto-asset issuers, CASPs, ARTs, and EMTs. Title III/IV (stablecoins) applied from Jun 2024; full application Dec 30, 2024',officialUrl:'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114'},
+      {title:'Regulation (EU) 2023/1113 — Transfer of Funds (Recast) / Travel Rule',year:2024,note:'Requires originator and beneficiary information to accompany all crypto-asset transfers; applies to CASPs from Dec 30, 2024',officialUrl:'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1113'},
+      {title:'ESMA/EBA Regulatory Technical Standards (RTS) Package',year:2025,note:'18 RTS and guidelines covering CASP authorisation, ART reserves, complaints handling, conflicts of interest, and market abuse detection',officialUrl:'https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica'},
+      {title:'MiCA Stablecoin Provisions — Title III (ARTs) & Title IV (EMTs)',year:2024,note:'Early application from Jun 30, 2024; requires reserve of assets, redemption rights, EMID or credit institution licence for issuers',officialUrl:'https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/markets-crypto-assets-mica'},
+    ],
+    news:[
+      {title:'MiCA enters full application — EU becomes first major jurisdiction with comprehensive crypto regulation',date:'Dec 2024',url:'https://www.esma.europa.eu/press-news/esma-news/mica-applies-in-full'},
+      {title:'ESMA publishes second package of MiCA technical standards and guidelines',date:'2025',url:'https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica'},
+      {title:'Over 100 CASP authorisation applications filed across EU member states in first 6 months',date:'Mid 2025',url:'https://www.coindesk.com/policy/2025/06/15/eu-mica-authorisation-wave-100-applications-filed'},
+      {title:'Tether delists USDT from EU-regulated exchanges over EMT compliance concerns',date:'2025',url:'https://cointelegraph.com/news/tether-usdt-mica-compliance-eu-exchanges'},
+    ],
+    cases:[]},
   US:{name:'United States',status:'partial',summary:'Dramatic policy shift 2024-2025. GENIUS Act (stablecoins) signed into law. SEC dismissed major crypto cases under new leadership. Strategic Bitcoin Reserve established by executive order. CLARITY Act (market structure) passed House, awaiting Senate.',
     legislation:[
       {title:'GENIUS Act — Federal Stablecoin Framework',year:2025,note:'First comprehensive federal crypto law; requires 1:1 reserves for payment stablecoins',officialUrl:'https://www.lw.com/en/insights/the-genius-act-of-2025-stablecoin-legislation-adopted-in-the-us'},
@@ -111,9 +125,8 @@ export const SAMPLE = {
       {title:'Hounax unlicensed exchange fraud (Hong Kong)',status:'Under investigation — HK$148M losses',year:2023,url:'https://fortune.com/crypto/2023/11/28/hong-kong-crypto-regulators-hounax-jpex-scams/'},
       {title:'U.S. v. Daren Li — $73M cross-border crypto laundering',status:'Sentenced 20 years; fugitive',year:2024,url:'https://www.justice.gov/opa/pr/man-sentenced-20-years-prison-role-73-million-global-cryptocurrency-investment-scam'},
     ]},
-  DE:{name:'Germany',status:'legal',summary:'EU MiCA fully applied Dec 2024. BaFin designated as national competent authority. FinmadiG/KMAG implemented MiCA domestically. Major banks (DZ Bank, Deutsche Bank) entering crypto under MiCA licences. Active enforcement against unlicensed ATMs and stablecoin issuers.',
+  DE:{name:'Germany',status:'legal',euMember:true,summary:'MiCA member state (BaFin as NCA). FinmadiG/KMAG implemented MiCA domestically. Major banks (DZ Bank, Deutsche Bank) entering crypto under MiCA licences. Active enforcement against unlicensed ATMs and stablecoin issuers.',
     legislation:[
-      {title:'EU MiCA Regulation — Full Application',year:2024,note:'EU-wide crypto-asset regulation; BaFin designated as Germany\'s national competent authority',officialUrl:'https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica'},
       {title:'FinmadiG — Financial Market Digitisation Act',year:2024,note:'Omnibus German law implementing MiCA and Transfer of Funds Regulation domestically',officialUrl:'https://www.mayerbrown.com/en/insights/publications/2024/12/german-parliament-passes-act-on-the-digitalisation-of-financial-markets'},
       {title:'KMAG — Crypto Markets Supervision Act',year:2024,note:'Core MiCA implementing law; grants BaFin supervisory powers over CASPs; grandfathering until Dec 2025',officialUrl:'https://www.gesetze-im-internet.de/kmag/BJNR1B60B0024.html'},
       {title:'KWG Section 1(1a) No. 6 — Crypto Custody Business',year:2020,note:'Defines crypto custody as regulated financial service requiring BaFin authorisation',officialUrl:'https://www.bafin.de/SharedDocs/Veroeffentlichungen/EN/Merkblatt/mb_200302_kryptoverwahrgeschaeft_en.html'},
@@ -569,9 +582,8 @@ export const SAMPLE = {
       {title:'Empire Crypto recovery scam — FCC takedown of Mauritius-based call centres',status:'Arrests made; Strike Online and NetEra call centres shut down; targeted victims in France and Belgium',year:2025,url:'https://fcc.mu/the-fcc-uncovers-a-large-crypto-currency-recovery-platform-scam/'},
       {title:'Cloud Token Mauritius — FSC Ponzi alert',status:'FSC issued public warning; Cloud Token entities confirmed unlicensed',year:2019,url:'https://bitcoinexchangeguide.com/fsc-issues-investor-crypto-ponzi-alert-for-cloud-token-mauritius-cloud-token-indian-ocean-and-africa/'},
     ]},
-  SE:{name:'Sweden',status:'legal',summary:'EU MiCA fully applicable since Dec 2024. Finansinspektionen (SFSA) designated as national competent authority. Supplementary MiCA Act (SFS 2024:1159) passed Nov 2024. Non-conviction-based crypto forfeiture law in effect since Nov 2024. Riksdag motions filed for a national Bitcoin reserve and against an e-krona CBDC.',
+  SE:{name:'Sweden',status:'legal',euMember:true,summary:'MiCA member state (Finansinspektionen as NCA). Supplementary MiCA Act (SFS 2024:1159) passed Nov 2024. Non-conviction-based crypto forfeiture law in effect since Nov 2024. Riksdag motions filed for a national Bitcoin reserve and against an e-krona CBDC.',
     legislation:[
-      {title:'EU MiCA Regulation — Full Application',year:2024,note:'EU-wide crypto-asset regulation; Finansinspektionen designated as Sweden\'s national competent authority',officialUrl:'https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica'},
       {title:'Supplementary MiCA Act (SFS 2024:1159)',year:2024,note:'Passed Nov 27, 2024; grants SFSA supervisory, investigative, and intervention powers over CASPs; effective Dec 30, 2024',officialUrl:'https://cms.law/en/int/expert-guides/cms-expert-guide-to-crypto-regulation/sweden'},
       {title:'CFO Act — Currency Exchange and Financial Operations Act',year:1996,note:'Original framework for virtual currency service registration; scope reduced post-MiCA to exclude crypto',officialUrl:'https://practiceguides.chambers.com/practice-guides/blockchain-2025/sweden'},
       {title:'Swedish Anti-Money Laundering Act — MiCA Amendment',year:2024,note:'CASPs now directly regulated under AML Act; mandates KYC, transaction monitoring, suspicious activity reporting',officialUrl:'https://copla.com/blog/compliance-regulations/mica-regulation-in-sweden-licensing-implementation-and-what-crypto-firms-need-to-know/'},
@@ -590,9 +602,8 @@ export const SAMPLE = {
       {title:'Finansinspektionen AML investigation of Goobit and Safello',status:'Investigation initiated; Safello subsequently secured government framework agreement',year:2021,url:'https://www.coindesk.com/policy/2021/10/21/swedish-financial-watchdog-investigating-two-local-crypto-firms'},
       {title:'Sweden Police Authority report — crypto exchanges as professional money launderers',status:'Published; informed new forfeiture legislation',year:2024,url:'https://www.onesafe.io/blog/sweden-crypto-confiscation-global-regulations'},
     ]},
-  DK:{name:'Denmark',status:'legal',summary:'EU MiCA fully applicable since Dec 2024. Finanstilsynet designated as national competent authority. Financial Business Act amended to include Part IX b for MiCA. GCEX received first MiCA licence from Danish FSA (Dec 2025). Proposed 42% inventory tax on unrealised crypto gains from 2026.',
+  DK:{name:'Denmark',status:'legal',euMember:true,summary:'MiCA member state (Finanstilsynet as NCA). Financial Business Act amended to include Part IX b for MiCA. GCEX received first MiCA licence from Danish FSA (Dec 2025). Proposed 42% inventory tax on unrealised crypto gains from 2026.',
     legislation:[
-      {title:'EU MiCA Regulation — Full Application',year:2024,note:'EU-wide crypto-asset regulation; Finanstilsynet designated as Denmark\'s national competent authority',officialUrl:'https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica'},
       {title:'Financial Business Act Amendment — Part IX b (Markets in Crypto-Assets)',year:2024,note:'Establishes legal and supervisory framework for MiCA; designates Finanstilsynet as competent authority',officialUrl:'https://www.dfsa.dk/news/2024/jun/crypto-assets_250624'},
       {title:'Danish Anti-Money Laundering Act — CASP Obligations',year:2024,note:'CASPs subject to customer due diligence, risk assessment, record-keeping, and suspicious transaction reporting',officialUrl:'https://copla.com/blog/compliance-regulations/mica-regulation-in-denmark-licensing-implementation-and-what-crypto-firms-need-to-know/'},
       {title:'Tax Law Council Proposal — Unrealised Crypto Gains Tax',year:2025,note:'Recommends 42% inventory tax on all crypto portfolios annually; retroactive to Bitcoin\'s 2009 genesis block; bill expected 2025',officialUrl:'https://www.theblock.co/post/322789/denmark-plans-to-propose-taxing-unrealized-crypto-gains-in-upcoming-bill'},
@@ -608,9 +619,8 @@ export const SAMPLE = {
       {title:'Finanstilsynet orders Saxo Bank to divest all crypto holdings',status:'Completed — Saxo Bank divested; proprietary crypto trading by banks ruled impermissible',year:2023,url:'https://www.coindesk.com/policy/2023/07/05/denmarks-financial-watchdog-orders-saxo-bank-to-shed-its-crypto-holdings'},
       {title:'Saxo Bank — DKK 313M AML fine',status:'Fine issued for AML weaknesses in institutional operations (2021-2023)',year:2024,url:'https://www.financemagnates.com/forex/saxo-bank-fined-nearly-50-million-by-danish-watchdog-in-largest-penalty-in-two-years/'},
     ]},
-  FI:{name:'Finland',status:'legal',summary:'EU MiCA fully applicable since Dec 2024. FIN-FSA designated as national competent authority. Finland adopted one of Europe\'s shortest MiCA transition periods, ending Jun 30, 2025. Coinmotion became Finland\'s first MiCA-authorised CASP (Jul 2025). LocalBitcoins fined EUR 500K for AML failures.',
+  FI:{name:'Finland',status:'legal',euMember:true,summary:'MiCA member state (FIN-FSA as NCA). Finland adopted one of Europe\'s shortest MiCA transition periods, ending Jun 30, 2025. Coinmotion became Finland\'s first MiCA-authorised CASP (Jul 2025). LocalBitcoins fined EUR 500K for AML failures.',
     legislation:[
-      {title:'EU MiCA Regulation — Full Application',year:2024,note:'EU-wide crypto-asset regulation; FIN-FSA designated as Finland\'s national competent authority',officialUrl:'https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica'},
       {title:'Act on Virtual Currency Providers (572/2019)',year:2019,note:'Original Finnish crypto regulation implementing AMLD5; required FIN-FSA registration for exchanges, wallets, and issuers; repealed by MiCA',officialUrl:'https://www.finanssivalvonta.fi/en/publications-and-press-releases/supervision-releases/2019/virtual-currency-providers-to-be-supervised-by-the-fin-fsa--briefing-for-virtual-currency-providers-on-15-may/'},
       {title:'Finnish AML Act — Revised MiCA-Aligned Guidelines',year:2025,note:'Updated AML guidelines effective Jul 1, 2025; aligns national law with MiCA and Travel Rule requirements',officialUrl:'https://www.zigram.tech/resources/finland-updated-aml-guidelines-july-2025/'},
       {title:'FIN-FSA Regulations and Guidelines 4/2019 — Virtual Currency Providers',year:2019,note:'Detailed compliance standards for registered VASPs; superseded by MiCA requirements from Dec 2024',officialUrl:'https://www.finanssivalvonta.fi/en/publications-and-press-releases/supervision-releases/2019/fin-fsa-regulations-and-guidelines-42019-concerning-virtual-currency-providers-enter-into-force-on-1-july-2019/'},
@@ -920,6 +930,7 @@ export default function Map({ selectedCountry, onCountrySelect, data }) {
                     legislation: (info && info.legislation) || [],
                     news: (info && info.news) || [],
                     cases: (info && info.cases) || [],
+                    euMember: (info && info.euMember) || false,
                   })}
                   onMouseEnter={(evt) => setTooltip({
                     visible: true,

@@ -98,6 +98,7 @@ export default function CountryList({ data, onCountrySelect }) {
                       legislation: item.raw.legislation || [],
                       news: item.raw.news || [],
                       cases: item.raw.cases || [],
+                      euMember: item.raw.euMember || false,
                     })}
                     style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'space-between',

@@ -105,7 +105,7 @@ function CountrySearch({ data, onSelect }) {
               key={r.code}
               className="country-search-item"
               onClick={() => {
-                onSelect({ code: r.code, name: r.name, status: r.status, summary: r.summary, legislation: r.legislation || [], news: r.news || [], cases: r.cases || [] });
+                onSelect({ code: r.code, name: r.name, status: r.status, summary: r.summary, legislation: r.legislation || [], news: r.news || [], cases: r.cases || [], euMember: r.euMember || false });
                 setQuery('');
                 setOpen(false);
               }}
@@ -395,7 +395,7 @@ export default function App() {
           {isMobile ? (
             <>
               {selectedCountry ? (
-                <CountryPanel country={selectedCountry} onClose={() => setSelectedCountry(null)} />
+                <CountryPanel country={selectedCountry} onClose={() => setSelectedCountry(null)} onSelectCountry={setSelectedCountry} />
               ) : (
                 <CountryList data={data} onCountrySelect={setSelectedCountry} />
               )}
@@ -412,6 +412,7 @@ export default function App() {
                 onClose={() => { setSelectedCountry(null); setPanelFullWidth(false); }}
                 fullWidth={panelFullWidth}
                 onToggleFullWidth={() => setPanelFullWidth(f => !f)}
+                onSelectCountry={setSelectedCountry}
               />
             </>
           )}
