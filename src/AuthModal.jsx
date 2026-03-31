@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import supabase from './supabase';
 
 export default function AuthModal({ onSuccess }) {
-  const [step, setStep] = useState('email'); // 'email' | 'otp'
+  const [step, setStep] = useState('email'); // 'email' | 'sent'
   const [email, setEmail] = useState('');
-  const [otp, setOtp] = useState('');
   const [newsletter, setNewsletter] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSendOtp = async (e) => {
+  const handleSendLink = async (e) => {
     e.preventDefault();
     if (!email.trim()) return;
     setLoading(true);
@@ -19,6 +18,7 @@ export default function AuthModal({ onSuccess }) {
       email: email.trim(),
       options: {
         shouldCreateUser: true,
+        emailRedirectTo: window.location.origin,
       },
     });
 
@@ -26,38 +26,11 @@ export default function AuthModal({ onSuccess }) {
     if (err) {
       setError(err.message);
     } else {
-      setStep('otp');
+      // Store newsletter preference locally — will be saved on successful auth
+      localStorage.setItem('dao_newsletter', newsletter ? '1' : '0');
+      localStorage.setItem('dao_email', email.trim());
+      setStep('sent');
     }
-  };
-
-  const handleVerifyOtp = async (e) => {
-    e.preventDefault();
-    if (!otp.trim()) return;
-    setLoading(true);
-    setError('');
-
-    const { data, error: err } = await supabase.auth.verifyOtp({
-      email: email.trim(),
-      token: otp.trim(),
-      type: 'email',
-    });
-
-    if (err) {
-      setLoading(false);
-      setError(err.message);
-      return;
-    }
-
-    // Save newsletter preference
-    if (data?.user) {
-      await supabase.from('subscribers').upsert(
-        { user_id: data.user.id, email: email.trim(), newsletter_optin: newsletter },
-        { onConflict: 'user_id' }
-      );
-    }
-
-    setLoading(false);
-    onSuccess();
   };
 
   const handleResend = async () => {
@@ -65,11 +38,11 @@ export default function AuthModal({ onSuccess }) {
     setError('');
     const { error: err } = await supabase.auth.signInWithOtp({
       email: email.trim(),
-      options: { shouldCreateUser: true },
+      options: { shouldCreateUser: true, emailRedirectTo: window.location.origin },
     });
     setLoading(false);
     if (err) setError(err.message);
-    else setError('Code resent! Check your inbox.');
+    else setError('Link resent! Check your inbox.');
   };
 
   return (
@@ -92,7 +65,7 @@ export default function AuthModal({ onSuccess }) {
               Enter your email to access the crypto regulatory tracker.
             </p>
 
-            <form onSubmit={handleSendOtp}>
+            <form onSubmit={handleSendLink}>
               <input
                 type="email"
                 className="auth-input"
@@ -120,45 +93,28 @@ export default function AuthModal({ onSuccess }) {
             </form>
 
             <p className="auth-footer-text">
-              We'll send a one-time code to verify your email. No password needed.
+              We'll send a login link to your email. No password needed.
             </p>
           </>
         ) : (
           <>
             <h2 className="auth-title">Check your email</h2>
             <p className="auth-subtitle">
-              We sent a 6-digit code to <strong>{email}</strong>
+              We sent a login link to <strong>{email}</strong>
+            </p>
+            <p className="auth-subtitle" style={{ fontSize: 12 }}>
+              Click the link in the email to access DAOcuments. You can close this tab.
             </p>
 
-            <form onSubmit={handleVerifyOtp}>
-              <input
-                type="text"
-                className="auth-input auth-otp-input"
-                placeholder="000000"
-                value={otp}
-                onChange={(e) => {
-                  const val = e.target.value.replace(/\D/g, '').slice(0, 6);
-                  setOtp(val);
-                }}
-                maxLength={6}
-                inputMode="numeric"
-                autoFocus
-              />
-
-              {error && <div className="auth-error">{error}</div>}
-
-              <button type="submit" className="auth-btn" disabled={loading || otp.length < 6}>
-                {loading ? 'Verifying...' : 'Verify & Enter'}
-              </button>
-            </form>
+            {error && <div className="auth-error">{error}</div>}
 
             <p className="auth-footer-text">
-              Didn't get the code?{' '}
+              Didn't get the email?{' '}
               <button className="auth-link-btn" onClick={handleResend} disabled={loading}>
                 Resend
               </button>
               {' · '}
-              <button className="auth-link-btn" onClick={() => { setStep('email'); setOtp(''); setError(''); }}>
+              <button className="auth-link-btn" onClick={() => { setStep('email'); setError(''); }}>
                 Change email
               </button>
             </p>

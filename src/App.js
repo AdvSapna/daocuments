@@ -191,13 +191,29 @@ function useAuth() {
     if (!supabase) { setUser(null); return; }
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
+      if (session?.user) saveNewsletterPref(session.user);
     });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      if (_event === 'SIGNED_IN' && session?.user) saveNewsletterPref(session.user);
     });
     return () => subscription.unsubscribe();
   }, []);
   return user;
+}
+
+function saveNewsletterPref(user) {
+  const newsletter = localStorage.getItem('dao_newsletter');
+  const email = localStorage.getItem('dao_email');
+  if (newsletter !== null && email && supabase) {
+    supabase.from('subscribers').upsert(
+      { user_id: user.id, email, newsletter_optin: newsletter === '1' },
+      { onConflict: 'user_id' }
+    ).then(() => {
+      localStorage.removeItem('dao_newsletter');
+      localStorage.removeItem('dao_email');
+    });
+  }
 }
 
 export default function App() {
