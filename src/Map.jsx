@@ -870,6 +870,270 @@ export const SAMPLE = {
     cases:[
       {title:'SEC enforcement — unauthorized crypto promotion by influencers',status:'Active — warnings issued; sanctions threatened under Act 1154',year:2026,url:'https://www.graphic.com.gh/business/business-news/sec-warns-influencers-as-ghana-tightens-rules-on-crypto-promotion-under-new-vasp-law.html'},
     ]},
+  BG:{name:'Bulgaria',status:'legal',euMember:true,summary:'MiCA member state (FSC as NCA). Crypto-Asset Markets Act adopted Jun 2025, effective Jul 8 2025; FSC licenses CASPs with grandfathering until Jul 2026.',
+    legislation:[
+      {title:'Crypto-Asset Markets Act (BG MiCA Act)',year:2025,note:'Adopted 20 Jun 2025; governs CASP licensing, ART issuance, and public offerings of crypto-assets; FSC as competent authority',officialUrl:'https://gplawbg.com/en/bulgaria-adopts-the-crypto-asset-markets-act-what-does-it-mean-for-businesses/'},
+      {title:'AML Act — VASP Registration Regime',year:2024,note:'Pre-MiCA AML register for virtual asset service providers; grandfathered entities may operate until Jul 2026',officialUrl:'https://cms.law/en/int/expert-guides/cms-expert-guide-to-crypto-regulation/bulgaria'},
+    ],
+    news:[
+      {title:'Bulgarian Parliament adopts Crypto-Asset Markets Act implementing MiCA domestically',date:'Jun 2025',url:'https://cms-lawnow.com/en/ealerts/2025/07/bulgaria-adopts-markets-in-crypto-assets-act'},
+      {title:'FSC opens MiCAR licensing and publishes FAQ for crypto-asset service providers',date:'Jul 2025',url:'https://cms-lawnow.com/en/ealerts/2025/07/bulgaria-has-opened-micar-licensing-and-continues-to-adapt-its-crypto-legislation2'},
+    ],
+    cases:[]},
+  HR:{name:'Croatia',status:'legal',euMember:true,summary:'MiCA member state (HANFA as NCA). MiCA Implementation Act published in Official Gazette 85/2024; HANFA licenses CASPs with transition ending Jul 2026.',
+    legislation:[
+      {title:'MiCA Implementation Act (OG 85/2024)',year:2024,note:'Adopted Jul 2024; designates HANFA for CASP supervision and HNB for ART/EMT oversight; transition until Jul 2026',officialUrl:'https://copla.com/blog/compliance-regulations/mica-regulation-in-croatia-licensing-implementation-and-what-crypto-firms-need-to-know/'},
+      {title:'Anti-Money Laundering Act — VASP Obligations',year:2024,note:'Mandates HANFA registration and KYC procedures for crypto exchanges operating in Croatia',officialUrl:'https://cms.law/en/int/expert-guides/cms-expert-guide-to-crypto-regulation/croatia'},
+    ],
+    news:[
+      {title:'HANFA warns about misleading MiCA transitional period claims and white paper requirements',date:'2025',url:'https://www.hanfa.hr/news/warning-about-mica-transitional-periods-and-misleading-information-in-relation-to-white-papers/'},
+    ],
+    cases:[]},
+  CZ:{name:'Czechia',status:'legal',euMember:true,summary:'MiCA member state (CNB as NCA). Digital Finance Act (No. 31/2025) effective Feb 2025; CNB issued first six MiCA licences in Feb 2026 from 248 applications.',
+    legislation:[
+      {title:'Digital Finance Act (Act No. 31/2025 Sb.)',year:2025,note:'Effective 15 Feb 2025; implements MiCA domestically; designates CNB as competent authority for CASP licensing and supervision',officialUrl:'https://www.cnb.cz/en/supervision-financial-market/legislation/crypto-assets/laws-and-regulations/'},
+    ],
+    news:[
+      {title:'CNB issues first six MiCA authorisations from 248 total applications',date:'Feb 2026',url:'https://www.cnb.cz/en/cnb-news/press-releases/CNB-issues-the-first-six-authorisations-under-the-MiCA-Regulation-00001/'},
+    ],
+    cases:[]},
+  GR:{name:'Greece',status:'legal',euMember:true,summary:'MiCA member state (HCMC as NCA). Law 5193/2025 enacted Apr 2025 — first Southern European state to complete MiCA transposition. Existing CASPs must obtain licence by Dec 2025.',
+    legislation:[
+      {title:'Law 5193/2025 — MiCA Supplementary Act',year:2025,note:'Enacted 11 Apr 2025; designates HCMC as CASP authority and Bank of Greece for ART/EMT prudential oversight; first in Southern Europe',officialUrl:'https://tsamichaslaw.gr/the-implementation-of-mica-in-greece-legal-analysis-of-law-5193-2025/'},
+      {title:'HCMC Decision No. 8/1059 — CASP Authorisation Rules',year:2025,note:'Issued 30 Jul 2025; sets 40-business-day licence decision timeline and detailed application requirements',officialUrl:'https://www.ey.com/en_gr/technical/tax/tax-alerts/mica-regulation-authorisation-procedure-for-crypto-asset-service-providers'},
+    ],
+    news:[
+      {title:'Greece becomes first Southern European country to complete MiCA domestic transposition',date:'Apr 2025',url:'https://www.zeya.com/newsletters/long-awaited-law-supplementing-markets-crypto-assets-regulation-has-been-adopted'},
+      {title:'HCMC introduces stricter licensing rules for crypto exchanges and wallet providers',date:'Aug 2025',url:'https://greekcitytimes.com/2025/08/23/greece-crypto-licensing-framework/'},
+    ],
+    cases:[]},
+  HU:{name:'Hungary',status:'legal',euMember:true,summary:'MiCA member state (MNB as NCA). Act VII of 2024 implements MiCA; unique national validator system requires all crypto exchanges to obtain compliance certificates from Dec 2025, with criminal penalties for non-compliance.',
+    legislation:[
+      {title:'Act VII of 2024 — MiCA Implementation',year:2024,note:'Implements MiCA; MNB as CASP licensing authority; national transition ended Jul 2025',officialUrl:'https://www.schoenherr.eu/content/hungary-aligns-crypto-asset-regulation-with-eu-rules-and-enhances-consumer-protection'},
+      {title:'Decree 10/2025 — Crypto-Asset Conversion Validation',year:2025,note:'Effective 27 Dec 2025; mandates state-licensed validator for all crypto-to-fiat and crypto-to-crypto exchanges; criminal liability for non-compliance',officialUrl:'https://cms-lawnow.com/en/ealerts/2025/11/hungary-clarifies-regime-for-validating-crypto-asset-conversions'},
+    ],
+    news:[
+      {title:'Hungary\'s crypto validation certificate requirement takes effect — exchanges pause services',date:'Dec 2025',url:'https://www.wolftheiss.com/insights/hungarys-crypto-validation-certificate-requirement-took-effect-on-27-december-2025/'},
+      {title:'Hungary criminalises unauthorised crypto exchanges — up to 8 years for providers above HUF 5M',date:'Jun 2025',url:'https://cms-lawnow.com/en/ealerts/2025/06/hungary-to-criminalise-crypto-asset-exchange-violations-with-restrictive-validation-obligation-for-service-providers-and-clients'},
+    ],
+    cases:[]},
+  LV:{name:'Latvia',status:'legal',euMember:true,summary:'MiCA member state (Latvijas Banka as NCA). Law on Crypto-asset Services adopted Jul 2024; BlockBen SIA received Latvia\'s first MiCA licence in Dec 2025.',
+    legislation:[
+      {title:'Law on Crypto-asset Services',year:2024,note:'Adopted 13 Jul 2024; designates Latvijas Banka as supervisory authority; sets licensing fees and CASP obligations',officialUrl:'https://fintechlatvia.eu/crypto-asset/mica-regulation/'},
+    ],
+    news:[
+      {title:'Latvijas Banka issues first MiCA licence to BlockBen SIA for EU-wide crypto services',date:'Dec 2025',url:'https://www.bank.lv/en/news-and-events/news-and-articles/news/17411-latvijas-banka-issues-a-licence-to-blockben-sia-for-the-provision-of-crypto-asset-services'},
+      {title:'Latvia positions itself as EU fintech gateway — first crypto-asset licences issued',date:'Dec 2025',url:'https://www.liaa.gov.lv/en/article/latvia-stakes-its-claim-crypto-asset-market-first-licences-issued-operation-eu-market'},
+    ],
+    cases:[]},
+  PL:{name:'Poland',status:'legal',euMember:true,summary:'MiCA member state (KNF as designated NCA). National implementing legislation stalled after two presidential vetoes; crypto market in regulatory limbo with MiCA applying directly but no domestic CASP licensing framework.',
+    legislation:[
+      {title:'Crypto-Assets Market Bill (Bill 1424 / Bill 2064)',year:2025,note:'Would designate KNF as NCA with full CASP licensing powers; vetoed by President Nawrocki in Dec 2025 and again (Bill 2064) in Feb 2026',officialUrl:'https://notesfrompoland.com/2025/12/01/polish-president-vetoes-law-regulating-crypto-assets-market/'},
+    ],
+    news:[
+      {title:'President Nawrocki vetoes MiCA implementing bill a second time — crypto firms face regulatory limbo',date:'Feb 2026',url:'https://coingeek.com/poland-crypto-sector-in-limbo-as-leader-vetoes-mica-bill-anew/'},
+      {title:'Sejm re-passes crypto law and sends vetoed bill back to Senate',date:'Dec 2025',url:'https://www.coindesk.com/policy/2025/12/19/poland-s-lower-house-approves-crypto-law-again-sends-vetoed-bill-back-to-senate'},
+    ],
+    cases:[]},
+  RO:{name:'Romania',status:'legal',euMember:true,summary:'MiCA member state (ASF as NCA). Emergency Ordinance OUG 10/2025 enacted Mar 2025 enabling fast-track CASP licensing; all providers must be fully authorised by Nov 2025.',
+    legislation:[
+      {title:'Government Emergency Ordinance OUG 10/2025',year:2025,note:'Effective 13 Mar 2025; designates ASF as competent authority; fast-track compliance-driven licensing replacing traditional authorisation delays',officialUrl:'https://bmalegal.ro/romanias-new-crypto-regulation-under-mica-compliance-licensing/'},
+    ],
+    news:[
+      {title:'Romania adopts OUG 10/2025 — among EU\'s fastest MiCA market entry frameworks',date:'Mar 2025',url:'https://complyfactor.com/romania-mica-implementation-eus-fastest-crypto-market-entry-2025/'},
+    ],
+    cases:[]},
+  SK:{name:'Slovakia',status:'legal',euMember:true,summary:'MiCA member state (NBS as NCA). National crypto-assets act designates NBS for CASP licensing and advisor examinations; grandfathering period for existing VASPs ended Dec 2025.',
+    legislation:[
+      {title:'Act on Crypto-Assets (MiCA Supplementary Act)',year:2024,note:'Designates NBS as competent authority; sets reporting obligations for ART issuers and CASPs; regulates crypto advisor training and examinations',officialUrl:'https://nbs.sk/en/financial-market-supervision1/supervision/crypto-assets/regulation/'},
+    ],
+    news:[],
+    cases:[]},
+  SI:{name:'Slovenia',status:'legal',euMember:true,summary:'MiCA member state (ATVP as NCA). ZIUTK (Law on Implementation of EU Crypto-Asset Markets Regulation) effective Nov 2024 — among earliest EU adopters. Existing VASPs must upgrade to CASP licences by Jul 2026.',
+    legislation:[
+      {title:'ZIUTK — Law on Implementation of EU Crypto-Asset Markets Regulation',year:2024,note:'Published in Official Gazette 8 Nov 2024; effective 23 Nov 2024; designates ATVP for CASPs and Bank of Slovenia for EMT/ART oversight',officialUrl:'https://www.k-p.si/en/ziutk-eng/'},
+    ],
+    news:[],
+    cases:[]},
+  FR:{name:'France',status:'legal',euMember:true,summary:'MiCA member state (AMF as NCA). Pioneer EU crypto framework under PACTE Act (2019) created DASP registration regime — 117 PSANs registered by end of 2025. Ordinance 2024-936 and Decree 2025-169 transposed MiCA domestically. SG-Forge\'s EURCV is Europe\'s leading bank-issued euro stablecoin. ACPR conducting sweeping AML inspections of exchanges ahead of Jul 2026 CASP deadline.',
+    legislation:[
+      {title:'PACTE Act — Title V (Digital Asset Service Providers)',year:2019,note:'Established DASP (PSAN) registration regime for crypto exchanges and custody; optional enhanced authorisation tier; created ICO visa framework',officialUrl:'https://www.amf-france.org/en/news-publications/depth/mica'},
+      {title:'Ordinance 2024-936 — Crypto-Asset Markets (MiCA Transposition)',year:2024,note:'Adapts French Monetary and Financial Code to MiCA; defines CASP licensing, transitional provisions, and AMF/ACPR supervisory powers',officialUrl:'https://www.globallegalinsights.com/practice-areas/blockchain-cryptocurrency-laws-and-regulations/france/'},
+      {title:'Decree 2025-169 — Crypto-Asset Markets Implementation',year:2025,note:'Implementing decree for Ordinance 2024-936; details application procedures, capital requirements, and compliance standards for CASPs',officialUrl:'https://copla.com/blog/compliance-regulations/mica-regulation-in-france-licensing-implementation-and-what-crypto-firms-need-to-know/'},
+      {title:'Law of 30 April 2025 — Final MiCA Adaptation',year:2025,note:'Parliamentary law completing the MiCA transposition; aligns sanctioning regime and grants AMF expanded investigative powers including web scraping',officialUrl:'https://www.globallegalinsights.com/practice-areas/blockchain-cryptocurrency-laws-and-regulations/france/'},
+    ],
+    news:[
+      {title:'SG-Forge expands EURCV euro stablecoin to XRP Ledger — third chain after Ethereum and Solana',date:'Feb 2026',url:'https://247wallst.com/investing/2026/02/21/societe-generale-expands-euro-stablecoin-to-xrp-ledger-what-a-1-8-trillion-banks-multi-chain-strategy-means-for-ripple/'},
+      {title:'ACPR launches sweeping AML inspections of Binance, Coinbase, and 100+ crypto exchanges',date:'Oct 2025',url:'https://finance.yahoo.com/news/france-hits-binance-coinbase-aml-093751261.html'},
+      {title:'Paris prosecutors open full judicial investigation into Binance for money laundering and tax fraud (2019-2024)',date:'Jan 2025',url:'https://www.coindesk.com/policy/2025/01/28/french-prosecutors-expand-money-laundering-tax-fraud-probe-against-binance-reuters'},
+      {title:'Circle and SG-Forge among first three authorised EMT issuers in France under MiCA',date:'Jun 2024',url:'https://www.amf-france.org/en/news-publications/depth/mica'},
+      {title:'Only 4 of 100+ French PSANs have received full MiCA CASP authorisation — approval rate ~4%',date:'2025',url:'https://coinlaw.io/mica-pressure-mounts-france-flags-binance/'},
+    ],
+    cases:[
+      {title:'JUNALCO v. Binance — judicial investigation for money laundering, tax fraud, and unregulated trading',status:'Ongoing — full judicial probe opened Jan 2025; covers 2019-2024 conduct across EU',year:2025,url:'https://www.coindesk.com/policy/2025/01/28/french-prosecutors-expand-money-laundering-tax-fraud-probe-against-binance-reuters'},
+      {title:'AMF/ACPR blocklist — 66 unlicensed crypto and FX platforms',status:'Active — 23 crypto-derivative platforms and 43 Forex platforms added to national blocklist in 2025',year:2025,url:'https://www.comsuregroup.com/news/66-illegal-trading-crypto-and-fx-platforms-under-aml-scrutiny-in-france/'},
+      {title:'ACPR AML inspections of registered PSANs',status:'Ongoing — on-site controls at major exchanges; deficiencies identified at Binance France',year:2024,url:'https://coinlaw.io/mica-pressure-mounts-france-flags-binance/'},
+    ]},
+  IT:{name:'Italy',status:'legal',euMember:true,summary:'MiCA member state (CONSOB and Bank of Italy as dual NCAs). Legislative Decree 129/2024 transposed MiCA with strict criminal penalties for unlicensed services. OAM register transitioning to full CASP licensing by Jul 2026. Crypto capital gains tax raised from 26% to 33% (2026). Enforcement powers include fines up to EUR 5M for market abuse.',
+    legislation:[
+      {title:'Legislative Decree 129/2024 — MiCA Implementation (Decreto MiCA)',year:2024,note:'Core MiCA transposing law; designates CONSOB (market conduct) and Bank of Italy (prudential/AML) as NCAs; criminalises unlicensed CASP activity with up to 4 years imprisonment',officialUrl:'https://www.klgates.com/The-Italian-Law-Implementing-the-EU-MiCar-Regulation-A-MiFIDisation-of-Crypto-Assets-11-11-2024'},
+      {title:'Legislative Decree 95/2025 — VASP Transitional Extension',year:2025,note:'Extended OAM-registered VASP transitional period to 30 Dec 2025 for licence applications; grace period until 30 Jun 2026',officialUrl:'https://mielogroup.com/italys-mica-transitional-regime-for-crypto%E2%80%91asset-service-providers-casps-extended-until-1-july-2026/'},
+      {title:'Decreto Legislativo 90/2017 — AML Framework (AMLD4/5 Transposition)',year:2017,note:'Original framework bringing virtual asset service providers under AML obligations; OAM registration requirement for VASPs',officialUrl:'https://www.gtlaw.com/en/insights/2024/9/new-italian-rules-for-virtual-asset-service-providers'},
+      {title:'Budget Law 2025 — Crypto Tax Reform',year:2025,note:'Abolished EUR 2,000 exemption threshold; maintained 26% rate for 2025; increased to 33% from 1 Jan 2026; optional 18% deemed-cost revaluation',officialUrl:'https://koinly.io/guides/crypto-tax-italy/'},
+    ],
+    news:[
+      {title:'Italy finalises 33% crypto capital gains tax for 2026 — down from proposed 42% after industry backlash',date:'Dec 2024',url:'https://www.ccn.com/news/crypto/italy-raises-bitcoin-capital-gains-tax-investors-concern/'},
+      {title:'CONSOB sets hard MiCA deadline: VASPs must apply by Dec 30, 2025 or cease Italian operations',date:'2025',url:'https://crypto.news/italy-sets-2025-mica-deadline-for-crypto-provider-consob/'},
+      {title:'Italy introduces EUR 5,000-5M fines for crypto insider trading, market manipulation, and unlawful disclosure',date:'Jun 2024',url:'https://cryptonews.net/news/legal/29272215/'},
+      {title:'Legislative Decree 129/2024 enters into force — MiCA fully transposed into Italian law',date:'Sep 2024',url:'https://www.lexology.com/library/detail.aspx?g=c7668a14-2ca6-4e16-8109-eeaf14eeaf5d'},
+    ],
+    cases:[
+      {title:'CONSOB crypto market abuse regime — enforcement framework under Decreto MiCA',status:'Active — fines of EUR 5,000-5M for insider trading and market manipulation; criminal penalties for unlicensed activity',year:2024,url:'https://cryptonews.net/news/legal/29272215/'},
+      {title:'OAM registry enforcement — surge in supervisory requests (107 in 2025 vs. 44 in 2024)',status:'Ongoing — regulators intensifying oversight of registered VASPs during MiCA transition',year:2025,url:'https://en.spaziocrypto.com/regulation/law-enforcement-raises-guard-on-crypto/'},
+    ]},
+  ES:{name:'Spain',status:'legal',euMember:true,summary:'MiCA member state (CNMV as NCA). Bank of Spain registered VASPs under AML regime until Dec 2024; CNMV now handles CASP authorisation. Bit2Me became first Spanish MiCA-authorised CASP (Jul 2025). DAC8 crypto tax reporting effective Jan 2026. CNMV repealed Circular 1/2022 crypto advertising rules in favour of MiCA regime.',
+    legislation:[
+      {title:'Royal Decree-Law 7/2021 — AML/VASP Registration',year:2021,note:'Brought crypto service providers under anti-money laundering obligations; mandated registration with Bank of Spain',officialUrl:'https://cms.law/en/int/expert-guides/cms-expert-guide-to-crypto-regulation/spain'},
+      {title:'CNMV Circular 1/2022 — Crypto Advertising Regulation',year:2022,note:'Required prior notification of mass crypto advertising campaigns (100,000+ audience) to CNMV; repealed Dec 2024 by Circular 1/2024 under MiCA',officialUrl:'https://cnmv.es/DocPortal/Legislacion/Circulares/Circular_1_2022_EN.pdf'},
+      {title:'Law 6/2023 — Securities Markets and Investment Services Act',year:2023,note:'Includes sanctioning regime for non-compliance with MiCA obligations; aligns Spanish securities framework with EU crypto rules',officialUrl:'https://www.globallegalinsights.com/practice-areas/blockchain-cryptocurrency-laws-and-regulations/spain/'},
+      {title:'CNMV Circular 2/2025 — CASP Reporting Requirements',year:2025,note:'Defines information CASPs must report and reserved statements to be submitted; effective under MiCA supervisory framework',officialUrl:'https://www.cnmv.es/portal/mica/regulacion-criptoactivos?lang=en'},
+      {title:'Royal Decree 249/2023 — Crypto Tax Reporting (Modelo 721)',year:2023,note:'Mandates declaration of overseas crypto holdings exceeding EUR 50,000; penalties for non-disclosure',officialUrl:'https://koinly.io/guides/crypto-tax-spain/'},
+    ],
+    news:[
+      {title:'Bit2Me becomes first Spanish-speaking fintech authorised as CASP under MiCA by CNMV',date:'Jul 2025',url:'https://www.prnewswire.com/news-releases/bit2me-first-spanish-speaking-fintech-authorized-as-a-crypto-asset-service-provider-under-the-mica-regulation-by-the-cnmv-302516225.html'},
+      {title:'Spain confirms DAC8 crypto tax reporting effective Jan 2026 and MiCA licensing deadline Jul 2026',date:'Dec 2025',url:'https://www.bitget.com/news/detail/12560605121704'},
+      {title:'Guardia Civil dismantles international crypto fraud network — 5,000+ victims across Europe',date:'Jun 2025',url:'https://www.globallegalinsights.com/practice-areas/blockchain-cryptocurrency-laws-and-regulations/spain/'},
+      {title:'CNMV warns 12 unregistered crypto exchanges including Huobi and Bybit',date:'Aug 2024',url:'https://ambcrypto.com/spains-cnmv-issues-warnings-against-huobi-bybit/'},
+    ],
+    cases:[
+      {title:'CNMV warnings — Huobi, Bybit and 10 other unregistered exchanges',status:'Warnings issued Aug 2024; entities flagged for operating without required registration',year:2024,url:'https://ambcrypto.com/spains-cnmv-issues-warnings-against-huobi-bybit/'},
+      {title:'Guardia Civil — international crypto fraud network dismantled',status:'Ring dismantled Jun 2025; coordinated operation with US, Estonian, and French law enforcement',year:2025,url:'https://www.globallegalinsights.com/practice-areas/blockchain-cryptocurrency-laws-and-regulations/spain/'},
+    ]},
+  NL:{name:'Netherlands',status:'legal',euMember:true,summary:'MiCA member state (AFM as NCA). Strictest MiCA transition in EU — only 6-month grace period (ended Jun 2025). AFM issued first MiCA licences to MoonPay, BitStaete, ZBD, and Hidden Road (Jan 2025). Bitvavo (largest EUR spot exchange) licensed Jun 2025. DNB has fined Binance, Coinbase, Crypto.com, and OKX for operating without registration.',
+    legislation:[
+      {title:'Uitvoeringswet verordening cryptoactiva — MiCA Implementation Act',year:2024,note:'Core implementing law; amends Financial Supervision Act (Wft) and Economic Offences Act; entered into force 30 Dec 2024; only 6-month transition',officialUrl:'https://watsonlaw.nl/en/mica-implementation-act/'},
+      {title:'Wwft — Anti-Money Laundering and Terrorist Financing Prevention Act (Crypto Provisions)',year:2020,note:'Required DNB registration for all crypto service providers under AMLD5 transposition; predecessor regime to MiCA',officialUrl:'https://www.dnb.nl/en/sector-information/open-book-supervision/laws-and-eu-regulations/micar/'},
+      {title:'DNB Crypto Service Provider Registration Regime',year:2020,note:'DNB registration required for exchanges, wallets, and custody providers; detailed fit-and-proper, AML/KYC, and business continuity requirements',officialUrl:'https://www.sanctionscanner.com/blog/cryptocurrency-regulations-in-the-netherlands-1144'},
+    ],
+    news:[
+      {title:'Bitvavo (largest EUR spot exchange) secures MiCA licence from AFM',date:'Jun 2025',url:'https://www.coindesk.com/policy/2025/06/27/bitvavo-secures-a-mica-license-from-the-netherlands'},
+      {title:'AFM awards first MiCA licences to MoonPay, BitStaete, ZBD, and Hidden Road',date:'Jan 2025',url:'https://www.coindesk.com/policy/2025/01/06/dutch-regulator-awards-eu-mi-ca-license-to-4-companies'},
+      {title:'DNB fines OKX EUR 2.25M for operating without registration',date:'Sep 2025',url:'https://www.ainvest.com/news/regulators-crack-okx-fined-skipping-dutch-registration-2509/'},
+      {title:'Netherlands enforces strictest MiCA transition in EU — 6-month grace period ends Jun 30, 2025',date:'Jun 2025',url:'https://watsonlaw.nl/en/mica-implementation-act/'},
+    ],
+    cases:[
+      {title:'DNB v. Crypto.com — EUR 2.85M fine for unregistered operations',status:'Fine issued Mar 2024; Crypto.com operated May 2020-Nov 2022 without DNB registration',year:2024,url:'https://nltimes.nl/2024/03/13/dutch-central-bank-fines-crypto-exchange-cryptocom-eu285-million'},
+      {title:'DNB v. OKX — EUR 2.25M fine for unregistered crypto services',status:'Fine issued Sep 2025; OKX operated in Netherlands without required registration',year:2025,url:'https://www.ainvest.com/news/regulators-crack-okx-fined-skipping-dutch-registration-2509/'},
+      {title:'DNB v. Binance — EUR 3.3M fine for operating without authorisation',status:'Fine issued Jul 2022; Binance subsequently exited Netherlands; fine at near-maximum level',year:2022,url:'https://www.moneylaundering.com/news/binance-lands-e3-3-million-aml-penalty-in-the-netherlands/'},
+      {title:'DNB v. Coinbase — EUR 3.3M fine for failure to register',status:'Fine issued 2023; Coinbase registered Sep 2022 after enforcement',year:2023,url:'https://www.sanctionscanner.com/blog/cryptocurrency-regulations-in-the-netherlands-1144'},
+    ]},
+  IE:{name:'Ireland',status:'legal',euMember:true,summary:'MiCA member state (Central Bank of Ireland as NCA). SI 607/2024 designated CBI as sole supervisor with shortened 12-month transition (ending Dec 2025). Major EU crypto hub — Coinbase, Ripple, Gemini, and 15+ firms on VASP register. CBI imposed record EUR 21.5M fine on Coinbase Europe for AML failures (Nov 2025).',
+    legislation:[
+      {title:'SI 607/2024 — European Union (Markets in Crypto-Assets) Regulations 2024',year:2024,note:'Designates CBI as National Competent Authority under MiCA; shortened transition to 12 months (ending Dec 2025); no simplified authorisation for existing VASPs',officialUrl:'https://www.irishstatutebook.ie/eli/2024/si/607/made/en/print'},
+      {title:'Criminal Justice (Money Laundering and Terrorist Financing) Act 2010 — VASP Amendments',year:2021,note:'Brought VASPs under Irish AML regime; mandates CBI registration, customer due diligence, and suspicious transaction reporting',officialUrl:'https://www.centralbank.ie/regulation/anti-money-laundering-and-countering-the-financing-of-terrorism/virtual-asset-service-providers/impact-of-micar-on-vasp'},
+      {title:'EU Wire-and-Crypto-Transfer Regulation (TFR) — Irish Application',year:2024,note:'Requires sender/receiver identification for crypto transfers >= EUR 1,000; effective Dec 30, 2024',officialUrl:'https://copla.com/blog/compliance-regulations/mica-regulation-in-ireland-licensing-implementation-and-what-crypto-firms-need-to-know/'},
+    ],
+    news:[
+      {title:'CBI fines Coinbase Europe EUR 21.5M for AML failures — 30M+ transactions unmonitored over 12 months',date:'Nov 2025',url:'https://www.centralbank.ie/news/article/press-release-enforcement-action-against-coinbase-europe-limited-6-November-2025'},
+      {title:'Coinbase moves EU regulatory base from Ireland to Luxembourg after obtaining MiCA licence',date:'Jun 2025',url:'https://cryptobriefing.com/coinbase-europe-ireland-fine-aml-2024/'},
+      {title:'Ireland shortens MiCA transition to 12 months — all VASPs must hold CASP licence by Dec 2025',date:'Nov 2024',url:'https://copla.com/blog/compliance-regulations/mica-regulation-in-ireland-licensing-implementation-and-what-crypto-firms-need-to-know/'},
+      {title:'15+ brands including Coinbase, Ripple, and Gemini on CBI VASP register',date:'Jul 2024',url:'https://www.mccannfitzgerald.com/knowledge/financial-services-regulation/ireland-as-a-location-for-crypto-asset-service-providers-2024'},
+    ],
+    cases:[
+      {title:'CBI v. Coinbase Europe Ltd — EUR 21.5M AML penalty',status:'Settled Nov 2025; 30M+ transactions (EUR 176B+) unmonitored; 2,708 suspicious transaction reports subsequently filed; fourth-largest CBI penalty ever',year:2025,url:'https://www.centralbank.ie/news/article/press-release-enforcement-action-against-coinbase-europe-limited-6-November-2025'},
+    ]},
+  PT:{name:'Portugal',status:'legal',euMember:true,summary:'MiCA member state (CMVM and Bank of Portugal as dual NCAs). Late MiCA transposition due to 2024 snap election — Laws 69/2025 and 70/2025 published Dec 2025. Split supervisory model: Bank of Portugal handles CASP authorisation and prudential oversight; CMVM handles market conduct. Ended famous crypto tax haven status in 2023 with 28% short-term CGT.',
+    legislation:[
+      {title:'Law No. 69/2025 — MiCA Implementation Act',year:2025,note:'Core MiCA transposition; establishes dual NCA model (Bank of Portugal + CMVM); authorisation procedures, sanctions, and supervisory cooperation framework',officialUrl:'https://www.dlapiper.com/en/insights/publications/2025/12/legal-alert-portugal-implements-laws-on-crypto-assets-and-transfer-of-funds-regulations'},
+      {title:'Law No. 70/2025 — Transfer of Funds Regulation Implementation',year:2025,note:'Implements TFR requirements for crypto transfers; Travel Rule and sender/receiver identification obligations',officialUrl:'https://www.dlapiper.com/en/insights/publications/2025/12/legal-alert-portugal-implements-laws-on-crypto-assets-and-transfer-of-funds-regulations'},
+      {title:'State Budget 2023 (Lei do OE 2023) — Crypto Tax Regime',year:2023,note:'Ended Portugal\'s zero-tax crypto regime; introduced 28% CGT on short-term gains (holdings < 365 days); long-term holdings remain exempt',officialUrl:'https://www.globalcitizensolutions.com/portugal-crypto-tax/'},
+      {title:'Bank of Portugal VASP Registration Regime',year:2022,note:'AMLD5 transposition requiring AML registration for virtual asset service providers with Bank of Portugal; predecessor regime to MiCA',officialUrl:'https://practiceguides.chambers.com/practice-guides/blockchain-2025/portugal/trends-and-developments'},
+    ],
+    news:[
+      {title:'Laws 69/2025 and 70/2025 published — MiCA and TFR fully transposed into Portuguese law',date:'Dec 2025',url:'https://www.dlapiper.com/en/insights/publications/2025/12/legal-alert-portugal-implements-laws-on-crypto-assets-and-transfer-of-funds-regulations'},
+      {title:'Portugal was last major EU state to transpose MiCA — delayed by Mar 2024 snap parliamentary election',date:'Dec 2025',url:'https://www.mlgts.pt/en/knowledge/legal-alerts/Legal-Alert-Implementation-of-the-Markets-in-Crypto-Assets-Regulation-in-Portugal/26444/'},
+      {title:'New crypto rules foresee fines up to EUR 5M for non-compliant CASPs',date:'Dec 2025',url:'https://www.theportugalnews.com/news/2025-12-24/new-crypto-rules-foresee-fines-up-to-5-million/935412'},
+      {title:'Registered VASPs given until Jul 2026 to obtain full MiCA CASP licence',date:'2025',url:'https://www.globallegalinsights.com/practice-areas/blockchain-cryptocurrency-laws-and-regulations/portugal/'},
+    ],
+    cases:[
+      {title:'Bank of Portugal VASP compliance — transition enforcement',status:'Active — registered VASPs must obtain MiCA authorisation by Jul 2026 or cease operations; fines up to EUR 5M',year:2025,url:'https://www.theportugalnews.com/news/2025-12-24/new-crypto-rules-foresee-fines-up-to-5-million/935412'},
+    ]},
+  AT:{name:'Austria',status:'legal',euMember:true,summary:'MiCA member state (FMA as NCA). MiCA-VVG entered into force Jul 2024, shortening grandfathering to Dec 2025. Vienna emerging as MiCA licensing hub — Bitpanda, Bybit, KuCoin EU all authorised. FMA co-signed joint paper with AMF and Consob calling for ESMA direct supervision of major CASPs.',
+    legislation:[
+      {title:'MiCA-VVG — MiCA Regulation Enforcement Act',year:2024,note:'National implementing law in force 20 Jul 2024; designates FMA as NCA; shortens grandfathering to 31 Dec 2025',officialUrl:'https://www.fma.gv.at/en/fma-takes-over-casp-supervision-in-austria/'},
+      {title:'FM-GwG — Financial Market Anti-Money Laundering Act (VASP provisions)',year:2016,note:'Defines VASPs and registration requirements; existing registrants eligible for MiCA transitional period',officialUrl:'https://www.globallegalinsights.com/practice-areas/blockchain-cryptocurrency-laws-and-regulations/austria/'},
+    ],
+    news:[
+      {title:'FMA bans KuCoin EU from onboarding new clients for AML compliance failures',date:'Feb 2026',url:'https://fincrimecentral.com/fma-austria-kucoin-eu-compliance-ban-2026/'},
+      {title:'Bitpanda secures third MiCA licence from home-jurisdiction FMA',date:'Apr 2025',url:'https://cointelegraph.com/news/bitpanda-secures-third-mica-license-austria'},
+      {title:'Bybit granted MiCA licence in Austria by FMA',date:'May 2025',url:'https://www.coindesk.com/policy/2025/05/29/crypto-exchange-bybit-granted-european-mica-license-in-austria'},
+    ],
+    cases:[
+      {title:'FMA v. KuCoin EU — AML compliance failures',status:'Prohibition on new business imposed Feb 2026; remediation required',year:2026,url:'https://fincrimecentral.com/fma-austria-kucoin-eu-compliance-ban-2026/'},
+    ]},
+  BE:{name:'Belgium',status:'legal',euMember:true,summary:'MiCA member state (FSMA as NCA). Late MiCA implementer — Act of 11 December 2025 embedded MiCA into domestic law. Twin-peaks model: FSMA (conduct) and NBB (prudential). Pioneered strict crypto advertising rules (Royal Decree, May 2023) requiring mandatory risk warnings.',
+    legislation:[
+      {title:'Act of 11 December 2025 — MiCA Implementing Law',year:2025,note:'Published 24 Dec 2025; designates FSMA and NBB as competent authorities; transitional period until 1 Jul 2026',officialUrl:'https://www.fsma.be/en/crypto-asset-service-provider-casp'},
+      {title:'Royal Decree of 5 January 2023 — Crypto Advertising Rules',year:2023,note:'Mandatory risk warnings on all crypto ads; FSMA pre-notification for mass campaigns; in force since 17 May 2023',officialUrl:'https://www.fsma.be/en/news/new-rules-advertisements-virtual-currencies-enter-force'},
+    ],
+    news:[
+      {title:'Belgium implements MiCA with Act of 11 December 2025 — CASP licence applications open Jan 2026',date:'Jan 2026',url:'https://simontbraun.eu/micar-licence-applications-finally-available-in-belgium/2026/01/05/'},
+    ],
+    cases:[
+      {title:'FSMA v. Binance — ordered to cease all crypto services in Belgium',status:'Concluded — Binance ceased Belgian operations',year:2023,url:'https://www.fsma.be/en/news/fsma-orders-binance-cease-immediately-all-offers-virtual-currency-services-belgium'},
+    ]},
+  CY:{name:'Cyprus',status:'legal',euMember:true,summary:'MiCA member state (CySEC as NCA). CySEC froze national CASP applications from Oct 2024 ahead of MiCA. AML Amendment Law (Jun 2025) implemented crypto travel rule. Major CASP hub with 87 licensed providers by mid-2025.',
+    legislation:[
+      {title:'Prevention and Suppression of Money Laundering (Amendment No. 2) Law of 2025',year:2025,note:'Implements crypto travel rule for CASPs; aligns with Transfer of Funds Regulation (EU) 2023/1113',officialUrl:'https://www.harneys.com/our-blogs/regulatory/amendments-to-cypriot-aml-laws-for-crypto-asset-service-providers/'},
+      {title:'AML/CFT Law — CASP Registration (pre-MiCA national regime)',year:2021,note:'Required CySEC registration for crypto firms under anti-money laundering framework; superseded by MiCA',officialUrl:'https://cms.law/en/int/expert-guides/cms-expert-guide-to-crypto-regulation/cyprus'},
+    ],
+    news:[
+      {title:'CySEC freezes national CASP applications, opens MiCA pre-application window',date:'Nov 2024',url:'https://cointelegraph.com/news/eu-mica-crypto-regulations-cyprus-cysec'},
+      {title:'87 CASPs licensed — Cyprus emerges as major EU crypto hub',date:'Mid 2025',url:'https://www.globallegalinsights.com/practice-areas/fintech-laws-and-regulations/cyprus/'},
+    ],
+    cases:[]},
+  EE:{name:'Estonia',status:'legal',euMember:true,summary:'MiCA member state (FSA as NCA). Conducted Europe\'s most aggressive VASP cleanup — revoked 1,800+ licences since 2020 after money laundering scandals. Crypto Asset Market Act (Jul 2024) transferred oversight from FIU to FSA. All FIU licences expire Jul 2026.',
+    legislation:[
+      {title:'Crypto Asset Market Act (CMA)',year:2024,note:'In force 1 Jul 2024; assigns FSA as sole CASP authority; supplements MiCA with national licensing, governance, and liability requirements',officialUrl:'https://www.fi.ee/en/investeerimine/investeerimisvaldkonna-tegevuslubade-taotlemine/kruptovaraturu-tegevusluba'},
+      {title:'MLTFPA — Money Laundering Prevention Act (VASP provisions)',year:2017,note:'Original VASP framework; amended 2022 with stricter capital and substance requirements; being superseded by CMA/MiCA',officialUrl:'https://cms.law/en/int/expert-guides/cms-expert-guide-to-crypto-regulation/estonia'},
+    ],
+    news:[
+      {title:'FSA assumes full CASP regulatory responsibilities from FIU under Crypto Asset Market Act',date:'Jan 2025',url:'https://copla.com/blog/compliance-regulations/mica-regulation-in-estonia-licensing-implementation-and-what-crypto-firms-need-to-know/'},
+      {title:'Estonia\'s massive VASP cleanup: 1,800+ licences revoked since 2020',date:'2020-2022',url:'https://fintechmagazine.com/crypto/estonia-strips-1000-crypto-licenses-2020'},
+    ],
+    cases:[]},
+  LT:{name:'Lithuania',status:'legal',euMember:true,summary:'MiCA member state (Bank of Lithuania as NCA). Was Europe\'s largest VASP jurisdiction with 850+ registered firms; MiCA reduced this to just 3 licensed CASPs by Jan 2026. Criminal liability for unlicensed activity from Jan 2026.',
+    legislation:[
+      {title:'Law on Markets in Crypto-Assets',year:2024,note:'Enacted 11 Jul 2024; designates Bank of Lithuania as NCA for CASP licensing; transition period ended 31 Dec 2025',officialUrl:'https://www.lb.lt/en/markets-in-crypto-assets'},
+      {title:'Criminal Code Amendment — Unlicensed Crypto Activity',year:2024,note:'Imprisonment up to 4 years and website blocking for operating without MiCA licence after transition deadline',officialUrl:'https://letstalkbitco.in/lithuanias-crypto-crackdown-unlicensed-firms-face-2024-deadline-and-jail-time/'},
+    ],
+    news:[
+      {title:'Only 3 CASP licences granted — Lithuania shrinks from 850+ to a handful under MiCA',date:'Jan 2026',url:'https://fintechbaltic.com/11166/fintechlithuania/lithuanias-crypto-sector-shrinks-following-mica-implementation/'},
+      {title:'Over 22 Lithuanian VASPs relocate to Poland ahead of MiCA enforcement',date:'Q4 2025',url:'https://www.globallegalinsights.com/practice-areas/blockchain-cryptocurrency-laws-and-regulations/lithuania/'},
+    ],
+    cases:[]},
+  LU:{name:'Luxembourg',status:'legal',euMember:true,summary:'MiCA member state (CSSF as NCA). Law of 6 February 2025 designates CSSF as MiCA authority. Major fund domicile — CSSF allows retail UCITS indirect crypto exposure up to 10% NAV (Feb 2026). Crypto sector classified as "high risk" in 2025 national risk assessment.',
+    legislation:[
+      {title:'Law of 6 February 2025 — MiCA/TFR Implementing Law',year:2025,note:'Designates CSSF as MiCA competent authority; grants supervisory, investigative, and sanctions powers; 18-month VASP transition to 1 Jul 2026',officialUrl:'https://www.cssf.lu/en/2025/02/publication-in-the-official-journal-of-the-luxembourg-law-designating-the-cssf-as-the-competent-authority-for-micar/'},
+      {title:'Law of 25 March 2020 — VASP Registration',year:2020,note:'First Luxembourg law requiring VASP registration with CSSF for AML/CFT purposes; new registrations closed since MiCA',officialUrl:'https://www.cssf.lu/en/crypto-assets/'},
+    ],
+    news:[
+      {title:'CSSF allows retail funds indirect crypto exposure up to 10% NAV via ETPs/ETFs',date:'Feb 2026',url:'https://www.pwc.lu/en/newsletter/2026/cssf-opens-the-door-to-crypto-exposure-in-ucis.html'},
+      {title:'Law of 6 February 2025 designates CSSF as Luxembourg\'s MiCA authority',date:'Feb 2025',url:'https://www.goodwinlaw.com/en/insights/publications/2025/02/insights-finance-dcb-luxembourg-strengthens-its-regulatory-framework'},
+    ],
+    cases:[]},
+  MT:{name:'Malta',status:'legal',euMember:true,summary:'MiCA member state (MFSA as NCA). Crypto pioneer — Virtual Financial Assets Act (2018) was Europe\'s first bespoke framework. Markets in Crypto-Assets Act (Chapter 647) enacted Nov 2024 to implement MiCA, phasing out the VFA regime. ESMA flagged MFSA for fast-tracking a CASP authorisation.',
+    legislation:[
+      {title:'Markets in Crypto-Assets Act — Chapter 647',year:2024,note:'Implements MiCA domestically; grants MFSA licensing and sanctions powers for CASPs and issuers',officialUrl:'https://legislation.mt/eli/cap/647/eng'},
+      {title:'Virtual Financial Assets Act — Chapter 590',year:2018,note:'Europe\'s first bespoke crypto framework; being phased out under MiCA transition by 1 Jul 2026',officialUrl:'https://legislation.mt/eli/cap/590/eng'},
+    ],
+    news:[
+      {title:'ESMA peer review flags MFSA for fast-tracking CASP authorisation with unresolved issues',date:'Jul 2025',url:'https://www.esma.europa.eu/press-news/esma-news/esma-identifies-opportunities-strengthen-mica-authorisations'},
+      {title:'OKX fined $1.2M by MFSA for AML failures predating its MiCA licence',date:'Apr 2025',url:'https://www.financemagnates.com/cryptocurrency/crypto-exchange-okx-pays-304000-fine-in-malta-for-compliance-failures/'},
+    ],
+    cases:[
+      {title:'MFSA v. OKX (Okcoin Europe) — AML compliance failings',status:'EUR 304K penalty (2024) + $1.2M fine (2025); third-party governance review imposed',year:2024,url:'https://www.coindesk.com/business/2024/03/27/okx-quietly-settled-regulatory-failings-with-malta-financial-services-authority'},
+    ]},
 };
 
 const COLOR = { legal:'#8bc9a4', partial:'#edc978', restricted:'#e0a66b', banned:'#d45d56', default:'#d4cdc4' };
