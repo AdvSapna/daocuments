@@ -1134,6 +1134,34 @@ export const SAMPLE = {
     cases:[
       {title:'MFSA v. OKX (Okcoin Europe) — AML compliance failings',status:'EUR 304K penalty (2024) + $1.2M fine (2025); third-party governance review imposed',year:2024,url:'https://www.coindesk.com/business/2024/03/27/okx-quietly-settled-regulatory-failings-with-malta-financial-services-authority'},
     ]},
+  BT:{name:'Bhutan',status:'restricted',summary:'Bhutan mines Bitcoin at sovereign scale via Druk Holding & Investments using hydropower, making it the world\'s third-largest state BTC holder. The Royal Monetary Authority restricts public crypto access but permits mining and exchanges within the Gelephu Mindfulness City special zone, and launched a national crypto tourism payment system via Binance Pay.',
+    legislation:[
+      {title:'RMA Regulatory Stance on Crypto Currency — April 2025 Notice',year:2025,note:'Restricts crypto mining and exchange operations exclusively to entities registered in Gelephu Mindfulness City; prohibits on-ramping through RMA-regulated banks',officialUrl:'https://www.rma.org.bt/view_news/106/'},
+      {title:'Gelephu Mindfulness City Digital Asset Framework',year:2025,note:'Establishes GMC as a crypto-friendly special administrative region with its own licensing regime for digital asset businesses',officialUrl:'https://gmc.bt/'},
+      {title:'National Bitcoin Development Pledge',year:2025,note:'Allocates up to 10,000 BTC to fund Gelephu Mindfulness City development via collateralised lending and yield strategies',officialUrl:'https://www.coindesk.com/policy/2025/12/17/bhutan-commits-up-to-10-000-bitcoin-to-back-new-mindfulness-based-economic-hub'},
+    ],
+    news:[
+      {title:'Bhutan commits up to 10,000 BTC to back Gelephu Mindfulness City development',date:'Dec 2025',url:'https://www.coindesk.com/policy/2025/12/17/bhutan-commits-up-to-10-000-bitcoin-to-back-new-mindfulness-based-economic-hub'},
+      {title:'Bhutan and Binance Pay launch world\'s first national-level crypto tourism payment system',date:'May 2025',url:'https://www.prnewswire.com/news-releases/bhutan-and-binance-pay-partner-to-launch-worlds-first-national-level-crypto-tourism-payment-system-302447403.html'},
+      {title:'RMA restricts crypto mining and exchanges to Gelephu Mindfulness City zone',date:'Apr 2025',url:'https://www.rma.org.bt/view_news/106/'},
+      {title:'Bhutan revealed as world\'s third-largest sovereign Bitcoin holder with 12,062 BTC',date:'2024',url:'https://www.chaincatcher.com/en/article/2205546'},
+    ],
+    cases:[]},
+  NP:{name:'Nepal',status:'banned',summary:'Nepal maintains a comprehensive ban on all cryptocurrency activities — trading, mining, holding, and transferring — enforced by the Nepal Rastra Bank and backed by criminal penalties under Section 262A of the Penal Code. Despite the ban, underground P2P trading is widespread; a government task force recommended revisiting the approach in late 2025.',
+    legislation:[
+      {title:'Muluki Criminal (Code) Act — Section 262A Amendment',year:2024,note:'Criminalises creation, sale, holding, and transfer of crypto assets; penalties include up to 5 years imprisonment and fines up to three times the transaction amount',officialUrl:'https://commonlaw.com.np/publications/cryptocurrency-law-in-nepal'},
+      {title:'Nepal Rastra Bank Act 2002 — Crypto Prohibition Notices',year:2022,note:'NRB circular of Jan 2022 outlawed all virtual currency activities including mining and investing; reinforced the 2017 Bitcoin ban',officialUrl:'https://www.nrb.org.np/'},
+      {title:'NRB CBDC Consultation Document',year:2025,note:'Outlines plans for wholesale CBDC pilot in FY 2025/26 and retail CBDC by 2027; crypto and stablecoins explicitly excluded',officialUrl:'https://www.nrb.org.np/cmd/central-bank-digital-currency-cbdc-identifying-appropriate-policy-goals-and-design-for-nepal-public-consultation-document/'},
+    ],
+    news:[
+      {title:'Government task force calls for fresh look at crypto rules, urges NRB to study potential uses',date:'Dec 2025',url:'https://nepalmonitor.com/2025/12/24/nepal-task-force-calls-for-fresh-look-at-crypto-rules/'},
+      {title:'Despite outright ban, crypto-linked financial risks surge in Nepal',date:'Jan 2026',url:'https://english.clickmandu.com/2026/01/5529/'},
+      {title:'Penal Code amended to criminalise crypto; 28 cases registered and 117 people arrested in FY 2024-25',date:'Apr 2024',url:'https://corporatebizlegal.com/is-cryptocurrency-illegal-in-nepal-law-of-crypto/'},
+    ],
+    cases:[
+      {title:'Kathmandu District Court — family sentenced for illegal BTC/USDT trading',status:'Convicted — 3 years imprisonment; Rs 97.998M in transactions',year:2025,url:'https://lawinpartners.com/publication/cryptocurrency-crime-in-nepal/'},
+      {title:'Budhanilkantha crypto trading and betting ring — 23 Indian nationals arrested',status:'Investigation ongoing — case filed in Kathmandu District Court',year:2025,url:'https://lawbhandari.com/publication/crypto-currency-law-in-nepal-prosecution-of-crypto-cases'},
+    ]},
 };
 
 const COLOR = { legal:'#8bc9a4', partial:'#edc978', restricted:'#e0a66b', banned:'#d45d56', default:'#d4cdc4' };
@@ -1148,8 +1176,16 @@ function getColor(status) {
   return COLOR.default;
 }
 
+const NAME_TO_CODE = { France:'FR', Norway:'NO', 'Northern Cyprus':'CY', Kosovo:'XK', Somaliland:'SO' };
+const CODE_OVERRIDES = { 'CN-TW':'TW' };
+
 function getCode(props) {
-  return props['ISO3166-1-Alpha-2'] || props.ISO_A2 || props.iso_a2 || '';
+  let code = props['ISO3166-1-Alpha-2'] || props.ISO_A2 || props.iso_a2 || '';
+  if (code === '-99' || code === '') {
+    const name = props.name || props.ADMIN || props.NAME || '';
+    code = NAME_TO_CODE[name] || '';
+  }
+  return CODE_OVERRIDES[code] || code;
 }
 
 function getName(props) {
