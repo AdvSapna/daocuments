@@ -238,7 +238,7 @@ export default function App() {
     <div style={{ width: '100vw', overflowX: 'hidden' }}>
 
       {showAuth && (
-        <AuthModal onSuccess={() => setShowAuth(false)} />
+        <AuthModal onSuccess={() => setShowAuth(false)} onClose={() => setShowAuth(false)} />
       )}
 
       {showSupport && (

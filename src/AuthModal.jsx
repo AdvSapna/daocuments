@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import supabase from './supabase';
 
-export default function AuthModal({ onSuccess }) {
+export default function AuthModal({ onSuccess, onClose }) {
   const [step, setStep] = useState('email'); // 'email' | 'sent'
   const [email, setEmail] = useState('');
   const [newsletter, setNewsletter] = useState(true);
@@ -48,14 +48,19 @@ export default function AuthModal({ onSuccess }) {
   return (
     <div className="auth-overlay">
       <div className="auth-modal">
-        <div className="auth-logo">
-          <div style={{
-            width: 40, height: 40, borderRadius: '50%', background: 'var(--accent)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 20, fontWeight: 800, color: '#fff',
-          }}>
-            D
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div className="auth-logo">
+            <div style={{
+              width: 40, height: 40, borderRadius: '50%', background: 'var(--accent)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 20, fontWeight: 800, color: '#fff',
+            }}>
+              D
+            </div>
           </div>
+          {onClose && (
+            <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 20, padding: 0, lineHeight: 1 }}>x</button>
+          )}
         </div>
 
         {step === 'email' ? (
