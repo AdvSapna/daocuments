@@ -301,6 +301,25 @@ export default function App() {
             ))}
           </div>
 
+          {/* Explore the Map CTA */}
+          <button
+            onClick={scrollToMap}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              margin: '0 auto 16px', padding: '12px 32px',
+              background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 8,
+              fontSize: 14, fontWeight: 700, fontFamily: "'Times New Roman', Times, serif",
+              letterSpacing: '0.08em', cursor: 'pointer', transition: 'opacity 0.2s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+          >
+            EXPLORE THE MAP
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M10 4v12M5 11l5 5 5-5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
           {/* Why trust us */}
           <div style={{
             background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10,
@@ -344,23 +363,6 @@ export default function App() {
 
         </div>
 
-        {/* Scroll indicator */}
-        <button
-          className="scroll-cta"
-          onClick={scrollToMap}
-          style={{
-            position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
-            background: 'none', border: 'none', cursor: 'pointer',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-          }}
-        >
-          <span className="scroll-cta-text" style={{ fontSize: 10, fontFamily: "'Times New Roman', Times, serif", color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
-            EXPLORE THE MAP
-          </span>
-          <svg className="scroll-cta-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ animation: 'fadeInUp 1.5s ease infinite' }}>
-            <path d="M10 4v12M5 11l5 5 5-5" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
       </section>
 
       {/* ── Section 2: Map Tracker ── */}
