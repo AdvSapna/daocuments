@@ -138,7 +138,7 @@ function SupportModal({ onClose }) {
 
   return (
     <div className="auth-overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="auth-modal" style={{ maxWidth: 440, textAlign: 'center' }}>
+      <div className="auth-modal" style={{ maxWidth: 700, textAlign: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <div style={{ fontSize: 10, color: 'var(--accent)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.12em' }}>SUPPORT MY RESEARCH</div>
           <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 18 }}>x</button>
@@ -146,9 +146,9 @@ function SupportModal({ onClose }) {
         <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 24 }}>
           DAOcuments is free and independent. If you find it useful, consider supporting the project onchain.
         </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div className="support-wallets" style={{ display: 'flex', gap: 20 }}>
           {WALLETS.map((w, i) => (
-            <div key={i} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border)', borderRadius: 10, padding: 20 }}>
+            <div key={i} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border)', borderRadius: 10, padding: 20, flex: 1 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: w.color, fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.08em', marginBottom: 12 }}>
                 {w.chain.toUpperCase()}
               </div>
@@ -253,33 +253,33 @@ export default function App() {
         justifyContent: 'center',
         alignItems: 'center',
         background: 'var(--bg-primary)',
-        padding: '80px 24px',
+        padding: '40px 24px 60px',
         position: 'relative',
       }}>
         <div style={{ maxWidth: 900, textAlign: 'center', width: '100%' }}>
           {/* Avatar placeholder */}
           <div style={{
-            width: 80, height: 80, borderRadius: '50%', background: 'var(--accent)',
+            width: 64, height: 64, borderRadius: '50%', background: 'var(--accent)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 32, fontWeight: 800, color: '#fff', margin: '0 auto 24px',
+            fontSize: 28, fontWeight: 800, color: '#fff', margin: '0 auto 16px',
           }}>
             D
           </div>
 
           <div style={{
             fontSize: 10, color: 'var(--text-muted)', fontFamily: "'Times New Roman', Times, serif",
-            letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 12,
+            letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8,
           }}>
             ABOUT THE PROJECT
           </div>
 
-          <h1 className="about-heading" style={{ fontSize: 36, fontWeight: 800, lineHeight: 1.2, marginBottom: 20, color: 'var(--text-primary)' }}>
+          <h1 className="about-heading" style={{ fontSize: 36, fontWeight: 800, lineHeight: 1.2, marginBottom: 12, color: 'var(--text-primary)' }}>
             Tracking Crypto Regulation<br />Around the World
           </h1>
 
           <p style={{
-            fontSize: 18, color: 'var(--text-secondary)', lineHeight: 1.8,
-            maxWidth: 680, margin: '0 auto 28px',
+            fontSize: 16, color: 'var(--text-secondary)', lineHeight: 1.7,
+            maxWidth: 680, margin: '0 auto 16px',
           }}>
             DAOcuments is a free, independent project mapping the global landscape of cryptocurrency regulation. We track legislation, enforcement actions, and policy shifts across 47 jurisdictions, giving you the full picture of where crypto stands, country by country.
           </p>
@@ -287,7 +287,7 @@ export default function App() {
           {/* Who it's for */}
           <div className="about-features" style={{
             display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16,
-            maxWidth: 760, margin: '0 auto 28px', textAlign: 'center',
+            maxWidth: 760, margin: '0 auto 16px', textAlign: 'center',
           }}>
             {[
               ['Lawyers & Compliance', 'Navigate cross-border regulatory requirements with sourced legislation and case law.'],
@@ -304,7 +304,7 @@ export default function App() {
           {/* Why trust us */}
           <div style={{
             background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10,
-            padding: '18px 24px', maxWidth: 760, margin: '0 auto 28px', textAlign: 'left',
+            padding: '14px 20px', maxWidth: 760, margin: '0 auto 16px', textAlign: 'left',
           }}>
             <div style={{ fontSize: 13, color: 'var(--accent)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.12em', marginBottom: 12 }}>WHY TRUST DAOCUMENTS</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -322,15 +322,15 @@ export default function App() {
           </div>
 
           <p style={{
-            fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.8,
-            maxWidth: 580, margin: '0 auto 24px',
+            fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.7,
+            maxWidth: 580, margin: '0 auto 14px',
             fontFamily: "'Times New Roman', Times, serif",
           }}>
             Built by Sapna Singh — lawyer, researcher, builder, and crypto policy nerd.
           </p>
 
           {/* Social links */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 20 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 10 }}>
             <SocialIcon href="https://x.com/AdvSapna_" label="Twitter / X">
               <TwitterIcon />
             </SocialIcon>
