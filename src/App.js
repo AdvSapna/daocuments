@@ -5,6 +5,7 @@ import CountryList from './CountryList';
 import AuthModal from './AuthModal';
 import { QRCodeSVG } from 'qrcode.react';
 import supabase from './supabase';
+import WEEKLY_UPDATES from './updates';
 
 function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoint);
@@ -116,6 +117,87 @@ function CountrySearch({ data, onSelect }) {
               </span>
             </button>
           ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+const TYPE_LABELS = { regulatory: 'REGULATORY', news: 'NEWS', case: 'CASE LAW' };
+const TYPE_COLORS = { regulatory: '#7cafc4', news: '#edc978', case: '#e0a66b' };
+
+function NotificationBell({ updates }) {
+  const [open, setOpen] = useState(false);
+  const [expandedWeeks, setExpandedWeeks] = useState({ 0: true }); // first week expanded by default
+  const ref = useRef(null);
+
+  const totalCount = updates.reduce((sum, week) => sum + week.items.length, 0);
+
+  useEffect(() => {
+    const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const toggleWeek = (idx) => {
+    setExpandedWeeks(prev => ({ ...prev, [idx]: !prev[idx] }));
+  };
+
+  return (
+    <div ref={ref} style={{ position: 'relative' }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="notification-bell-btn"
+        aria-label="Recent updates"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+        {totalCount > 0 && (
+          <span className="notification-badge">{totalCount}</span>
+        )}
+      </button>
+      {open && (
+        <div className="notification-dropdown">
+          <div className="notification-dropdown-header">
+            <span>What's New</span>
+          </div>
+          <div className="notification-dropdown-body">
+            {updates.map((week, wIdx) => (
+              <div key={wIdx}>
+                <button
+                  className="notification-week-toggle"
+                  onClick={() => toggleWeek(wIdx)}
+                >
+                  <span>{week.label}</span>
+                  <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>
+                    {week.items.length} update{week.items.length !== 1 ? 's' : ''}
+                    {' '}{expandedWeeks[wIdx] ? '▾' : '▸'}
+                  </span>
+                </button>
+                {expandedWeeks[wIdx] && (
+                  <div className="notification-week-items">
+                    {week.items.map((item, iIdx) => (
+                      <a key={iIdx} className="notification-item" href={item.url} target="_blank" rel="noopener noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+                          <span className="notification-type-badge" style={{ background: TYPE_COLORS[item.type] || 'var(--accent)' }}>
+                            {TYPE_LABELS[item.type] || item.type.toUpperCase()}
+                          </span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-primary)' }}>
+                            {item.countryName}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                          {item.title}
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -381,6 +463,7 @@ export default function App() {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
             <CountrySearch data={data} onSelect={setSelectedCountry} />
+            <NotificationBell updates={WEEKLY_UPDATES} />
             <div className="header-legend" style={{ display: 'flex', gap: 16 }}>
               {[['Legal', '#8bc9a4'], ['Partial', '#edc978'], ['Restricted', '#e0a66b'], ['Banned', '#d45d56']].map(([label, color]) => (
                 <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: 'var(--text-secondary)', fontFamily: "'Times New Roman', Times, serif" }}>

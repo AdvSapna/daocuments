@@ -1162,6 +1162,16 @@ export const SAMPLE = {
       {title:'Kathmandu District Court — family sentenced for illegal BTC/USDT trading',status:'Convicted — 3 years imprisonment; Rs 97.998M in transactions',year:2025,url:'https://lawinpartners.com/publication/cryptocurrency-crime-in-nepal/'},
       {title:'Budhanilkantha crypto trading and betting ring — 23 Indian nationals arrested',status:'Investigation ongoing — case filed in Kathmandu District Court',year:2025,url:'https://lawbhandari.com/publication/crypto-currency-law-in-nepal-prosecution-of-crypto-cases'},
     ]},
+  KH:{name:'Cambodia',status:'restricted',summary:'Cambodia has emerged as a global epicentre of cyber-scam compounds that rely heavily on crypto for laundering. In March 2026, Parliament unanimously passed a new anti-scam law imposing up to life imprisonment for operators of technology fraud sites, especially where human trafficking or deaths are involved. The National Bank of Cambodia prohibits banks from dealing in crypto, but enforcement against scam operations using digital assets is now the government\'s top priority.',
+    legislation:[
+      {title:'Law on Technology Fraud Sites (Anti-Scam Law)',year:2026,note:'Unanimously adopted by Parliament on 30 Mar 2026; imposes 5–10 years for directing scam sites, 10–20 years where trafficking or violence is involved, and up to life imprisonment if deaths occur; fines up to $250,000; awaits Senate review and royal approval',officialUrl:'https://www.washingtontimes.com/news/2026/mar/30/cambodia-advances-scam-center-law-penalties-life-prison/'},
+      {title:'National Bank of Cambodia — Crypto Prohibition Notices',year:2018,note:'NBC issued directives prohibiting banks and financial institutions from dealing in cryptocurrencies; no standalone crypto licensing framework exists',officialUrl:'https://www.nbc.gov.kh/'},
+    ],
+    news:[
+      {title:'Parliament unanimously adopts scam centre law with up to life imprisonment',date:'Mar 2026',url:'https://www.washingtontimes.com/news/2026/mar/30/cambodia-advances-scam-center-law-penalties-life-prison/'},
+      {title:'Cambodian scam giant handled $49 billion in crypto transactions since 2021',date:'2025',url:'https://therecord.media/cambodian-scam-giant-handled-billions-in-transactions'},
+    ],
+    cases:[]},
 };
 
 const COLOR = { legal:'#8bc9a4', partial:'#edc978', restricted:'#e0a66b', banned:'#d45d56', default:'#d4cdc4' };
