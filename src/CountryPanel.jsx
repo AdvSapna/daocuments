@@ -19,6 +19,22 @@ function getMeta(status) {
   return META.unknown;
 }
 
+const CLARITY_META = {
+  clear:      { label:'Clear',      color:'#6ab587', bg:'rgba(139,201,164,0.15)' },
+  partial:    { label:'Partial',    color:'#c9a84e', bg:'rgba(237,201,120,0.15)' },
+  unclear:    { label:'Unclear',    color:'#9e9790', bg:'rgba(176,168,158,0.18)' },
+  prohibited: { label:'Prohibited', color:'#d45d56', bg:'rgba(212,93,86,0.15)' },
+};
+
+function getClarityMeta(c) {
+  return CLARITY_META[c] || CLARITY_META.unclear;
+}
+
+const ANALYST_CONTACT = {
+  name: 'team',
+  email: 'advsapna06@gmail.com',
+};
+
 function panelStyle(expanded, fullWidth) {
   return {
     width: fullWidth ? '100%' : expanded ? 'var(--panel-width-expanded)' : 'var(--panel-width)',
@@ -112,6 +128,94 @@ function AnimatedSection({ children, delay, style }) {
     }}>
       {children}
     </div>
+  );
+}
+
+function UAEFrameworkDiagram() {
+  return (
+    <svg
+      viewBox="0 0 700 360"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%', height: 'auto', display: 'block', fontFamily: "'Times New Roman', Times, serif" }}
+      role="img"
+      aria-label="UAE multi-regulator routing diagram"
+    >
+      {/* Federal band */}
+      <rect x="10" y="10" width="680" height="100" rx="8" fill="var(--bg-primary)" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="4 3" />
+      <text x="25" y="32" fontSize="11" fill="var(--accent)" letterSpacing="2">FEDERAL — UAE-WIDE</text>
+
+      <rect x="30" y="45" width="320" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="45" y="68" fontSize="16" fontWeight="700" fill="var(--text-primary)">CMA</text>
+      <text x="45" y="86" fontSize="10" fill="var(--text-secondary)">Capital Markets Authority — tokenised securities & VASP</text>
+
+      <rect x="360" y="45" width="320" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="375" y="68" fontSize="16" fontWeight="700" fill="var(--text-primary)">CBUAE</text>
+      <text x="375" y="86" fontSize="10" fill="var(--text-secondary)">Central Bank — stablecoins, payment rails, DeFi</text>
+
+      {/* Dubai column */}
+      <rect x="10" y="130" width="450" height="220" rx="8" fill="var(--bg-primary)" stroke="var(--border)" strokeWidth="1" />
+      <text x="25" y="152" fontSize="11" fill="var(--text-secondary)" letterSpacing="2">DUBAI</text>
+
+      <rect x="25" y="165" width="420" height="80" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="190" fontSize="18" fontWeight="700" fill="var(--text-primary)">VARA</text>
+      <text x="40" y="210" fontSize="11" fill="var(--text-secondary)">Virtual Assets Regulatory Authority</text>
+      <text x="40" y="227" fontSize="10" fill="var(--text-muted)" fontStyle="italic">Dubai mainland (excl. DIFC) — 8 activity categories</text>
+
+      <rect x="25" y="260" width="420" height="80" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="285" fontSize="18" fontWeight="700" fill="var(--text-primary)">DFSA</text>
+      <text x="40" y="305" fontSize="11" fill="var(--text-secondary)">Dubai Financial Services Authority</text>
+      <text x="40" y="322" fontSize="10" fill="var(--text-muted)" fontStyle="italic">DIFC zone — Crypto Token Regime, common-law courts</text>
+
+      {/* Abu Dhabi column */}
+      <rect x="470" y="130" width="220" height="220" rx="8" fill="var(--bg-primary)" stroke="var(--border)" strokeWidth="1" />
+      <text x="485" y="152" fontSize="11" fill="var(--text-secondary)" letterSpacing="2">ABU DHABI</text>
+
+      <rect x="485" y="165" width="190" height="175" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="500" y="190" fontSize="18" fontWeight="700" fill="var(--text-primary)">FSRA</text>
+      <text x="500" y="210" fontSize="11" fill="var(--text-secondary)">Financial Services</text>
+      <text x="500" y="225" fontSize="11" fill="var(--text-secondary)">Regulatory Authority</text>
+      <text x="500" y="248" fontSize="10" fill="var(--text-muted)" fontStyle="italic">ADGM zone</text>
+      <text x="500" y="275" fontSize="10" fill="var(--text-secondary)">• Digital Asset Framework</text>
+      <text x="500" y="293" fontSize="10" fill="var(--text-secondary)">• DLT Foundations Regulations</text>
+      <text x="500" y="311" fontSize="10" fill="var(--text-secondary)">• World's first DAO regime</text>
+    </svg>
+  );
+}
+
+function FrameworkDiagram({ countryCode }) {
+  if (countryCode === 'AE') return <UAEFrameworkDiagram />;
+  return null;
+}
+
+function AnalystCTA({ countryName, hasAnalysis }) {
+  const message = hasAnalysis
+    ? `Need deeper analysis on ${countryName}? Contact ${ANALYST_CONTACT.name} →`
+    : `Request a regulatory analysis for ${countryName} →`;
+  const subject = hasAnalysis
+    ? `Deeper analysis request: ${countryName}`
+    : `Analysis request: ${countryName}`;
+  return (
+    <a
+      href={`mailto:${ANALYST_CONTACT.email}?subject=${encodeURIComponent(subject)}`}
+      style={{
+        display: 'block',
+        background: 'rgba(124,175,196,0.08)',
+        border: '1px dashed var(--accent)',
+        borderRadius: 8,
+        padding: '12px 14px',
+        fontSize: 12,
+        color: 'var(--accent)',
+        textDecoration: 'none',
+        fontFamily: "'Times New Roman', Times, serif",
+        letterSpacing: '0.04em',
+        textAlign: 'center',
+        transition: 'background 0.2s',
+      }}
+      onMouseEnter={e => { e.currentTarget.style.background = 'rgba(124,175,196,0.15)'; }}
+      onMouseLeave={e => { e.currentTarget.style.background = 'rgba(124,175,196,0.08)'; }}
+    >
+      {message}
+    </a>
   );
 }
 
@@ -343,7 +447,7 @@ export default function CountryPanel({ country, onClose, fullWidth, onToggleFull
               <button
                 onClick={() => {
                   const eu = require('./Map').SAMPLE.EU;
-                  if (eu) onSelectCountry({ code: 'EU', name: eu.name, status: eu.status, summary: eu.summary, legislation: eu.legislation || [], news: eu.news || [], cases: eu.cases || [], euMember: false });
+                  if (eu) onSelectCountry({ code: 'EU', name: eu.name, status: eu.status, summary: eu.summary, legislation: eu.legislation || [], news: eu.news || [], cases: eu.cases || [], analysis: eu.analysis || [], framework: eu.framework || null, euMember: false });
                 }}
                 style={{
                   background: 'none', border: '1px solid rgba(0, 51, 153, 0.3)', borderRadius: 5,
@@ -371,6 +475,61 @@ export default function CountryPanel({ country, onClose, fullWidth, onToggleFull
               <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{country.summary}</p>
             )}
           </Card>
+        </AnimatedSection>
+
+        {/* Framework — regulator routing & jurisdictional map */}
+        {country.framework && (
+          <AnimatedSection delay={0.04} style={{ marginBottom: 24 }}>
+            <SectionHeader>Framework</SectionHeader>
+            <Card>
+              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6 }}>{country.framework.title}</div>
+              {country.framework.intro && (
+                <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.7, margin: '0 0 14px' }}>{country.framework.intro}</p>
+              )}
+              <FrameworkDiagram countryCode={country.code} />
+              {country.framework.regulators && country.framework.regulators.length > 0 && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 14 }}>
+                  {country.framework.regulators.map((r, i) => (
+                    <div key={i} style={{ padding: '10px 12px', background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 6 }}>
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
+                        <div style={{ fontSize: 13, fontWeight: 700 }}>{r.name}</div>
+                        <div style={{ fontSize: 11, color: 'var(--text-secondary)' }}>{r.fullName}</div>
+                        <div style={{ fontSize: 9, color: 'var(--accent)', fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.08em', textTransform: 'uppercase', marginLeft: 'auto' }}>{r.scope}</div>
+                      </div>
+                      <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>{r.body}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </Card>
+          </AnimatedSection>
+        )}
+
+        {/* Analysis — activity-level breakdowns */}
+        <AnimatedSection delay={0.05} style={{ marginBottom: 24 }}>
+          <SectionHeader>Analysis</SectionHeader>
+          {country.analysis && country.analysis.length > 0 ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {country.analysis.map((item, i) => {
+                const cm = getClarityMeta(item.clarity);
+                return (
+                  <Card key={i}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginBottom: 6 }}>
+                      <div style={{ fontSize: 13, fontWeight: 600 }}>{item.activity}</div>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '3px 9px', borderRadius: 12, background: cm.bg, border: '1px solid ' + cm.color + '44', flexShrink: 0 }}>
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: cm.color }} />
+                        <span style={{ fontSize: 9, fontWeight: 700, color: cm.color, fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.08em' }}>{cm.label.toUpperCase()}</span>
+                      </div>
+                    </div>
+                    <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{item.body}</p>
+                  </Card>
+                );
+              })}
+              <AnalystCTA countryName={country.name} hasAnalysis={true} />
+            </div>
+          ) : (
+            <AnalystCTA countryName={country.name} hasAnalysis={false} />
+          )}
         </AnimatedSection>
 
         {/* Full-width: Legislation */}

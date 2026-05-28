@@ -6,6 +6,9 @@ import AuthModal from './AuthModal';
 import { QRCodeSVG } from 'qrcode.react';
 import supabase from './supabase';
 import WEEKLY_UPDATES from './updates';
+import ComparisonTable from './ComparisonTable';
+import COMPARISON_DATA from './comparisonData';
+import { COMPARISON_FIELDS } from './comparisonFields';
 
 function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoint);
@@ -106,7 +109,7 @@ function CountrySearch({ data, onSelect }) {
               key={r.code}
               className="country-search-item"
               onClick={() => {
-                onSelect({ code: r.code, name: r.name, status: r.status, summary: r.summary, legislation: r.legislation || [], news: r.news || [], cases: r.cases || [], euMember: r.euMember || false });
+                onSelect({ code: r.code, name: r.name, status: r.status, summary: r.summary, legislation: r.legislation || [], news: r.news || [], cases: r.cases || [], analysis: r.analysis || [], framework: r.framework || null, euMember: r.euMember || false });
                 setQuery('');
                 setOpen(false);
               }}
@@ -303,6 +306,7 @@ export default function App() {
   const [showAuth, setShowAuth] = useState(false);
   const [panelFullWidth, setPanelFullWidth] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
+  const [activeView, setActiveView] = useState('map');
   const mapRef = useRef(null);
   const isMobile = useIsMobile();
   const data = useCountryData();
@@ -462,6 +466,17 @@ export default function App() {
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            <div style={{ display: 'flex', borderRadius: 6, overflow: 'hidden', border: '1px solid #e5ddd3' }}>
+              {['map', 'table'].map(v => (
+                <button key={v} onClick={() => setActiveView(v)} style={{
+                  padding: '4px 12px', fontSize: 9, fontWeight: 700, letterSpacing: '0.1em',
+                  fontFamily: "'Times New Roman', Times, serif", textTransform: 'uppercase',
+                  border: 'none', cursor: 'pointer', transition: 'all 0.2s',
+                  background: activeView === v ? 'var(--accent)' : 'transparent',
+                  color: activeView === v ? '#fff' : 'var(--text-secondary)',
+                }}>{v}</button>
+              ))}
+            </div>
             <CountrySearch data={data} onSelect={setSelectedCountry} />
             <NotificationBell updates={WEEKLY_UPDATES} />
             <div className="header-legend" style={{ display: 'flex', gap: 16 }}>
@@ -479,8 +494,25 @@ export default function App() {
             <>
               {selectedCountry ? (
                 <CountryPanel country={selectedCountry} onClose={() => setSelectedCountry(null)} onSelectCountry={setSelectedCountry} />
+              ) : activeView === 'table' ? (
+                <ComparisonTable data={data} comparisonData={COMPARISON_DATA} fields={COMPARISON_FIELDS} onCountrySelect={setSelectedCountry} isMobile={isMobile} />
               ) : (
                 <CountryList data={data} onCountrySelect={setSelectedCountry} />
+              )}
+            </>
+          ) : activeView === 'table' ? (
+            <>
+              <div style={{ flex: selectedCountry ? 1 : 1, overflow: 'hidden', transition: 'flex 0.4s ease' }}>
+                <ComparisonTable data={data} comparisonData={COMPARISON_DATA} fields={COMPARISON_FIELDS} onCountrySelect={setSelectedCountry} isMobile={isMobile} />
+              </div>
+              {selectedCountry && (
+                <CountryPanel
+                  country={selectedCountry}
+                  onClose={() => { setSelectedCountry(null); setPanelFullWidth(false); }}
+                  fullWidth={panelFullWidth}
+                  onToggleFullWidth={() => setPanelFullWidth(f => !f)}
+                  onSelectCountry={setSelectedCountry}
+                />
               )}
             </>
           ) : (
