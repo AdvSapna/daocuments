@@ -182,8 +182,229 @@ function UAEFrameworkDiagram() {
   );
 }
 
+function EUMiCAFrameworkDiagram() {
+  return (
+    <svg
+      viewBox="0 0 700 380"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%', height: 'auto', display: 'block', fontFamily: "'Times New Roman', Times, serif" }}
+      role="img"
+      aria-label="EU MiCA regulator routing diagram"
+    >
+      {/* Supranational band */}
+      <rect x="10" y="10" width="680" height="100" rx="8" fill="var(--bg-primary)" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="4 3" />
+      <text x="25" y="32" fontSize="11" fill="var(--accent)" letterSpacing="2">SUPRANATIONAL — EU-WIDE</text>
+
+      <rect x="25" y="45" width="209" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="68" fontSize="16" fontWeight="700" fill="var(--text-primary)">ESMA</text>
+      <text x="40" y="86" fontSize="10" fill="var(--text-secondary)">RTS/ITS, significant CASPs & ARTs</text>
+
+      <rect x="246" y="45" width="209" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="261" y="68" fontSize="16" fontWeight="700" fill="var(--text-primary)">EBA</text>
+      <text x="261" y="86" fontSize="10" fill="var(--text-secondary)">Significant EMTs/ARTs, prudential</text>
+
+      <rect x="467" y="45" width="209" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="482" y="68" fontSize="16" fontWeight="700" fill="var(--text-primary)">ECB</text>
+      <text x="482" y="86" fontSize="10" fill="var(--text-secondary)">Consultation on euro-area stables</text>
+
+      {/* National band */}
+      <rect x="10" y="130" width="680" height="90" rx="8" fill="var(--bg-primary)" stroke="var(--border)" strokeWidth="1" />
+      <text x="25" y="152" fontSize="11" fill="var(--text-secondary)" letterSpacing="2">NATIONAL — 27 MEMBER STATE NCAs</text>
+
+      <rect x="25" y="165" width="650" height="48" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="187" fontSize="13" fontWeight="700" fill="var(--text-primary)">National Competent Authorities</text>
+      <text x="40" y="204" fontSize="10" fill="var(--text-secondary)">BaFin (DE) · AMF (FR) · CSSF (LU) · AFM (NL) · CONSOB (IT) · CNMV (ES) · CBoI (IE) · … 27 total</text>
+
+      {/* Parallel regime band */}
+      <rect x="10" y="240" width="680" height="120" rx="8" fill="var(--bg-primary)" stroke="var(--text-muted)" strokeWidth="1.5" strokeDasharray="2 3" />
+      <text x="25" y="262" fontSize="11" fill="var(--text-secondary)" letterSpacing="2">PARALLEL REGIME — TOKENISED FINANCIAL INSTRUMENTS (EXCLUDED FROM MiCA)</text>
+
+      <rect x="25" y="275" width="155" height="70" rx="6" fill="var(--bg-secondary)" stroke="var(--text-muted)" strokeWidth="1" />
+      <text x="40" y="298" fontSize="13" fontWeight="700" fill="var(--text-primary)">MiFID II</text>
+      <text x="40" y="316" fontSize="9" fill="var(--text-secondary)">Securities,</text>
+      <text x="40" y="328" fontSize="9" fill="var(--text-secondary)">derivatives,</text>
+      <text x="40" y="340" fontSize="9" fill="var(--text-secondary)">structured products</text>
+
+      <rect x="190" y="275" width="155" height="70" rx="6" fill="var(--bg-secondary)" stroke="var(--text-muted)" strokeWidth="1" />
+      <text x="205" y="298" fontSize="13" fontWeight="700" fill="var(--text-primary)">Prospectus Reg</text>
+      <text x="205" y="316" fontSize="9" fill="var(--text-secondary)">Public offering</text>
+      <text x="205" y="328" fontSize="9" fill="var(--text-secondary)">disclosure for</text>
+      <text x="205" y="340" fontSize="9" fill="var(--text-secondary)">tokenised securities</text>
+
+      <rect x="355" y="275" width="155" height="70" rx="6" fill="var(--bg-secondary)" stroke="var(--text-muted)" strokeWidth="1" />
+      <text x="370" y="298" fontSize="13" fontWeight="700" fill="var(--text-primary)">CSDR</text>
+      <text x="370" y="316" fontSize="9" fill="var(--text-secondary)">Central securities</text>
+      <text x="370" y="328" fontSize="9" fill="var(--text-secondary)">depositories &</text>
+      <text x="370" y="340" fontSize="9" fill="var(--text-secondary)">settlement</text>
+
+      <rect x="520" y="275" width="155" height="70" rx="6" fill="var(--bg-secondary)" stroke="var(--text-muted)" strokeWidth="1" />
+      <text x="535" y="298" fontSize="13" fontWeight="700" fill="var(--text-primary)">DLT Pilot Regime</text>
+      <text x="535" y="316" fontSize="9" fill="var(--text-secondary)">Sandbox: DLT</text>
+      <text x="535" y="328" fontSize="9" fill="var(--text-secondary)">trading/settlement</text>
+      <text x="535" y="340" fontSize="9" fill="var(--text-secondary)">infrastructures</text>
+    </svg>
+  );
+}
+
+function IndiaFrameworkDiagram() {
+  return (
+    <svg
+      viewBox="0 0 700 380"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%', height: 'auto', display: 'block', fontFamily: "'Times New Roman', Times, serif" }}
+      role="img"
+      aria-label="India regulator patchwork diagram"
+    >
+      {/* Markets & Banking column */}
+      <rect x="10" y="10" width="250" height="290" rx="8" fill="var(--bg-primary)" stroke="var(--border)" strokeWidth="1" />
+      <text x="25" y="32" fontSize="11" fill="var(--text-secondary)" letterSpacing="2">MARKETS & BANKING</text>
+
+      <rect x="25" y="50" width="220" height="115" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="75" fontSize="16" fontWeight="700" fill="var(--text-primary)">RBI</text>
+      <text x="40" y="93" fontSize="11" fill="var(--text-secondary)">Reserve Bank of India</text>
+      <text x="40" y="112" fontSize="10" fill="var(--text-muted)" fontStyle="italic">Central bank, banking,</text>
+      <text x="40" y="126" fontSize="10" fill="var(--text-muted)" fontStyle="italic">Digital Rupee (e₹) CBDC,</text>
+      <text x="40" y="140" fontSize="10" fill="var(--text-muted)" fontStyle="italic">bank-crypto restrictions</text>
+
+      <rect x="25" y="175" width="220" height="115" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="200" fontSize="16" fontWeight="700" fill="var(--text-primary)">SEBI</text>
+      <text x="40" y="218" fontSize="11" fill="var(--text-secondary)">Securities & Exchange</text>
+      <text x="40" y="232" fontSize="11" fill="var(--text-secondary)">Board of India</text>
+      <text x="40" y="252" fontSize="10" fill="var(--text-muted)" fontStyle="italic">Capital markets, MFs, AIFs,</text>
+      <text x="40" y="266" fontSize="10" fill="var(--text-muted)" fontStyle="italic">monitoring "security-like"</text>
+      <text x="40" y="280" fontSize="10" fill="var(--text-muted)" fontStyle="italic">tokens (Apr 2025)</text>
+
+      {/* AML & Tax column */}
+      <rect x="272" y="10" width="240" height="290" rx="8" fill="var(--bg-primary)" stroke="var(--border)" strokeWidth="1" />
+      <text x="287" y="32" fontSize="11" fill="var(--text-secondary)" letterSpacing="2">AML & TAX</text>
+
+      <rect x="287" y="50" width="210" height="75" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="302" y="73" fontSize="14" fontWeight="700" fill="var(--text-primary)">FIU-IND</text>
+      <text x="302" y="91" fontSize="10" fill="var(--text-secondary)">Financial Intelligence Unit</text>
+      <text x="302" y="110" fontSize="10" fill="var(--text-muted)" fontStyle="italic">PMLA AML/KYC, VASP registry</text>
+
+      <rect x="287" y="135" width="210" height="75" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="302" y="158" fontSize="14" fontWeight="700" fill="var(--text-primary)">Income Tax / CBDT</text>
+      <text x="302" y="176" fontSize="10" fill="var(--text-secondary)">Sections 115BBH + 194S</text>
+      <text x="302" y="195" fontSize="10" fill="var(--text-muted)" fontStyle="italic">30% VDA tax + 1% TDS</text>
+
+      <rect x="287" y="220" width="210" height="75" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="302" y="243" fontSize="14" fontWeight="700" fill="var(--text-primary)">CBIC / GST Council</text>
+      <text x="302" y="261" fontSize="10" fill="var(--text-secondary)">Indirect taxation</text>
+      <text x="302" y="280" fontSize="10" fill="var(--text-muted)" fontStyle="italic">18% GST on service fees</text>
+
+      {/* Sandbox column */}
+      <rect x="524" y="10" width="166" height="290" rx="8" fill="var(--bg-primary)" stroke="var(--border)" strokeWidth="1" />
+      <text x="539" y="32" fontSize="11" fill="var(--text-secondary)" letterSpacing="2">SANDBOX</text>
+
+      <rect x="539" y="50" width="136" height="240" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="554" y="80" fontSize="16" fontWeight="700" fill="var(--text-primary)">IFSCA</text>
+      <text x="554" y="100" fontSize="10" fill="var(--text-secondary)">International</text>
+      <text x="554" y="114" fontSize="10" fill="var(--text-secondary)">Financial Services</text>
+      <text x="554" y="128" fontSize="10" fill="var(--text-secondary)">Centres Authority</text>
+      <text x="554" y="158" fontSize="12" fontWeight="700" fill="var(--accent)">GIFT City</text>
+      <text x="554" y="183" fontSize="10" fill="var(--text-muted)" fontStyle="italic">Sandbox regime</text>
+      <text x="554" y="197" fontSize="10" fill="var(--text-muted)" fontStyle="italic">for tokenisation</text>
+      <text x="554" y="211" fontSize="10" fill="var(--text-muted)" fontStyle="italic">pilots</text>
+      <text x="554" y="240" fontSize="9" fill="var(--text-secondary)">Only structured</text>
+      <text x="554" y="253" fontSize="9" fill="var(--text-secondary)">RWA pathway</text>
+      <text x="554" y="266" fontSize="9" fill="var(--text-secondary)">from India</text>
+
+      {/* Policy band */}
+      <rect x="10" y="315" width="680" height="55" rx="8" fill="var(--bg-primary)" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="4 3" />
+      <text x="25" y="338" fontSize="11" fill="var(--accent)" letterSpacing="2">POLICY LAYER</text>
+      <text x="25" y="358" fontSize="11" fontWeight="700" fill="var(--text-primary)">MoF — Ministry of Finance</text>
+      <text x="225" y="358" fontSize="10" fill="var(--text-secondary)" fontStyle="italic">Finance Acts, overall crypto policy, inter-regulator coordination</text>
+    </svg>
+  );
+}
+
+function USFrameworkDiagram() {
+  return (
+    <svg
+      viewBox="0 0 700 540"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%', height: 'auto', display: 'block', fontFamily: "'Times New Roman', Times, serif" }}
+      role="img"
+      aria-label="United States federal and state crypto regulator diagram"
+    >
+      {/* Federal: Markets & Derivatives */}
+      <rect x="10" y="10" width="680" height="100" rx="8" fill="var(--bg-primary)" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="4 3" />
+      <text x="25" y="32" fontSize="11" fill="var(--accent)" letterSpacing="2">FEDERAL — MARKETS & DERIVATIVES</text>
+
+      <rect x="25" y="45" width="320" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="68" fontSize="16" fontWeight="700" fill="var(--text-primary)">SEC</text>
+      <text x="40" y="86" fontSize="10" fill="var(--text-secondary)">Securities, investment contracts (Howey), broker-dealer</text>
+
+      <rect x="365" y="45" width="320" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="380" y="68" fontSize="16" fontWeight="700" fill="var(--text-primary)">CFTC</text>
+      <text x="380" y="86" fontSize="10" fill="var(--text-secondary)">Digital commodities, derivatives, swaps</text>
+
+      {/* Federal: AML / Sanctions / Tax */}
+      <rect x="10" y="130" width="680" height="100" rx="8" fill="var(--bg-primary)" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="4 3" />
+      <text x="25" y="152" fontSize="11" fill="var(--accent)" letterSpacing="2">FEDERAL — AML / SANCTIONS / TAX</text>
+
+      <rect x="25" y="165" width="208" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="188" fontSize="14" fontWeight="700" fill="var(--text-primary)">FinCEN</text>
+      <text x="40" y="206" fontSize="10" fill="var(--text-secondary)">AML/MSB, Travel Rule</text>
+
+      <rect x="245" y="165" width="208" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="260" y="188" fontSize="14" fontWeight="700" fill="var(--text-primary)">OFAC</text>
+      <text x="260" y="206" fontSize="10" fill="var(--text-secondary)">Sanctions enforcement</text>
+
+      <rect x="465" y="165" width="208" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="480" y="188" fontSize="14" fontWeight="700" fill="var(--text-primary)">IRS</text>
+      <text x="480" y="206" fontSize="10" fill="var(--text-secondary)">Tax, broker reporting</text>
+
+      {/* Federal: Banking & Payments */}
+      <rect x="10" y="250" width="680" height="100" rx="8" fill="var(--bg-primary)" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="4 3" />
+      <text x="25" y="272" fontSize="11" fill="var(--accent)" letterSpacing="2">FEDERAL — BANKING & PAYMENTS (POST-GENIUS)</text>
+
+      <rect x="25" y="285" width="208" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="308" fontSize="14" fontWeight="700" fill="var(--text-primary)">OCC</text>
+      <text x="40" y="326" fontSize="10" fill="var(--text-secondary)">National bank crypto custody</text>
+
+      <rect x="245" y="285" width="208" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="260" y="308" fontSize="14" fontWeight="700" fill="var(--text-primary)">Federal Reserve</text>
+      <text x="260" y="326" fontSize="10" fill="var(--text-secondary)">Bank supervision, payments</text>
+
+      <rect x="465" y="285" width="208" height="55" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="480" y="308" fontSize="14" fontWeight="700" fill="var(--text-primary)">FDIC</text>
+      <text x="480" y="326" fontSize="10" fill="var(--text-secondary)">Stablecoin reserve banks</text>
+
+      {/* State Layer */}
+      <rect x="10" y="370" width="680" height="140" rx="8" fill="var(--bg-primary)" stroke="var(--border)" strokeWidth="1" />
+      <text x="25" y="392" fontSize="11" fill="var(--text-secondary)" letterSpacing="2">STATE LAYER</text>
+
+      <rect x="25" y="405" width="210" height="95" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="40" y="428" fontSize="14" fontWeight="700" fill="var(--text-primary)">NYDFS</text>
+      <text x="40" y="446" fontSize="10" fill="var(--text-secondary)">BitLicense</text>
+      <text x="40" y="465" fontSize="10" fill="var(--text-muted)" fontStyle="italic">Toughest state regime;</text>
+      <text x="40" y="479" fontSize="10" fill="var(--text-muted)" fontStyle="italic">required for any</text>
+      <text x="40" y="493" fontSize="10" fill="var(--text-muted)" fontStyle="italic">NY-facing service</text>
+
+      <rect x="245" y="405" width="210" height="95" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="260" y="428" fontSize="14" fontWeight="700" fill="var(--text-primary)">Wyoming</text>
+      <text x="260" y="446" fontSize="10" fill="var(--text-secondary)">DAO LLC / DLT SPDIs</text>
+      <text x="260" y="465" fontSize="10" fill="var(--text-muted)" fontStyle="italic">Crypto-friendly</text>
+      <text x="260" y="479" fontSize="10" fill="var(--text-muted)" fontStyle="italic">infrastructure for</text>
+      <text x="260" y="493" fontSize="10" fill="var(--text-muted)" fontStyle="italic">SPVs and DAOs</text>
+
+      <rect x="465" y="405" width="210" height="95" rx="6" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="1" />
+      <text x="480" y="428" fontSize="14" fontWeight="700" fill="var(--text-primary)">49+ State MTLs</text>
+      <text x="480" y="446" fontSize="10" fill="var(--text-secondary)">Money Transmitter Licences</text>
+      <text x="480" y="465" fontSize="10" fill="var(--text-muted)" fontStyle="italic">CA, TX, FL, etc.</text>
+      <text x="480" y="479" fontSize="10" fill="var(--text-muted)" fontStyle="italic">Per-state licensing;</text>
+      <text x="480" y="493" fontSize="10" fill="var(--text-muted)" fontStyle="italic">Montana excepted</text>
+    </svg>
+  );
+}
+
 function FrameworkDiagram({ countryCode }) {
   if (countryCode === 'AE') return <UAEFrameworkDiagram />;
+  if (countryCode === 'EU') return <EUMiCAFrameworkDiagram />;
+  if (countryCode === 'IN') return <IndiaFrameworkDiagram />;
+  if (countryCode === 'US') return <USFrameworkDiagram />;
   return null;
 }
 
