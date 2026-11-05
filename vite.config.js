@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
 const ENV_PREFIX = 'VITE_';
-const REQUIRED_ENV = ['VITE_SUPABASE_URL', 'VITE_SUPABASE_PUBLISHABLE_KEY'];
+const REQUIRED_ENV = ['VITE_SUPABASE_URL', 'VITE_SUPABASE_PUBLISHABLE_KEY', 'VITE_TURNSTILE_SITE_KEY'];
 
 export default defineConfig(({ mode }) => {
   // Fail the dev server and the build (including on Vercel) when a required
@@ -47,6 +47,8 @@ export default defineConfig(({ mode }) => {
       environment: 'jsdom',
       globals: true,
       setupFiles: './src/setupTests.js',
+      // Cloudflare's documented always-pass Turnstile test site key.
+      env: { VITE_TURNSTILE_SITE_KEY: '1x00000000000000000000AA' },
     },
   };
 });

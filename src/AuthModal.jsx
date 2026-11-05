@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import supabase from './supabase';
+import Turnstile from './Turnstile';
 
 export default function AuthModal({ onSuccess, onClose }) {
   const [step, setStep] = useState('email'); // 'email' | 'sent'
@@ -7,21 +8,36 @@ export default function AuthModal({ onSuccess, onClose }) {
   const [newsletter, setNewsletter] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaReset, setCaptchaReset] = useState(0);
 
-  const handleSendLink = async (e) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setLoading(true);
-    setError('');
-
-    const { error: err } = await supabase.auth.signInWithOtp({
+  // Each Turnstile token works once, so get a fresh one after every request.
+  const requestLink = async () => {
+    const result = await supabase.auth.signInWithOtp({
       email: email.trim(),
       options: {
         shouldCreateUser: true,
         // Return to the page the visitor started on (e.g. a country link).
         emailRedirectTo: window.location.origin + window.location.pathname,
+        captchaToken,
       },
     });
+    setCaptchaToken(null);
+    setCaptchaReset(n => n + 1);
+    return result;
+  };
+
+  const handleSendLink = async (e) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    if (!captchaToken) {
+      setError('Please complete the bot check below.');
+      return;
+    }
+    setLoading(true);
+    setError('');
+
+    const { error: err } = await requestLink();
 
     setLoading(false);
     if (err) {
@@ -35,12 +51,13 @@ export default function AuthModal({ onSuccess, onClose }) {
   };
 
   const handleResend = async () => {
+    if (!captchaToken) {
+      setError('Please complete the bot check, then press Resend.');
+      return;
+    }
     setLoading(true);
     setError('');
-    const { error: err } = await supabase.auth.signInWithOtp({
-      email: email.trim(),
-      options: { shouldCreateUser: true, emailRedirectTo: window.location.origin + window.location.pathname },
-    });
+    const { error: err } = await requestLink();
     setLoading(false);
     if (err) setError(err.message);
     else setError('Link resent! Check your inbox.');
@@ -91,9 +108,11 @@ export default function AuthModal({ onSuccess, onClose }) {
                 <span>Send me weekly updates on global Web3 developments</span>
               </label>
 
+              <Turnstile onToken={setCaptchaToken} onError={err => setError(err.message)} resetKey={captchaReset} />
+
               {error && <div className="auth-error">{error}</div>}
 
-              <button type="submit" className="auth-btn" disabled={loading}>
+              <button type="submit" className="auth-btn" disabled={loading || !captchaToken}>
                 {loading ? 'Sending...' : 'Continue'}
               </button>
             </form>
@@ -112,11 +131,13 @@ export default function AuthModal({ onSuccess, onClose }) {
               Click the link in the email to access DAOcuments. You can close this tab.
             </p>
 
+            <Turnstile onToken={setCaptchaToken} onError={err => setError(err.message)} resetKey={captchaReset} />
+
             {error && <div className="auth-error">{error}</div>}
 
             <p className="auth-footer-text">
               Didn't get the email?{' '}
-              <button className="auth-link-btn" onClick={handleResend} disabled={loading}>
+              <button className="auth-link-btn" onClick={handleResend} disabled={loading || !captchaToken}>
                 Resend
               </button>
               {' · '}

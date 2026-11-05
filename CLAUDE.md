@@ -17,7 +17,7 @@ DAOcuments is a single-page React app that tracks cryptocurrency regulation acro
 
 Built with Vite (config in `vite.config.js`; code is split into chunks that change at different rates: `map-vendor` (react-simple-maps/d3, loaded only with the lazy-loaded map), `vendor` (other libraries) and `country-data` (`src/data/`), so a data update only re-downloads the data). Node 24 is pinned in `.nvmrc` and `package.json` engines.
 
-`vercel.json` holds the Vercel build settings, security headers and cache rules. The Content-Security-Policy `connect-src` names the Supabase project URL, so update it if the Supabase project changes.
+`vercel.json` holds the Vercel build settings, security headers and cache rules. The Content-Security-Policy `connect-src` names the Supabase project URL, so update it if the Supabase project changes. `script-src` and `frame-src` allow `challenges.cloudflare.com` for Turnstile.
 
 ## Architecture
 
@@ -40,7 +40,7 @@ Built with Vite (config in `vite.config.js`; code is split into chunks that chan
 
 ## Environment Variables
 
-Requires `.env` with `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` (the names in the Supabase dashboard's Vite snippet). They are required: `vite.config.js` stops the dev server and the build when either is missing, and `src/supabase.js` throws at startup. Only `VITE_` variables reach the app. The Supabase schema lives in `supabase/migrations/`.
+Requires `.env` with `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` (the names in the Supabase dashboard's Vite snippet), and `VITE_TURNSTILE_SITE_KEY` (the Cloudflare Turnstile widget's site key; its secret goes in Supabase under Authentication → Attack Protection → CAPTCHA, and Cloudflare's test key `1x00000000000000000000AA` works on localhost and in tests). They are all required: `vite.config.js` stops the dev server and the build when either is missing, and `src/supabase.js` throws at startup. Only `VITE_` variables reach the app. The Supabase schema lives in `supabase/migrations/`.
 
 ## Key Patterns
 
