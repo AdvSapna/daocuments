@@ -565,17 +565,31 @@ function ReportInaccuracy({ countryName, countryCode }) {
   );
 }
 
+// Count each page load once. The panel mounts again whenever the view
+// changes (map, table, mobile), and each mount must not count as a new visit.
+let visitorCountRequest = null;
+export function countVisit() {
+  if (!visitorCountRequest) {
+    visitorCountRequest = supabase.rpc('increment_visitor_count').then(({ data, error }) => {
+      if (error) {
+        console.error('Visitor count RPC error:', error);
+        return null;
+      }
+      return data;
+    });
+  }
+  return visitorCountRequest;
+}
+
 export default function CountryPanel({ country, onClose, fullWidth, onToggleFullWidth, onSelectCountry }) {
   const [visitorCount, setVisitorCount] = useState(null);
 
   useEffect(() => {
-    supabase.rpc('increment_visitor_count').then(({ data, error }) => {
-      if (error) {
-        console.error('Visitor count RPC error:', error);
-        return;
-      }
-      if (data != null) setVisitorCount(data);
+    let active = true;
+    countVisit().then(count => {
+      if (active && count != null) setVisitorCount(count);
     });
+    return () => { active = false; };
   }, []);
 
   // Empty state — ghost preview cards + visitor counter
