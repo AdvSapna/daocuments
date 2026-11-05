@@ -1,4 +1,4 @@
-import { SAMPLE } from './Map';
+import { SAMPLE } from './countries';
 import WEEKLY_UPDATES from './updates';
 import COMPARISON_DATA from './comparisonData';
 
@@ -52,5 +52,22 @@ describe('world map shapes (public/countries.geojson)', () => {
       // An inverted ring covers more than half the globe and paints over the map.
       expect(geoArea(feature), feature.properties.name).toBeLessThan(2 * Math.PI);
     });
+  });
+});
+
+describe('recent updates for the bell', () => {
+  test('dated items use YYYY-MM-DD', () => {
+    WEEKLY_UPDATES.flatMap(w => w.items).filter(i => i.date).forEach(i => expect(i.date).toMatch(/^\d{4}-\d{2}-\d{2}$/));
+  });
+
+  test('keeps only the last 7 days, newest first', async () => {
+    const { recentUpdates } = await import('./recentUpdates');
+    const updates = [{ label: 'x', items: [
+      { title: 'old', date: '2026-10-20' },
+      { title: 'mid', date: '2026-11-01' },
+      { title: 'new', date: '2026-11-05' },
+      { title: 'undated' },
+    ] }];
+    expect(recentUpdates(updates, new Date('2026-11-05T12:00:00Z')).map(i => i.title)).toEqual(['new', 'mid']);
   });
 });

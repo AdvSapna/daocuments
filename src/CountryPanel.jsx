@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import supabase from './supabase';
-import { SAMPLE } from './Map';
+import { SAMPLE } from './countries';
+import { STATUS_RUBRIC, METHODOLOGY_NOTE, formatDate } from './methodology';
 
 const META = {
   legal:      { label:'Legal',      color:'#6ab587', bg:'rgba(139,201,164,0.15)' },
@@ -455,6 +456,13 @@ function ReportInaccuracy({ countryName, countryCode }) {
     if (!field.trim() || !detail.trim()) return;
     setLoading(true);
     setError('');
+    // Reports are tied to a signed-in account (sign-in is bot-checked).
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      setLoading(false);
+      setError('Please sign in with your email to submit a report.');
+      return;
+    }
     const { error: err } = await supabase.from('inaccuracy_reports').insert({
       country_code: countryCode,
       country_name: countryName,
@@ -689,7 +697,7 @@ export default function CountryPanel({ country, onClose, fullWidth, onToggleFull
               <button
                 onClick={() => {
                   const eu = SAMPLE.EU;
-                  if (eu) onSelectCountry({ code: 'EU', name: eu.name, status: eu.status, summary: eu.summary, legislation: eu.legislation || [], news: eu.news || [], cases: eu.cases || [], analysis: eu.analysis || [], framework: eu.framework || null, euMember: false });
+                  if (eu) onSelectCountry({ code: 'EU', ...eu, legislation: eu.legislation || [], news: eu.news || [], cases: eu.cases || [], analysis: eu.analysis || [], framework: eu.framework || null, euMember: false });
                 }}
                 style={{
                   background: 'none', border: '1px solid rgba(0, 51, 153, 0.3)', borderRadius: 5,
@@ -712,10 +720,32 @@ export default function CountryPanel({ country, onClose, fullWidth, onToggleFull
                 <div style={{ width: 7, height: 7, borderRadius: '50%', background: meta.color, boxShadow: '0 0 8px ' + meta.color }} />
                 <span style={{ fontSize: 11, fontWeight: 700, color: meta.color, fontFamily: "'Times New Roman', Times, serif", letterSpacing: '0.08em' }}>{meta.label.toUpperCase()}</span>
               </div>
+              {country.asOf && (
+                <span style={{ fontSize: 10, color: 'var(--text-muted)', marginLeft: 'auto' }}>Last reviewed {formatDate(country.asOf)}</span>
+              )}
             </div>
             {country.summary && (
               <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{country.summary}</p>
             )}
+            {country.changes?.length > 0 && (
+              <div style={{ marginTop: 12, borderTop: '1px solid var(--border)', paddingTop: 10 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--text-muted)', marginBottom: 6 }}>STATUS HISTORY</div>
+                {country.changes.map((change, i) => (
+                  <div key={i} style={{ fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 4 }}>
+                    <strong style={{ color: 'var(--text-primary)' }}>{formatDate(change.date)}</strong> — {change.text}
+                  </div>
+                ))}
+              </div>
+            )}
+            <details style={{ marginTop: 10, fontSize: 11, color: 'var(--text-muted)' }}>
+              <summary style={{ cursor: 'pointer' }}>How statuses are set</summary>
+              <ul style={{ margin: '8px 0 4px', paddingLeft: 18, lineHeight: 1.6 }}>
+                {STATUS_RUBRIC.map(r => (
+                  <li key={r.status}><strong>{r.label}:</strong> {r.rule}</li>
+                ))}
+              </ul>
+              <p style={{ margin: 0, lineHeight: 1.6 }}>{METHODOLOGY_NOTE}</p>
+            </details>
           </Card>
         </AnimatedSection>
 

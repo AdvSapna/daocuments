@@ -18,7 +18,8 @@ export default function AuthModal({ onSuccess, onClose }) {
       email: email.trim(),
       options: {
         shouldCreateUser: true,
-        emailRedirectTo: window.location.origin,
+        // Return to the page the visitor started on (e.g. a country link).
+        emailRedirectTo: window.location.origin + window.location.pathname,
       },
     });
 
@@ -38,7 +39,7 @@ export default function AuthModal({ onSuccess, onClose }) {
     setError('');
     const { error: err } = await supabase.auth.signInWithOtp({
       email: email.trim(),
-      options: { shouldCreateUser: true, emailRedirectTo: window.location.origin },
+      options: { shouldCreateUser: true, emailRedirectTo: window.location.origin + window.location.pathname },
     });
     setLoading(false);
     if (err) setError(err.message);

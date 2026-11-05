@@ -2,7 +2,7 @@
 // longer resolve, so stale citations can be replaced.
 //
 // Usage: node --max-http-header-size=65536 scripts/check-links.mjs [file ...] [--json out.json]
-// Defaults to src/Map.jsx and src/updates.js.
+// Defaults to src/data/countries.json and src/updates.js.
 //
 // Status meanings:
 //   ok       2xx after redirects
@@ -17,7 +17,7 @@ const args = process.argv.slice(2);
 const jsonIndex = args.indexOf('--json');
 const jsonOut = jsonIndex === -1 ? null : args[jsonIndex + 1];
 const files = args.filter((a, i) => jsonIndex === -1 || (i !== jsonIndex && i !== jsonIndex + 1));
-const inputs = files.length ? files : ['src/Map.jsx', 'src/updates.js'];
+const inputs = files.length ? files : ['src/data/countries.json', 'src/updates.js'];
 
 const CONCURRENCY = 8;
 const TIMEOUT_MS = 20000;

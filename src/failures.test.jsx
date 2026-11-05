@@ -2,7 +2,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import supabase from './supabase';
 import App from './App';
 import CountryPanel from './CountryPanel';
-import { SAMPLE } from './Map';
+import { SAMPLE } from './countries';
 
 vi.mock('./supabase', () => import('./test/supabaseMock'));
 
@@ -22,9 +22,19 @@ function fillAndSubmitReport() {
   fireEvent.click(screen.getByRole('button', { name: /submit report/i }));
 }
 
+const signedIn = () => vi.spyOn(supabase.auth, 'getSession').mockReturnValue(ok({ session: { user: { id: 'u1' } } }));
+
 describe('report inaccuracy form', () => {
+  test('asks signed-out visitors to sign in and saves nothing', async () => {
+    const from = vi.spyOn(supabase, 'from');
+    fillAndSubmitReport();
+    expect(await screen.findByRole('alert')).toHaveTextContent(/sign in/i);
+    expect(from).not.toHaveBeenCalledWith('inaccuracy_reports');
+  });
+
   test('shows the error and keeps the form when saving fails', async () => {
     vi.spyOn(console, 'error').mockImplementation(() => {});
+    signedIn();
     vi.spyOn(supabase, 'from').mockReturnValue({ insert: () => fail('permission denied') });
     fillAndSubmitReport();
     expect(await screen.findByRole('alert')).toHaveTextContent('permission denied');
@@ -33,6 +43,7 @@ describe('report inaccuracy form', () => {
   });
 
   test('thanks the reporter only when saving succeeds', async () => {
+    signedIn();
     vi.spyOn(supabase, 'from').mockReturnValue({ insert: () => ok() });
     fillAndSubmitReport();
     expect(await screen.findByText(/thank you/i)).toBeInTheDocument();

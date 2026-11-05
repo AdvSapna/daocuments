@@ -30,10 +30,15 @@ export default defineConfig(({ mode }) => {
       outDir: 'build',
       rolldownOptions: {
         output: {
-          // Libraries change far less often than the country data, so keep
-          // them in their own file that browsers can cache across updates.
+          // Separate files that change at different rates, so a data update
+          // only re-downloads the data: the map library (loaded with the map),
+          // other libraries, and the country data (src/data/).
           codeSplitting: {
-            groups: [{ name: 'vendor', test: /node_modules/ }],
+            groups: [
+              { name: 'map-vendor', test: /node_modules[\\/](react-simple-maps|d3-|topojson)/, priority: 2 },
+              { name: 'vendor', test: /node_modules/, priority: 1 },
+              { name: 'country-data', test: /src[\\/]data[\\/]/, priority: 1 },
+            ],
           },
         },
       },

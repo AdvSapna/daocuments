@@ -1,12 +1,18 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
-import Map, { SAMPLE } from './Map';
+import React, { useState, useEffect, useRef, useMemo, useCallback, lazy, Suspense } from 'react';
+import { SAMPLE } from './countries';
+
+// The map library is only needed once the map is shown.
+const Map = lazy(() => import('./Map'));
 import CountryPanel from './CountryPanel';
 import CountryList from './CountryList';
 import AuthModal from './AuthModal';
+import MethodologyModal from './MethodologyModal';
 import { QRCodeSVG } from 'qrcode.react';
 import supabase from './supabase';
 import WEEKLY_UPDATES from './updates';
+import { recentUpdates, RECENT_DAYS } from './recentUpdates';
 import ComparisonTable from './ComparisonTable';
+import { codeFromPath, countryPath, countryMeta, HOME_TITLE, HOME_DESCRIPTION } from './route';
 import COMPARISON_DATA from './comparisonData';
 import { COMPARISON_FIELDS } from './comparisonFields';
 
@@ -134,12 +140,36 @@ function CountrySearch({ data, onSelect }) {
 const TYPE_LABELS = { regulatory: 'REGULATORY', news: 'NEWS', case: 'CASE LAW' };
 const TYPE_COLORS = { regulatory: '#7cafc4', news: '#edc978', case: '#e0a66b' };
 
+function UpdateItem({ item }) {
+  return (
+    <a className="notification-item" href={item.url} target="_blank" rel="noopener noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+        <span className="notification-type-badge" style={{ background: TYPE_COLORS[item.type] || 'var(--accent)' }}>
+          {TYPE_LABELS[item.type] || item.type.toUpperCase()}
+        </span>
+        <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-primary)' }}>
+          {item.countryName}
+        </span>
+        {item.date && (
+          <span style={{ fontSize: 10, color: 'var(--text-muted)', marginLeft: 'auto' }}>
+            {new Date(item.date + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+          </span>
+        )}
+      </div>
+      <div style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+        {item.title}
+      </div>
+    </a>
+  );
+}
+
 function NotificationBell({ updates }) {
   const [open, setOpen] = useState(false);
-  const [expandedWeeks, setExpandedWeeks] = useState({ 0: true }); // first week expanded by default
+  const [showEarlier, setShowEarlier] = useState(false);
+  const [expandedWeeks, setExpandedWeeks] = useState({});
   const ref = useRef(null);
 
-  const totalCount = updates.reduce((sum, week) => sum + week.items.length, 0);
+  const recent = useMemo(() => recentUpdates(updates), [updates]);
 
   useEffect(() => {
     const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
@@ -156,28 +186,38 @@ function NotificationBell({ updates }) {
       <button
         onClick={() => setOpen(o => !o)}
         className="notification-bell-btn"
-        aria-label="Recent updates"
+        aria-label={`Recent updates: ${recent.length} in the last ${RECENT_DAYS} days`}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
           <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
           <path d="M13.73 21a2 2 0 0 1-3.46 0" />
         </svg>
-        {totalCount > 0 && (
-          <span className="notification-badge">{totalCount > 99 ? '99+' : totalCount}</span>
+        {recent.length > 0 && (
+          <span className="notification-badge">{recent.length}</span>
         )}
       </button>
       {open && (
         <div className="notification-dropdown">
           <div className="notification-dropdown-header">
-            <span>What's New</span>
+            <span>What's New — last {RECENT_DAYS} days</span>
           </div>
           <div className="notification-dropdown-body">
-            {updates.map((week, wIdx) => (
+            {recent.length ? (
+              <div className="notification-week-items">
+                {recent.map((item, i) => <UpdateItem key={i} item={item} />)}
+              </div>
+            ) : (
+              <div style={{ padding: '14px 16px', fontSize: 12, color: 'var(--text-muted)' }}>
+                No updates in the last {RECENT_DAYS} days.
+              </div>
+            )}
+            <button className="notification-week-toggle" onClick={() => setShowEarlier(v => !v)}>
+              <span>Earlier updates</span>
+              <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>{showEarlier ? '▾' : '▸'}</span>
+            </button>
+            {showEarlier && updates.map((week, wIdx) => (
               <div key={wIdx}>
-                <button
-                  className="notification-week-toggle"
-                  onClick={() => toggleWeek(wIdx)}
-                >
+                <button className="notification-week-toggle" onClick={() => toggleWeek(wIdx)} style={{ paddingLeft: 24 }}>
                   <span>{week.label}</span>
                   <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>
                     {week.items.length} update{week.items.length !== 1 ? 's' : ''}
@@ -186,21 +226,7 @@ function NotificationBell({ updates }) {
                 </button>
                 {expandedWeeks[wIdx] && (
                   <div className="notification-week-items">
-                    {week.items.map((item, iIdx) => (
-                      <a key={iIdx} className="notification-item" href={item.url} target="_blank" rel="noopener noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
-                          <span className="notification-type-badge" style={{ background: TYPE_COLORS[item.type] || 'var(--accent)' }}>
-                            {TYPE_LABELS[item.type] || item.type.toUpperCase()}
-                          </span>
-                          <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-primary)' }}>
-                            {item.countryName}
-                          </span>
-                        </div>
-                        <div style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                          {item.title}
-                        </div>
-                      </a>
-                    ))}
+                    {week.items.map((item, iIdx) => <UpdateItem key={iIdx} item={item} />)}
                   </div>
                 )}
               </div>
@@ -211,11 +237,6 @@ function NotificationBell({ updates }) {
     </div>
   );
 }
-
-const WALLETS = [
-  { chain: 'Ethereum / Base / EVM', address: '0xE017003eFC0dffD03ee6a4fb617d397B5F547c5B', color: '#627EEA' },
-  { chain: 'Solana', address: '2tb2mbyCjmDeUVaJXTrkHiLPVZjD7VsYhM5QeXQnvBAq', color: '#9945FF' },
-];
 
 function SupportModal({ onClose }) {
   const [copied, setCopied] = useState(null);
@@ -310,16 +331,57 @@ function saveNewsletterPref(user) {
   }
 }
 
+function countryFromPath(data) {
+  const code = codeFromPath(window.location.pathname);
+  return code && data[code] ? { code, ...data[code] } : null;
+}
+
+function setMeta(name, content) {
+  document.querySelector(`meta[name="${name}"]`)?.setAttribute('content', content);
+}
+
 export default function App() {
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedCountry, setSelectedCountryState] = useState(() => countryFromPath(SAMPLE));
   const [showAuth, setShowAuth] = useState(false);
   const [panelFullWidth, setPanelFullWidth] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
+  const [showMethodology, setShowMethodology] = useState(false);
   const [activeView, setActiveView] = useState('map');
   const mapRef = useRef(null);
   const isMobile = useIsMobile();
   const data = useCountryData();
   const user = useAuth();
+
+  // Components pass a partial country object; fill in the rest (review date,
+  // change log, etc.) from the data so every view shows the full entry.
+  const setSelectedCountry = useCallback(country => {
+    setSelectedCountryState(country ? { ...(data[country.code] || {}), ...country } : null);
+  }, [data]);
+
+  // Keep the address bar, title and description in step with the selection.
+  useEffect(() => {
+    const path = selectedCountry ? countryPath(selectedCountry.code) : '/';
+    if (window.location.pathname !== path) window.history.pushState(null, '', path);
+    if (selectedCountry && data[selectedCountry.code]) {
+      const meta = countryMeta(selectedCountry.code, data[selectedCountry.code]);
+      document.title = meta.title;
+      setMeta('description', meta.description);
+    } else {
+      document.title = HOME_TITLE;
+      setMeta('description', HOME_DESCRIPTION);
+    }
+  }, [selectedCountry, data]);
+
+  useEffect(() => {
+    const onPopState = () => setSelectedCountryState(countryFromPath(data));
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, [data]);
+
+  // A shared country link opens straight onto the map section.
+  useEffect(() => {
+    if (codeFromPath(window.location.pathname)) mapRef.current?.scrollIntoView();
+  }, []);
 
   const scrollToMap = () => {
     if (!user) {
@@ -338,6 +400,10 @@ export default function App() {
 
       {showSupport && (
         <SupportModal onClose={() => setShowSupport(false)} />
+      )}
+
+      {showMethodology && (
+        <MethodologyModal onClose={() => setShowMethodology(false)} />
       )}
 
       {/* ── Section 1: About ── */}
@@ -495,6 +561,11 @@ export default function App() {
                   {label}
                 </div>
               ))}
+              <button onClick={() => setShowMethodology(true)} style={{
+                background: 'none', border: 'none', padding: 0, cursor: 'pointer',
+                fontSize: 11, color: 'var(--accent)', textDecoration: 'underline',
+                fontFamily: "'Times New Roman', Times, serif",
+              }}>How we classify</button>
             </div>
           </div>
         </header>
@@ -528,7 +599,9 @@ export default function App() {
             <>
               {!panelFullWidth && (
                 <div className="map-container" style={{ flex: 1, overflow: 'hidden', transition: 'flex 0.4s ease' }}>
-                  <Map selectedCountry={selectedCountry} onCountrySelect={setSelectedCountry} data={data} />
+                  <Suspense fallback={<div style={{ width: '100%', height: '100%', background: 'var(--bg-primary)' }} />}>
+                    <Map selectedCountry={selectedCountry} onCountrySelect={setSelectedCountry} data={data} />
+                  </Suspense>
                 </div>
               )}
               <CountryPanel

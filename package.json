@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
     "test": "vitest",
     "dev": "vite",
     "preview": "vite preview"

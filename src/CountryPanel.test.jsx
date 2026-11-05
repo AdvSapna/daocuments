@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import CountryPanel from './CountryPanel';
-import { SAMPLE } from './Map';
+import { SAMPLE } from './countries';
 
 vi.mock('./supabase', () => import('./test/supabaseMock'));
 
