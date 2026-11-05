@@ -23,8 +23,14 @@ function useIsMobile(breakpoint = 768) {
 function useCountryData() {
   const [data, setData] = useState(SAMPLE);
   useEffect(() => {
-    supabase.from('countries').select('*').then(({ data: rows }) => {
-      if (rows && rows.length) {
+    supabase.from('countries').select('*').then(({ data: rows, error }) => {
+      if (error) {
+        // The built-in SAMPLE data is the main source; published rows only
+        // override it. Report the failure loudly but keep the site usable.
+        console.error('Could not load country overrides from Supabase:', error);
+        return;
+      }
+      if (rows.length) {
         const published = rows.filter(r => r.is_published);
         if (published.length) {
           const map = { ...SAMPLE };
@@ -292,7 +298,12 @@ function saveNewsletterPref(user) {
     supabase.from('subscribers').upsert(
       { user_id: user.id, email, newsletter_optin: newsletter === '1' },
       { onConflict: 'user_id' }
-    ).then(() => {
+    ).then(({ error }) => {
+      if (error) {
+        // Keep the saved preference so it is retried on the next page load.
+        console.error('Could not save newsletter preference:', error);
+        return;
+      }
       localStorage.removeItem('dao_newsletter');
       localStorage.removeItem('dao_email');
     });

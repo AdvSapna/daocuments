@@ -448,12 +448,14 @@ function ReportInaccuracy({ countryName, countryCode }) {
   const [link, setLink] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!field.trim() || !detail.trim()) return;
     setLoading(true);
-    await supabase.from('inaccuracy_reports').insert({
+    setError('');
+    const { error: err } = await supabase.from('inaccuracy_reports').insert({
       country_code: countryCode,
       country_name: countryName,
       field_reported: field.trim(),
@@ -461,6 +463,11 @@ function ReportInaccuracy({ countryName, countryCode }) {
       source_link: link.trim() || null,
     });
     setLoading(false);
+    if (err) {
+      console.error('Could not submit inaccuracy report:', err);
+      setError(`Your report could not be submitted: ${err.message}. Please try again.`);
+      return;
+    }
     setSubmitted(true);
   };
 
@@ -542,6 +549,11 @@ function ReportInaccuracy({ countryName, countryCode }) {
           fontFamily: "'Times New Roman', Times, serif",
         }}
       />
+      {error && (
+        <div role="alert" style={{ fontSize: 11, color: '#d45d56', lineHeight: 1.5 }}>
+          {error}
+        </div>
+      )}
       <button type="submit" disabled={loading} style={{
         padding: '8px 14px', background: 'var(--accent)', color: '#fff', border: 'none',
         borderRadius: 6, fontSize: 12, fontWeight: 600, fontFamily: "'Times New Roman', Times, serif",
