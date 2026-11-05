@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-DAOcuments is a single-page React app that tracks cryptocurrency regulation across 70+ countries. It displays an interactive world map colored by regulatory status (legal/partial/restricted/banned), a country detail panel with legislation, news, and case law, and a filterable comparison table.
+DAOcuments is a single-page React app that tracks cryptocurrency regulation across 80+ countries. It displays an interactive world map colored by regulatory status (legal/partial/restricted/banned), a country detail panel with legislation, news, and case law, and a filterable comparison table.
 
 ## Commands
 
@@ -13,6 +13,7 @@ DAOcuments is a single-page React app that tracks cryptocurrency regulation acro
 - `npm run preview` — serve the production build locally
 - `npm test` — run Vitest in watch mode
 - `npm test -- --run` — run tests once (CI mode)
+- `node --max-http-header-size=65536 scripts/check-links.mjs [--json out.json]` — crawl every source URL in `src/Map.jsx` and `src/updates.js` and list dead ones (404/410/DNS). "blocked" means the site refuses bots; check those by hand.
 
 Built with Vite (config in `vite.config.js`; third-party code is split into a separate `vendor` chunk so it stays cached across content updates). Node 24 is pinned in `.nvmrc` and `package.json` engines.
 

@@ -4,10 +4,12 @@ import { FIELD_GROUPS } from './comparisonFields';
 const STATUS_COLOR = { legal:'#8bc9a4', partial:'#edc978', restricted:'#e0a66b', banned:'#d45d56' };
 
 const VALUE_COLORS = {
-  yes: '#8bc9a4', legal: '#8bc9a4', allowed: '#8bc9a4', live: '#8bc9a4', property: '#8bc9a4',
+  yes: '#8bc9a4', legal: '#8bc9a4', allowed: '#8bc9a4', live: '#8bc9a4', property: '#8bc9a4', 'in force': '#8bc9a4',
   partial: '#edc978', 'in progress': '#edc978', pending: '#edc978', partially: '#edc978', pilot: '#edc978', neutral: '#edc978',
+  enacted: '#edc978', committed: '#edc978', proposed: '#edc978',
   restricted: '#e0a66b', research: '#e0a66b', unclear: '#e0a66b',
   no: '#d4cdc4', banned: '#d45d56', prohibited: '#d45d56', none: '#d4cdc4', paused: '#d4cdc4',
+  'not committed': '#d4cdc4', 'no rule': '#d4cdc4',
 };
 
 function Pill({ value }) {

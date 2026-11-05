@@ -163,7 +163,7 @@ function NotificationBell({ updates }) {
           <path d="M13.73 21a2 2 0 0 1-3.46 0" />
         </svg>
         {totalCount > 0 && (
-          <span className="notification-badge">{totalCount}</span>
+          <span className="notification-badge">{totalCount > 99 ? '99+' : totalCount}</span>
         )}
       </button>
       {open && (
@@ -376,7 +376,7 @@ export default function App() {
             fontSize: 16, color: 'var(--text-secondary)', lineHeight: 1.7,
             maxWidth: 680, margin: '0 auto 16px',
           }}>
-            DAOcuments is a free, independent project mapping the global landscape of cryptocurrency regulation. We track legislation, enforcement actions, and policy shifts across 47 jurisdictions, giving you the full picture of where crypto stands, country by country.
+            DAOcuments is a free, independent project mapping the global landscape of cryptocurrency regulation. We track legislation, enforcement actions, and policy shifts across {Object.keys(SAMPLE).length} jurisdictions, giving you the full picture of where crypto stands, country by country.
           </p>
 
           {/* Who it's for */}
