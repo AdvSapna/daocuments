@@ -14,7 +14,9 @@ DAOcuments is a single-page React app that tracks cryptocurrency regulation acro
 - `npm test` — run Vitest in watch mode
 - `npm test -- --run` — run tests once (CI mode)
 
-Built with Vite (config in `vite.config.js`). Node 24 is pinned in `.nvmrc` and `package.json` engines. Vercel build settings live in `vercel.json`.
+Built with Vite (config in `vite.config.js`; third-party code is split into a separate `vendor` chunk so it stays cached across content updates). Node 24 is pinned in `.nvmrc` and `package.json` engines.
+
+`vercel.json` holds the Vercel build settings, security headers and cache rules. The Content-Security-Policy `connect-src` names the Supabase project URL, so update it if the Supabase project changes.
 
 ## Architecture
 
@@ -23,7 +25,7 @@ Built with Vite (config in `vite.config.js`). Node 24 is pinned in `.nvmrc` and 
 2. `useCountryData()` in `App.jsx` fetches from the Supabase `countries` table on mount and overlays published rows onto `SAMPLE` by `iso2`/`code`.
 
 **Views (toggled via map/table buttons in the header):**
-- **Map view:** `Map.jsx` renders a `react-simple-maps` world map with `ZoomableGroup`. Countries are colored by `status` field. Clicking a country opens `CountryPanel`.
+- **Map view:** `Map.jsx` renders a `react-simple-maps` world map with `ZoomableGroup`. Country shapes come from `public/countries.geojson`, a simplified copy of datasets/geo-countries (about 260 KB compressed instead of 4.6 MB); rebuild it with `node scripts/simplify-map.mjs <countries.geojson>`. Countries are colored by `status` field. Clicking a country opens `CountryPanel`.
 - **Table view:** `ComparisonTable.jsx` renders a spreadsheet-style table. Column definitions come from `comparisonFields.js` (field key, label, type, filter values, group). Row data comes from `comparisonData.js` keyed by ISO-2 code. The `status` column is pulled from the main country data, not from `comparisonData`.
 - **Mobile:** On screens <= 768px, `CountryList.jsx` replaces the map with a grouped, searchable list.
 

@@ -28,6 +28,15 @@ export default defineConfig(({ mode }) => {
     build: {
       // Same output folder Create React App used, so Vercel needs no changes.
       outDir: 'build',
+      rolldownOptions: {
+        output: {
+          // Libraries change far less often than the country data, so keep
+          // them in their own file that browsers can cache across updates.
+          codeSplitting: {
+            groups: [{ name: 'vendor', test: /node_modules/ }],
+          },
+        },
+      },
     },
     test: {
       environment: 'jsdom',
