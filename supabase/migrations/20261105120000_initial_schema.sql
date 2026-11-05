@@ -173,6 +173,10 @@ create table private.site_stats (
   visitor_count  bigint not null default 0 check (visitor_count >= 0)
 );
 
+-- Defense in depth: no policies, so only the table owner (used by the
+-- SECURITY DEFINER function below) can read or change the count.
+alter table private.site_stats enable row level security;
+
 insert into private.site_stats default values;
 
 create function private.increment_visitor_count()
