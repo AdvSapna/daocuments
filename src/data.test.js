@@ -40,3 +40,17 @@ test('weekly updates are well formed', () => {
     });
   });
 });
+
+describe('world map shapes (public/countries.geojson)', () => {
+  test('every country has a name and none is inverted', async () => {
+    const { readFileSync } = await import('node:fs');
+    const { geoArea } = await import('d3-geo');
+    const map = JSON.parse(readFileSync('public/countries.geojson', 'utf8'));
+    expect(map.features.length).toBeGreaterThan(200);
+    map.features.forEach(feature => {
+      expect(feature.properties.name).toBeTruthy();
+      // An inverted ring covers more than half the globe and paints over the map.
+      expect(geoArea(feature), feature.properties.name).toBeLessThan(2 * Math.PI);
+    });
+  });
+});

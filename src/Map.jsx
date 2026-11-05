@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 
-const GEO_URL = 'https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson';
+// Simplified, self-hosted copy of datasets/geo-countries. Rebuild with
+// scripts/simplify-map.mjs.
+const GEO_URL = '/countries.geojson';
 
 export const SAMPLE = {
   EU:{name:'European Union (MiCA)',status:'legal',summary:'The Markets in Crypto-Assets Regulation (MiCA) entered into full application on December 30, 2024, establishing a harmonised EU-wide framework for crypto-asset issuance, trading, and service provision. ESMA and EBA share supranational oversight. Each EU member state designates a national competent authority (NCA) for day-to-day supervision. MiCA introduces licensing categories for CASPs, rules for asset-referenced tokens (ARTs) and e-money tokens (EMTs), market abuse provisions, and consumer protection requirements.',
