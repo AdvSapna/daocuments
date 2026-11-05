@@ -63,6 +63,8 @@ const WEEKLY_UPDATES = [
   {
     label: 'September 2026',
     items: [
+      { country: 'CR', countryName: 'Costa Rica', type: 'regulatory', title: 'Law 10961 takes effect — virtual asset service providers must register with SUGEF', url: 'https://lexlatin.com/opinion/costa-rica-proveedores-activos-virtuales-cambio-ley-10961' },
+      { country: 'JM', countryName: 'Jamaica', type: 'regulatory', title: 'House passes Virtual Assets Service Providers Act, 2026 with three amendments — Senate next', url: 'https://jamaica-gleaner.com/article/news/20260930/robinson-wants-virtual-assets-law-go-beyond-containing-risk' },
       { country: 'BT', countryName: 'Bhutan', type: 'news', title: 'BTSE gets full GFSO licence for digital asset trading in Gelephu Mindfulness City', url: 'https://yellow.com/press-releases/btse-bhutan-receives-financial-services-license-for-digital-asset-trading-services-in-gelephu-mindfulness-city' },
       { country: 'KH', countryName: 'Cambodia', type: 'regulatory', title: 'NBC and SERC issue joint virtual asset framework — banks need NBC approval, other providers a SERC licence', url: 'https://www.dfdl.com/?p=67690' },
       { country: 'CL', countryName: 'Chile', type: 'news', title: 'Orionx shuts down after more than US$7M in client crypto is moved out — CMF says it never supervised the firm', url: 'https://www.theclinic.cl/2026/09/04/cmf-advierte-que-orionx-no-esta-bajo-su-fiscalizacion-tras-anuncio-de-cierre-por-us7-millones/' },
@@ -121,6 +123,7 @@ const WEEKLY_UPDATES = [
   {
     label: 'July 2026',
     items: [
+      { country: 'JM', countryName: 'Jamaica', type: 'regulatory', title: 'FSC consults on VASP licensing rules with six licence classes', url: 'https://www.jamaicaobserver.com/2026/07/08/fsc-opens-door-crypto-regulation/' },
       { country: 'HU', countryName: 'Hungary', type: 'regulatory', title: 'MNB grants Hungary\'s first MiCA CASP licence — CoinCash (Tiwala Solutions Kft.)', url: 'https://cointelegraph.com/news/hungary-repeals-crypto-checks-first-mica-license-granted' },
       { country: 'RO', countryName: 'Romania', type: 'regulatory', title: 'ASF says it cannot authorise crypto firms under MiCA — Romania has not designated a competent authority', url: 'https://startupcafe.ro/platforme-crypto-autorizate-asf-romania-functiona-regulament-european-mica-lege-interna-102828' },
       { country: 'HU', countryName: 'Hungary', type: 'regulatory', title: 'Hungary abolishes crypto validation regime and related criminal offences', url: 'https://schoenherr.eu/content/hungary-scraps-its-separate-national-crypto-conversion-validation-regime' },
@@ -160,6 +163,8 @@ const WEEKLY_UPDATES = [
   {
     label: 'June 2026',
     items: [
+      { country: 'ZW', countryName: 'Zimbabwe', type: 'news', title: 'FIU orders crypto firms to register — warns registration is not a licence to operate', url: 'https://bulawayo24.com/index-id-news-sc-national-byo-265695.html' },
+      { country: 'ZW', countryName: 'Zimbabwe', type: 'regulatory', title: 'SI 99 of 2026 gazetted — VASPs must register annually with the FIU and apply the travel rule', url: 'https://www.mmmlawfirm.co.zw/zimbabwe-regulates-virtual-asset-service-providers-key-implications-of-s-i-99-of-2026-for-businesses-investors-and-fintech-operators/' },
       { country: 'ID', countryName: 'Indonesia', type: 'regulatory', title: 'Law 4/2026 amending the P2SK Law takes effect — new crypto-asset institution category under OJK', url: 'https://www.abnrlaw.com/news/indonesias-p2sk-law-amendment-what-law-42026-changes-for-crypto-and-digital-financial-assets' },
       { country: 'GB', countryName: 'United Kingdom', type: 'regulatory', title: 'FCA publishes final rules for UK cryptoasset regime (PS26/9–PS26/13)', url: 'https://www.lw.com/en/insights/2026/06/The-Race-Is-On-FCA-Publishes-Final-Rules-for-UK-Cryptoasset-Regime' },
       { country: 'FI', countryName: 'Finland', type: 'regulatory', title: 'FIN-FSA: unauthorised crypto-asset services banned EU-wide from Jul 1', url: 'https://www.finanssivalvonta.fi/en/publications-and-press-releases/news-releases/2026/crypto-asset-service-providers-in-finland-must-be-authorised-in-the-eu/' },
@@ -188,6 +193,9 @@ const WEEKLY_UPDATES = [
   {
     label: 'May 2026',
     items: [
+      { country: 'CR', countryName: 'Costa Rica', type: 'regulatory', title: 'Legislative Assembly unanimously approves VASP AML reform (file 25.340)', url: 'https://delfino.cr/2026/05/asamblea-aprueba-regulacion-de-criptoactivos-contra-lavado-de-dinero' },
+      { country: 'RW', countryName: 'Rwanda', type: 'regulatory', title: 'Parliament adopts virtual asset business bill — oversight moves from the central bank to the CMA', url: 'https://www.parliament.gov.rw/news-details/rwanda-moves-to-secure-digital-finance-with-new-virtual-assets-law' },
+      { country: 'RW', countryName: 'Rwanda', type: 'regulatory', title: 'Law No. 023/2026 regulating virtual asset business takes effect — CMA to license all VASPs', url: 'https://www.ensafrica.com/news/detail/11972/rwanda-gazettes-first-law-regulating-virtual-' },
       { country: 'US', countryName: 'United States', type: 'regulatory', title: 'CFTC approves first U.S. bitcoin perpetual future (Kalshi BTCPERP)', url: 'https://www.cftc.gov/PressRoom/PressReleases/9240-26' },
       { country: 'BM', countryName: 'Bermuda', type: 'regulatory', title: 'Cabinet approves legislation for government stablecoin payments; BMA licenses Bitcoin Suisse and Plume', url: 'https://www.royalgazette.com/?p=517281' },
       { country: 'RU', countryName: 'Russia', type: 'regulatory', title: 'Duma passes first reading of bill criminalising illegal crypto mining', url: 'https://meduza.io/en/news/2026/05/27/russia-s-state-duma-passes-bill-criminalizing-illegal-cryptocurrency-mining-on-first-reading-with-fines-or-up-to-five-years-in-prison' },
@@ -241,7 +249,7 @@ const WEEKLY_UPDATES = [
       { country: 'US', countryName: 'United States', type: 'regulatory', title: 'SEC staff statement clarifies broker-dealer registration requirements for DeFi front-end UI operators facilitating crypto securities transactions', url: 'https://www.sec.gov/newsroom/speeches-statements/staff-statement-regarding-broker-dealer-registration-certain-user-interfaces-utilized-prepare-staff-statement-regarding-broker-dealer-registration-certain-user-interfaces-utilized' },
       { country: 'AE', countryName: 'UAE (Dubai)', type: 'regulatory', title: 'CMA Decision No. 4/R.M/2026 establishes most comprehensive federal VASP framework — 8 licensed activities, tiered capital, privacy token ban; transition deadline Feb 2027', url: 'https://mielogroup.com/uae-crypto-law-2026-a-guide-to-cma-decision-no-4-r-m-2026-for-vasps/' },
       { country: 'AE', countryName: 'UAE (Dubai)', type: 'news', title: 'Dubai partners with Crypto.com to enable crypto payments for government services — crypto converted to AED before deposit', url: 'https://www.kucoin.com/news/flash/dubai-partners-with-crypto-com-to-enable-crypto-payments-for-government-services' },
-      { country: 'ES', countryName: 'Spain', type: 'regulatory', title: 'ESMA warns unauthorized CASPs must complete orderly wind-down before Jul 1, 2026 MiCA deadline — DAC8 tax reporting already live since Jan 2026', url: 'https://www.financemagnates.com/cryptocurrency/regulation/spain-to-enforce-mica-and-dac8-in-2026-ending-cryptos-regulatory-grey-area/' },
+      { country: 'ES', countryName: 'Spain', type: 'regulatory', title: 'Spain heads for the Jul 1, 2026 MiCA deadline — unauthorised CASPs must wind down; DAC8 tax reporting planned for 2026', url: 'https://www.financemagnates.com/cryptocurrency/regulation/spain-to-enforce-mica-and-dac8-in-2026-ending-cryptos-regulatory-grey-area/' },
       // News
       { country: 'KR', countryName: 'South Korea', type: 'news', title: 'Bank of Korea governor nominee backs central bank-led digital currency over private stablecoins', url: 'https://www.coindesk.com/policy/2026/04/14/bank-of-korea-nominee-backs-central-bank-led-digital-currency-sees-limited-role-for-stablecoins' },
       { country: 'IR', countryName: 'Iran', type: 'news', title: 'Central Bank of Iran completes Digital Rial (crypto rial) CBDC pre-pilot on Hyperledger Fabric-based Borna platform', url: 'https://usa.news-pravda.com/world/2026/04/12/739410.html' },
