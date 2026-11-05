@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import supabase from './supabase';
+import { SAMPLE } from './Map';
 
 const META = {
   legal:      { label:'Legal',      color:'#6ab587', bg:'rgba(139,201,164,0.15)' },
@@ -667,7 +668,7 @@ export default function CountryPanel({ country, onClose, fullWidth, onToggleFull
             {onSelectCountry && (
               <button
                 onClick={() => {
-                  const eu = require('./Map').SAMPLE.EU;
+                  const eu = SAMPLE.EU;
                   if (eu) onSelectCountry({ code: 'EU', name: eu.name, status: eu.status, summary: eu.summary, legislation: eu.legislation || [], news: eu.news || [], cases: eu.cases || [], analysis: eu.analysis || [], framework: eu.framework || null, euMember: false });
                 }}
                 style={{

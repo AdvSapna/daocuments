@@ -1458,11 +1458,12 @@ export default function Map({ selectedCountry, onCountrySelect, data }) {
                   })}
                   onMouseMove={(evt) => setTooltip(t => ({ ...t, x: evt.clientX + 12, y: evt.clientY - 36 }))}
                   onMouseLeave={() => setTooltip(t => ({ ...t, visible: false }))}
-                  style={{
-                    default: { fill, stroke: isSelected ? '#3a3530' : '#e5ddd3', strokeWidth: isSelected ? 1.2 : 0.4, outline:'none' },
-                    hover:   { fill: statusColor, stroke:'#3a353066', strokeWidth:0.8, outline:'none', cursor:'pointer', filter:'brightness(1.08)' },
-                    pressed: { fill: statusColor, outline:'none' },
-                  }}
+                  // react-simple-maps 5 dropped the { default, hover, pressed } style
+                  // object. Base colors are SVG attributes so the :hover rule for
+                  // .rsm-geography in index.css can override them.
+                  fill={fill}
+                  stroke={isSelected ? '#3a3530' : '#e5ddd3'}
+                  strokeWidth={isSelected ? 1.2 : 0.4}
                 />
               );
             })}

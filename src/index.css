@@ -434,3 +434,14 @@ a { color: inherit; text-decoration: none; }
     grid-template-columns: 1fr !important;
   }
 }
+/* World map countries (react-simple-maps). Base fill and stroke are set as SVG
+   attributes in Map.jsx, so these rules can override them on hover. */
+.rsm-geography {
+  outline: none;
+  cursor: pointer;
+}
+.rsm-geography:hover {
+  stroke: #3a353066;
+  stroke-width: 0.8;
+  filter: brightness(1.08);
+}
