@@ -23,7 +23,6 @@ function useIsMobile(breakpoint = 768) {
 function useCountryData() {
   const [data, setData] = useState(SAMPLE);
   useEffect(() => {
-    if (!supabase) return;
     supabase.from('countries').select('*').then(({ data: rows }) => {
       if (rows && rows.length) {
         const published = rows.filter(r => r.is_published);
@@ -273,7 +272,6 @@ function SupportModal({ onClose }) {
 function useAuth() {
   const [user, setUser] = useState(undefined); // undefined = loading, null = not logged in
   useEffect(() => {
-    if (!supabase) { setUser(null); return; }
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
       if (session?.user) saveNewsletterPref(session.user);
@@ -290,7 +288,7 @@ function useAuth() {
 function saveNewsletterPref(user) {
   const newsletter = localStorage.getItem('dao_newsletter');
   const email = localStorage.getItem('dao_email');
-  if (newsletter !== null && email && supabase) {
+  if (newsletter !== null && email) {
     supabase.from('subscribers').upsert(
       { user_id: user.id, email, newsletter_optin: newsletter === '1' },
       { onConflict: 'user_id' }

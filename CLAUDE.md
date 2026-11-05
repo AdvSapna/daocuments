@@ -19,8 +19,8 @@ Built with Vite (config in `vite.config.js`). Node 24 is pinned in `.nvmrc` and 
 ## Architecture
 
 **Data flow:** Country regulatory data lives in two places that merge at runtime:
-1. `src/Map.jsx` exports `SAMPLE` — a hardcoded object keyed by ISO-2 country code containing all country entries (name, status, summary, legislation array, news array, cases array). This is the primary data source and the fallback when Supabase is unavailable.
-2. `useCountryData()` in `App.jsx` fetches from the Supabase `countries` table on mount and overlays published rows onto `SAMPLE` by `iso2`/`code`. If Supabase env vars are missing, the app runs entirely on `SAMPLE`.
+1. `src/Map.jsx` exports `SAMPLE` — a hardcoded object keyed by ISO-2 country code containing all country entries (name, status, summary, legislation array, news array, cases array). This is the primary data source.
+2. `useCountryData()` in `App.jsx` fetches from the Supabase `countries` table on mount and overlays published rows onto `SAMPLE` by `iso2`/`code`.
 
 **Views (toggled via map/table buttons in the header):**
 - **Map view:** `Map.jsx` renders a `react-simple-maps` world map with `ZoomableGroup`. Countries are colored by `status` field. Clicking a country opens `CountryPanel`.
@@ -35,7 +35,7 @@ Built with Vite (config in `vite.config.js`). Node 24 is pinned in `.nvmrc` and 
 
 ## Environment Variables
 
-Requires `.env` with `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY`. Vite exposes them through `import.meta.env` because `vite.config.js` adds `REACT_APP_` to `envPrefix`; new variables can use either `VITE_` or `REACT_APP_`. The app degrades gracefully without them (Supabase client becomes `null`, app uses `SAMPLE` data only).
+Requires `.env` with `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY` (the project URL and publishable key). They are required: `vite.config.js` stops the dev server and the build when either is missing, and `src/supabase.js` throws at startup. `vite.config.js` sets `envPrefix` to `REACT_APP_`, so only variables with that prefix reach the app. The Supabase schema lives in `supabase/migrations/`.
 
 ## Key Patterns
 

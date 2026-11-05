@@ -2,12 +2,12 @@
 
 Crypto regulation tracker covering 70+ countries: an interactive world map, country detail panels with legislation, news and case law, and a comparison table.
 
-Built with React and [Vite](https://vite.dev/). Data comes from Supabase, with built-in sample data as a fallback.
+Built with React and [Vite](https://vite.dev/). Country data is built into the app; Supabase handles sign-in, newsletter opt-ins, inaccuracy reports and the visitor counter.
 
 ## Requirements
 
 - Node 24 (see `.nvmrc`)
-- A `.env` file with `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY` (optional; without it the app uses the built-in data)
+- A `.env` file with `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY` (required; the dev server and build stop if either is missing). The database schema is in `supabase/migrations/`
 
 ## Commands
 

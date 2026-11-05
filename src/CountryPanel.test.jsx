@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import CountryPanel from './CountryPanel';
 import { SAMPLE } from './Map';
 
-vi.mock('./supabase', () => ({ default: null }));
+vi.mock('./supabase', () => import('./test/supabaseMock'));
 
 const country = { code: 'FR', ...SAMPLE.FR, euMember: true };
 

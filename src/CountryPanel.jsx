@@ -453,15 +453,13 @@ function ReportInaccuracy({ countryName, countryCode }) {
     e.preventDefault();
     if (!field.trim() || !detail.trim()) return;
     setLoading(true);
-    if (supabase) {
-      await supabase.from('inaccuracy_reports').insert({
-        country_code: countryCode,
-        country_name: countryName,
-        field_reported: field.trim(),
-        detail: detail.trim(),
-        source_link: link.trim() || null,
-      });
-    }
+    await supabase.from('inaccuracy_reports').insert({
+      country_code: countryCode,
+      country_name: countryName,
+      field_reported: field.trim(),
+      detail: detail.trim(),
+      source_link: link.trim() || null,
+    });
     setLoading(false);
     setSubmitted(true);
   };
@@ -559,10 +557,6 @@ export default function CountryPanel({ country, onClose, fullWidth, onToggleFull
   const [visitorCount, setVisitorCount] = useState(null);
 
   useEffect(() => {
-    if (!supabase) {
-      console.warn('Visitor count: supabase client is null (env vars missing?)');
-      return;
-    }
     supabase.rpc('increment_visitor_count').then(({ data, error }) => {
       if (error) {
         console.error('Visitor count RPC error:', error);
