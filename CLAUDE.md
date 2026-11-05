@@ -35,7 +35,7 @@ Built with Vite (config in `vite.config.js`). Node 24 is pinned in `.nvmrc` and 
 
 ## Environment Variables
 
-Requires `.env` with `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` (the names in the Supabase dashboard's Vite snippet). `src/supabase.js` also accepts the older `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY` names, which `vite.config.js` keeps exposed through `envPrefix`. The app degrades gracefully without them (Supabase client becomes `null`, app uses `SAMPLE` data only).
+Requires `.env` with `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY`. Vite exposes them through `import.meta.env` because `vite.config.js` adds `REACT_APP_` to `envPrefix`; new variables can use either `VITE_` or `REACT_APP_`. The app degrades gracefully without them (Supabase client becomes `null`, app uses `SAMPLE` data only).
 
 ## Key Patterns
 

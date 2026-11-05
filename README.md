@@ -7,7 +7,7 @@ Built with React and [Vite](https://vite.dev/). Data comes from Supabase, with b
 ## Requirements
 
 - Node 24 (see `.nvmrc`)
-- A `.env` file with `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` from the Supabase dashboard (optional; without it the app uses the built-in data)
+- A `.env` file with `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY` (optional; without it the app uses the built-in data)
 
 ## Commands
 
