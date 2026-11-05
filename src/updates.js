@@ -63,6 +63,9 @@ const WEEKLY_UPDATES = [
   {
     label: 'September 2026',
     items: [
+      { country: 'BT', countryName: 'Bhutan', type: 'news', title: 'BTSE gets full GFSO licence for digital asset trading in Gelephu Mindfulness City', url: 'https://yellow.com/press-releases/btse-bhutan-receives-financial-services-license-for-digital-asset-trading-services-in-gelephu-mindfulness-city' },
+      { country: 'KH', countryName: 'Cambodia', type: 'regulatory', title: 'NBC and SERC issue joint virtual asset framework — banks need NBC approval, other providers a SERC licence', url: 'https://www.dfdl.com/?p=67690' },
+      { country: 'CL', countryName: 'Chile', type: 'news', title: 'Orionx shuts down after more than US$7M in client crypto is moved out — CMF says it never supervised the firm', url: 'https://www.theclinic.cl/2026/09/04/cmf-advierte-que-orionx-no-esta-bajo-su-fiscalizacion-tras-anuncio-de-cierre-por-us7-millones/' },
       { country: 'GB', countryName: 'United Kingdom', type: 'regulatory', title: 'FCA opens crypto authorisation gateway — applications due by 28 Feb 2027', url: 'https://www.thetradenews.com/fca-opens-authorisation-gateway-for-uk-crypto-asset-firms/' },
       { country: 'EU', countryName: 'European Union', type: 'regulatory', title: 'ESMA responds to MiCA review — DeFi access points, staking and lending rules, binding token classification', url: 'https://www.regulationtomorrow.com/2026/09/esma-responds-to-commissions-consultation-on-the-review-of-mica/' },
       { country: 'AE', countryName: 'UAE', type: 'regulatory', title: 'CMA Resolution 16 of 2026 lets banks and payment firms run virtual asset business in-house', url: 'https://www.clydeco.com/en/insights/2026/09/uae-central-bank-licensees-permitted-to-conduct-cm' },
@@ -94,6 +97,7 @@ const WEEKLY_UPDATES = [
   {
     label: 'August 2026',
     items: [
+      { country: 'MU', countryName: 'Mauritius', type: 'regulatory', title: 'FSC issues Guidance Notes on Stablecoins — algorithmic and yield-bearing stablecoins will not be approved', url: 'https://www.fscmauritius.org/media/dyedhu0b/fsc-guidance-notes-on-stablecoins-and-annexure.pdf' },
       { country: 'NZ', countryName: 'New Zealand', type: 'regulatory', title: 'New Zealand introduces AML/CFT (Omnibus) Amendment Bill — powers to restrict cash transactions in virtual assets', url: 'https://www.legislation.govt.nz/bill/government/2026/342/en/latest/' },
       { country: 'NG', countryName: 'Nigeria', type: 'regulatory', title: 'SEC Nigeria draft digital asset rules propose ₦2bn capital floor for exchanges and custodians', url: 'https://thecondia.com/sec-rules-could-shrink-nigeria-crypto-market/' },
       { country: 'BY', countryName: 'Belarus', type: 'regulatory', title: 'Digital ruble bill heads to second reading', url: 'https://www.law.by/news_en/detail.php?ID=94742' },
@@ -117,6 +121,8 @@ const WEEKLY_UPDATES = [
   {
     label: 'July 2026',
     items: [
+      { country: 'HU', countryName: 'Hungary', type: 'regulatory', title: 'MNB grants Hungary\'s first MiCA CASP licence — CoinCash (Tiwala Solutions Kft.)', url: 'https://cointelegraph.com/news/hungary-repeals-crypto-checks-first-mica-license-granted' },
+      { country: 'RO', countryName: 'Romania', type: 'regulatory', title: 'ASF says it cannot authorise crypto firms under MiCA — Romania has not designated a competent authority', url: 'https://startupcafe.ro/platforme-crypto-autorizate-asf-romania-functiona-regulament-european-mica-lege-interna-102828' },
       { country: 'HU', countryName: 'Hungary', type: 'regulatory', title: 'Hungary abolishes crypto validation regime and related criminal offences', url: 'https://schoenherr.eu/content/hungary-scraps-its-separate-national-crypto-conversion-validation-regime' },
       { country: 'KE', countryName: 'Kenya', type: 'regulatory', title: 'Kenya gazettes VASP Regulations 2026 — operators given until Nov 4 to comply', url: 'https://cmadvocates.com/blog/the-virtual-asset-service-providers-regulations-2026/' },
       { country: 'VN', countryName: 'Vietnam', type: 'regulatory', title: 'Decree 284/2026 fines trading on unlicensed crypto platforms from 1 Sep', url: 'https://cointelegraph.com/news/vietnam-crypto-traders-unlicensed-platforms-fines' },
@@ -154,6 +160,7 @@ const WEEKLY_UPDATES = [
   {
     label: 'June 2026',
     items: [
+      { country: 'ID', countryName: 'Indonesia', type: 'regulatory', title: 'Law 4/2026 amending the P2SK Law takes effect — new crypto-asset institution category under OJK', url: 'https://www.abnrlaw.com/news/indonesias-p2sk-law-amendment-what-law-42026-changes-for-crypto-and-digital-financial-assets' },
       { country: 'GB', countryName: 'United Kingdom', type: 'regulatory', title: 'FCA publishes final rules for UK cryptoasset regime (PS26/9–PS26/13)', url: 'https://www.lw.com/en/insights/2026/06/The-Race-Is-On-FCA-Publishes-Final-Rules-for-UK-Cryptoasset-Regime' },
       { country: 'FI', countryName: 'Finland', type: 'regulatory', title: 'FIN-FSA: unauthorised crypto-asset services banned EU-wide from Jul 1', url: 'https://www.finanssivalvonta.fi/en/publications-and-press-releases/news-releases/2026/crypto-asset-service-providers-in-finland-must-be-authorised-in-the-eu/' },
       { country: '', countryName: 'FATF', type: 'regulatory', title: 'FATF June plenary approves virtual asset targeted update; Bosnia and Herzegovina and Iraq grey-listed', url: 'https://www.plenitudeconsulting.com/news-insights/fatf-publishes-outcomes-from-june-2026-plenary' },

@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 const args = process.argv.slice(2);
 const jsonIndex = args.indexOf('--json');
 const jsonOut = jsonIndex === -1 ? null : args[jsonIndex + 1];
-const files = args.filter((a, i) => a !== '--json' && i !== jsonIndex + 1);
+const files = args.filter((a, i) => jsonIndex === -1 || (i !== jsonIndex && i !== jsonIndex + 1));
 const inputs = files.length ? files : ['src/Map.jsx', 'src/updates.js'];
 
 const CONCURRENCY = 8;
