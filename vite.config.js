@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  // Keep the existing REACT_APP_* variable names so .env and the Vercel
-  // project settings keep working without renaming anything.
+  // Accept VITE_* (Supabase dashboard names) and the older REACT_APP_* names,
+  // so existing Vercel settings keep working.
   envPrefix: ['VITE_', 'REACT_APP_'],
   server: {
     port: 3000,
