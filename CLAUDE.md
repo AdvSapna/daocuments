@@ -32,11 +32,22 @@ Built with Vite (config in `vite.config.js`; code is split into chunks that chan
 
 **Country detail panel:** `CountryPanel.jsx` shows legislation, news, and cases for the selected country. It also handles edit/submission via Supabase for logged-in users. Can expand to full width.
 
-**Auth:** `AuthModal.jsx` uses Supabase magic link (OTP) auth. The map section is gated — unauthenticated users see a blurred overlay. Newsletter opt-in preference is stored in localStorage and synced to the `subscribers` table on successful auth.
+**Auth:** `AuthModal.jsx` uses Supabase magic link (OTP) auth, gated by a Turnstile token (`Turnstile.jsx`, sent as `captchaToken`); the emails go out through Resend via Supabase custom SMTP. The map section is gated — unauthenticated users see a blurred overlay. Newsletter opt-in preference is stored in localStorage and synced to the `subscribers` table on successful auth.
 
 **Notifications:** `updates.js` contains a manually curated `WEEKLY_UPDATES` array (most recent group first). Items have country, type (regulatory/news/case), title, URL and a `date` (YYYY-MM-DD). The `NotificationBell` in `App.jsx` badges and lists items dated within the last 7 days (`recentUpdates.js`); older groups sit behind "Earlier updates".
 
 **Routing:** `src/route.js` maps `/country/<iso2>` (lowercase) to a country. `App.jsx` pushes the path and sets the title/description when a country is selected and handles back/forward. `vercel.json` rewrites unknown `/country/:code` paths to `index.html`; known ones are served from the prerendered pages.
+
+## External Services
+
+| Service | What it does | Where it's configured |
+|---|---|---|
+| **Vercel** | Hosting and deploys (every push to `main`) | `vercel.json`; env vars in Vercel → Settings → Environment Variables |
+| **Supabase** | Database (subscribers, inaccuracy reports, visit counts, `countries` overrides) and email magic-link sign-in | `.env`, `supabase/migrations/`, Supabase dashboard |
+| **Cloudflare Turnstile** | Bot check on the sign-in form; Supabase verifies the token before sending a link | Site key in `VITE_TURNSTILE_SITE_KEY`; secret in Supabase → Authentication → Attack Protection (CAPTCHA) |
+| **Resend** | Sends the sign-in emails, replacing Supabase's built-in sender (limited to 2 an hour) | Supabase → Authentication → Emails → SMTP Settings (`smtp.resend.com`, port 465, user `resend`); domain records for `daocuments.com` at GoDaddy (DNS host) |
+
+Supabase's email rate limit (Authentication → Rate Limits) is set to 30 an hour; raise it there if sign-ups grow. If sign-in fails, the Supabase auth logs name the cause (for example `captcha_failed` for a Turnstile secret mismatch). Secrets live only in those dashboards, never in the repo.
 
 ## Environment Variables
 
