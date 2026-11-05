@@ -7,7 +7,7 @@ Built with React and [Vite](https://vite.dev/). Country data is built into the a
 ## Requirements
 
 - Node 24 (see `.nvmrc`)
-- A `.env` file with `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY` (required; the dev server and build stop if either is missing). The database schema is in `supabase/migrations/`
+- A `.env` file with `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` (required; the dev server and build stop if either is missing). The database schema is in `supabase/migrations/`
 
 ## Commands
 

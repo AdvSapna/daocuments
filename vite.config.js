@@ -1,8 +1,8 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
-const ENV_PREFIX = 'REACT_APP_';
-const REQUIRED_ENV = ['REACT_APP_SUPABASE_URL', 'REACT_APP_SUPABASE_ANON_KEY'];
+const ENV_PREFIX = 'VITE_';
+const REQUIRED_ENV = ['VITE_SUPABASE_URL', 'VITE_SUPABASE_PUBLISHABLE_KEY'];
 
 export default defineConfig(({ mode }) => {
   // Fail the dev server and the build (including on Vercel) when a required
