@@ -8,6 +8,29 @@
 
 const WEEKLY_UPDATES = [
   {
+    label: 'April 2026, Week 2',
+    items: [
+      // Regulatory
+      { country: 'JP', countryName: 'Japan', type: 'regulatory', title: 'Cabinet approves landmark FIEA amendment — crypto reclassified as financial instruments alongside stocks and bonds; insider trading banned; flat 20% tax proposed', url: 'https://www.cryptotimes.io/2026/04/10/japan-reclassifies-crypto-assets-under-financial-instruments-act/' },
+      { country: 'HK', countryName: 'Hong Kong', type: 'regulatory', title: 'HKMA grants first stablecoin licences under Stablecoins Ordinance to HSBC and Anchorpoint Financial (Standard Chartered/Animoca JV)', url: 'https://www.spotedcrypto.com/global-crypto-regulation-wave-2026/' },
+      { country: 'KR', countryName: 'South Korea', type: 'regulatory', title: 'National Assembly advances Digital Asset Basic Act — 100%+ stablecoin reserves, VASP licensing, and exchange kill switches proposed', url: 'https://www.coindesk.com/policy/2026/04/08/south-korea-proposes-cryptocurrency-law-with-bank-style-rules-for-stablecoins' },
+      { country: 'US', countryName: 'United States', type: 'regulatory', title: 'SEC sends "Regulation Crypto" proposal to White House OIRA — formal publication imminent', url: 'https://www.pymnts.com/cryptocurrency/2026/sec-sends-regulation-crypto-proposal-to-white-house/' },
+      { country: 'US', countryName: 'United States', type: 'regulatory', title: 'CLARITY Act stablecoin yield compromise nearing resolution — Tillis and Alsobrooks finalize draft banning passive yield but permitting activity-based rewards', url: 'https://en.cryptonomist.ch/2026/04/14/stablecoin-regulation-senate-dma-act/' },
+      { country: 'US', countryName: 'United States', type: 'regulatory', title: 'FinCEN and OFAC propose GENIUS Act AML/sanctions rules for stablecoin issuers — 1:1 reserves, monthly disclosures, transaction blocking required', url: 'https://www.coindesk.com/policy/2026/04/08/u-s-treasury-to-propose-demands-that-stablecoin-firms-be-set-to-police-bad-transactions' },
+      { country: 'US', countryName: 'United States', type: 'regulatory', title: 'PARITY Act (crypto tax reform) reintroduced by Reps. Horsford and Miller — seeks to modernize digital asset taxation', url: 'https://www.coindesk.com/policy/2026/04/13/u-s-lawmakers-take-another-swing-at-crypto-tax-policy-with-revised-bill' },
+      { country: 'US', countryName: 'United States', type: 'regulatory', title: 'SEC staff statement clarifies broker-dealer registration requirements for DeFi front-end UI operators facilitating crypto securities transactions', url: 'https://www.sec.gov/newsroom/speeches-statements/staff-statement-regarding-broker-dealer-registration-certain-user-interfaces-utilized-prepare-staff-statement-regarding-broker-dealer-registration-certain-user-interfaces-utilized' },
+      { country: 'AE', countryName: 'UAE (Dubai)', type: 'regulatory', title: 'CMA Decision No. 4/R.M/2026 establishes most comprehensive federal VASP framework — 8 licensed activities, tiered capital, privacy token ban; transition deadline Feb 2027', url: 'https://mielogroup.com/uae-crypto-law-2026-a-guide-to-cma-decision-no-4-r-m-2026-for-vasps/' },
+      { country: 'AE', countryName: 'UAE (Dubai)', type: 'news', title: 'Dubai partners with Crypto.com to enable crypto payments for government services — crypto converted to AED before deposit', url: 'https://www.kucoin.com/news/flash/dubai-partners-with-crypto-com-to-enable-crypto-payments-for-government-services' },
+      { country: 'ES', countryName: 'Spain', type: 'regulatory', title: 'ESMA warns unauthorized CASPs must complete orderly wind-down before Jul 1, 2026 MiCA deadline — DAC8 tax reporting already live since Jan 2026', url: 'https://www.financemagnates.com/cryptocurrency/regulation/spain-to-enforce-mica-and-dac8-in-2026-ending-cryptos-regulatory-grey-area/' },
+      // News
+      { country: 'KR', countryName: 'South Korea', type: 'news', title: 'Bank of Korea governor nominee backs central bank-led digital currency over private stablecoins', url: 'https://www.coindesk.com/policy/2026/04/14/bank-of-korea-nominee-backs-central-bank-led-digital-currency-sees-limited-role-for-stablecoins' },
+      { country: 'IR', countryName: 'Iran', type: 'news', title: 'Central Bank of Iran completes Digital Rial (crypto rial) CBDC pre-pilot on Hyperledger Fabric-based Borna platform', url: 'https://usa.news-pravda.com/world/2026/04/12/739410.html' },
+      // Case / News
+      { country: 'US', countryName: 'United States', type: 'case', title: 'SEC publishes FY2025 enforcement results — only 456 actions (lowest in 21 years); 7 major crypto cases dismissed (Coinbase, Binance, Kraken, Consensys, Cumberland, Dragonchain, Balina)', url: 'https://www.sec.gov/newsroom/press-releases/2026-34' },
+      { country: 'US', countryName: 'United States', type: 'news', title: 'Circle CEO Allaire defends not freezing ~$230M USDC after Drift exploit — says freezes require law enforcement requests or court orders, urges Congress to advance GENIUS and CLARITY Acts', url: 'https://www.theblock.co/post/397180/circle-ceo-allaire-defends-decision-not-to-freeze-usdc-in-drift-exploit-citing-moral-quandary' },
+    ],
+  },
+  {
     label: 'April 2026, Week 1',
     items: [
       // Regulatory
